@@ -1,0 +1,30 @@
+.login {
+  padding: 30rpx;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+.logo{
+  position: absolute;
+  top: 148rpx;
+  left: 50%;
+  margin-left: -200rpx;
+  width: 400rpx;
+  height: 350rpx
+}
+.btn{
+  position: absolute;
+  width: 400rpx;
+  top: 600rpx;
+  left: 50%;
+  margin-left: -200rpx;
+}

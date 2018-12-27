@@ -1,0 +1,8 @@
+.tab-item{
+  width: 100%;
+  height: inherit;
+  line-height: inherit;
+}
+.tab-item.active{
+  background: #fff;
+}

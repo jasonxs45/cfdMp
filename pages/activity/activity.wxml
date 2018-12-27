@@ -1,0 +1,20 @@
+<tabs class="actTop" bindchange="tabChange" current="{{currentIndex}}">
+  <tab-item wx:for="{{tabMenus}}" wx:key="tab-item-{{index}}">
+    <view class="text {{index === currentIndex ? 'on': ''}}">{{item.name}}</view>
+  </tab-item>
+</tabs>
+<view class="actMain">
+  <swiper class="swiper" duration='300' current='{{currentIndex}}' bindchange='swiperChange'>
+    <swiper-item wx:for="{{lists}}" wx:key="list+{{idx}}" wx:for-item="list" wx:for-index="idx">
+      <scroll-view enable-back-to-top scroll-y bindscrolltolower="onReachLower" class="container">
+        <block wx:if="{{list.length > 0}}">
+          <navigator class="acList" wx:for="{{list}}" wx:key="item+{{idx}}+{{index}}" url="/pages/activity/detail?id={{item.ID}}">
+            <image mode="aspectFill" src="{{item.SmallImg}}" />
+          </navigator>
+          <bottom-tip finished="{{finished[currentIndex]}}" />
+        </block>
+        <no-data wx:else />
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>

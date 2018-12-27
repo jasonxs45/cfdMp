@@ -1,0 +1,85 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/regist/regist",
+    "pages/regist/audit",
+    "pages/login/index",
+    "pages/usercenter/index",
+    "pages/modify/index",
+    "pages/visitrecord/visitor",
+    "pages/visitrecord/staff",
+    "pages/visitapply/index",
+    "pages/conference/list",
+    "pages/conference/detail",
+    "pages/conference/apply",
+    "pages/activity/activity",
+    "pages/activity/detail",
+    "pages/repairuser/submit",
+    "pages/repairuser/list",
+    "pages/repairuser/detail",
+    "pages/repairmanager/list",
+    "pages/repairuser/rate",
+    "pages/passcard/submit",
+    "pages/passcard/list",
+    "pages/passcard/detail",
+    "pages/passcard/scan",
+    "pages/suggest/suggest",
+    "pages/suggest/detail",
+    "pages/suggest/index",
+    "pages/visitapply/visitor",
+    "pages/visitapply/visitor2",
+    "pages/visitapply/visitor3",
+    "pages/visitapply/list",
+    "pages/visitapply/details",
+    "pages/voucher/mylist",
+    "pages/voucher/index",
+    "pages/voucher/detail",
+    "pages/survey/index",
+    "pages/survey/detail",
+    "pages/repairmanager/refuse",
+    "pages/repairmanager/complete",
+    "pages/repairreception/list",
+    "pages/repairreception/details",
+    "pages/repairreception/refuse",
+    "pages/news/index",
+    "pages/news/detail",
+    "pages/myactivities/list",
+    "pages/myactivities/detail"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "湖北保利",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f2f2f2"
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#333",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "/images/home1.png",
+        "selectedIconPath": "/images/home2.png"
+      },
+      {
+        "pagePath": "pages/activity/activity",
+        "text": "活动",
+        "iconPath": "/images/activity1.png",
+        "selectedIconPath": "/images/activity2.png"
+      },
+      {
+        "pagePath": "pages/voucher/index",
+        "text": "卡券",
+        "iconPath": "/images/voucher1.png",
+        "selectedIconPath": "/images/voucher2.png"
+      },
+      {
+        "pagePath": "pages/usercenter/index",
+        "text": "我的",
+        "iconPath": "/images/user1.png",
+        "selectedIconPath": "/images/user2.png"
+      }
+    ]
+  }
+}

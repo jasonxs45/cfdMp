@@ -1,0 +1,238 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"uglifyFileName": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.4.3",
+	"appid": "wx673b14d85c06819d",
+	"projectname": "cfdMp",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"scripts": {
+		"beforeCompile": "",
+		"beforePreview": "",
+		"beforeUpload": ""
+	},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 30,
+			"list": [
+				{
+					"id": 0,
+					"name": "注册",
+					"pathName": "pages/regist/regist",
+					"query": ""
+				},
+				{
+					"id": 28,
+					"name": "租户注册审核",
+					"pathName": "pages/regist/audit",
+					"query": "id=2"
+				},
+				{
+					"id": 1,
+					"name": "个人中心",
+					"pathName": "pages/usercenter/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "修改资料",
+					"pathName": "pages/modify/index",
+					"query": ""
+				},
+				{
+					"id": 10,
+					"name": "授权",
+					"pathName": "pages/login/index",
+					"query": ""
+				},
+				{
+					"id": 14,
+					"name": "活动中心",
+					"pathName": "pages/activity/activity",
+					"query": "id=1"
+				},
+				{
+					"id": 9,
+					"name": "我的活动",
+					"pathName": "pages/myactivities/list",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "用户报修提交",
+					"pathName": "pages/repairuser/submit",
+					"query": ""
+				},
+				{
+					"id": 17,
+					"name": "用户报修列表",
+					"pathName": "pages/repairuser/list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "用户报修详情",
+					"pathName": "pages/repairuser/detail",
+					"query": ""
+				},
+				{
+					"id": 18,
+					"name": "用户报修评价",
+					"pathName": "pages/repairuser/rate",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "新闻列表",
+					"pathName": "pages/news/index",
+					"query": "id=1"
+				},
+				{
+					"id": 25,
+					"name": "放行单提交",
+					"pathName": "pages/passcard/submit",
+					"query": ""
+				},
+				{
+					"id": 26,
+					"name": "放行单列表",
+					"pathName": "pages/passcard/list",
+					"query": "role=1"
+				},
+				{
+					"id": 14,
+					"name": "放行单详细",
+					"pathName": "pages/passcard/detail",
+					"query": "role=1&id=6"
+				},
+				{
+					"id": 15,
+					"name": "工程师-报修列表",
+					"pathName": "pages/repairmanager/list",
+					"query": ""
+				},
+				{
+					"id": 16,
+					"name": "工程师-提交完成",
+					"pathName": "pages/repairmanager/complete",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "拒接报修",
+					"pathName": "pages/repairmanager/refuse",
+					"query": ""
+				},
+				{
+					"id": 18,
+					"name": "前台-报修列表",
+					"pathName": "pages/repairreception/list",
+					"query": ""
+				},
+				{
+					"id": 17,
+					"name": "投诉建议",
+					"pathName": "pages/suggest/suggest",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "投诉建议表单",
+					"pathName": "pages/suggest/index",
+					"query": ""
+				},
+				{
+					"id": 18,
+					"name": "问卷调查",
+					"pathName": "pages/survey/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/home/index",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "访客申请页面",
+					"pathName": "pages/visitapply/index",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "访客记录-访客",
+					"pathName": "pages/visitrecord/visitor",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "访客记录-员工",
+					"pathName": "pages/visitrecord/staff",
+					"query": ""
+				},
+				{
+					"id": 8,
+					"name": "会务预约",
+					"pathName": "pages/conference/list",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "临时访客门禁-表单",
+					"pathName": "pages/visitapply/visitor",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "商家",
+					"pathName": "pages/voucher/index",
+					"query": ""
+				},
+				{
+					"id": 29,
+					"name": "调查问卷具体问题",
+					"pathName": "pages/survey/detail",
+					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "保安扫码",
+					"pathName": "pages/passcard/scan",
+					"query": "role=4&id=6"
+				}
+			]
+		}
+	}
+}

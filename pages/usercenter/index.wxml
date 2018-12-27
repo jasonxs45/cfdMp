@@ -1,0 +1,29 @@
+<view class="base-info topbg">
+  <image class="avatar" mode="aspectFill" src='{{avatar || "../../images/avatar.png"}}' />
+  <view class="nickname">
+    {{nickname || "昵称"}}
+    <navigator class="edit" url="/pages/modify/index">
+      <image src="./edit.png" />
+    </navigator>
+  </view>
+  <view class="role">
+    <text>{{role}}</text>
+  </view>
+</view>
+<split />
+<view class="list">
+  <view class="group" wx:for="{{entries}}" wx:for-item="group" wx wx:key="group-{{index}}">
+    <view class="test">
+      <navigator wx:for="{{group}}" wx:for-index="idx" wx:key="nav-{{idx}}" url="{{item.url}}" class="navigators flex">
+        <view class="icon">
+          <image src="{{item.icon}}" />
+        </view>
+        <view class="label">{{item.label}}</view>
+        <view class="arrow">
+          <x-icon type="enter" />
+        </view>
+      </navigator>
+    </view>
+    <split />
+  </view>
+</view>

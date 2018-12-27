@@ -1,0 +1,18 @@
+@import './common.wxss';
+.qrcode{
+  width: 360rpx;
+  height: 360rpx;
+  background: #ccc;
+  margin: 0 auto 30rpx;
+}
+.main-tip{
+  font-size: 24rpx;
+  color:#333;
+  font-weight: 500;
+}
+.sub-tip{
+  color: #967141;
+  font-size: 22rpx;
+  font-weight: 300;
+  margin-top: 12rpx;
+}

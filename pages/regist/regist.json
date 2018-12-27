@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "注册",
+  "backgroundColor": "#ffffff",
+  "usingComponents": {
+    "x-input": "/components/x-input/index",
+    "x-icon": "/components/x-icon/index",
+    "x-btn": "/components/x-btn/index",
+    "cell-radio": "/components/cellradio/cell-radio",
+    "cell-radio-group": "/components/cellradio/cell-radio-group"
+  }
+}

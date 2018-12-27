@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "问卷调查",
+  "navigationBarBackgroundColor": "#967141",
+  "backgroundColor": "#fff",
+  "backgroundColorTop": "#967141",
+  "backgroundColorBottom": "#fff",
+  "navigationBarTextStyle": "#FFF",
+  "usingComponents": {
+    "x-icon": "/components/x-icon/index",
+    "x-btn": "/components/x-btn/index",
+    "no-data": "/components/no-data/index"
+  }
+}

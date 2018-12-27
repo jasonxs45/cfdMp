@@ -1,0 +1,29 @@
+.tabs {
+  position: relative;
+  height: inherit;
+  line-height: inherit;
+  width: inherit;
+  background: #fff;
+}
+
+.tabs-wrapper {
+  height: inherit;
+  line-height: inherit;
+  display: flex;
+  justify-content: space-between;
+}
+.tabs-wrapper tab-item{
+  flex: 1;
+  height: inherit;
+  width: inherit;
+  line-height: inherit;
+}
+
+.bar {
+  position: absolute;
+  bottom:0;
+  width: 100rpx;
+  height:6rpx;
+  background:#967141;
+  transition: all .2s;
+}

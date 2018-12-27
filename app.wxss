@@ -1,0 +1,37 @@
+/**app.wxss**/
+view, cover-view, scroll-view, picker-view, swiper, swiper-item, navigator, image, input, text, textarea{
+  box-sizing: border-box;
+  padding:0;
+  margin:0;
+  line-height: 1;
+}
+image{
+  display: block;
+}
+.navigator-hover{
+  background: none;
+}
+.form-bar,.flex{
+  display: flex;
+}
+/* 标签形式的选择 */
+.cell-radio{
+  display: inline-block;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 4rpx;
+  min-width: 160rpx;
+  text-align: center;
+  margin-right: 30rpx;
+  border:none;
+  font-size: 26rpx;  
+}
+/* 重写部分原生组件样式 */
+button[type=primary]{
+  background: #967141 !important;
+  color: #fff !important;
+}
+button[disabled]{
+  background: #ccc !important;
+  color: #888 !important;
+}

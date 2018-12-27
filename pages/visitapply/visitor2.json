@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "临时访客门禁",
+  "backgroundColor": "#131314",
+  "navigationBarBackgroundColor": "#131314",
+  "navigationBarTextStyle": "#fff",
+  "usingComponents": {
+    "x-input": "/components/x-input/index",
+    "x-icon": "/components/x-icon/index",
+    "x-btn": "/components/x-btn/index",
+    "datetimepicker": "/components/datetimepicker/index",
+    "number": "/components/number/index"
+  }
+}

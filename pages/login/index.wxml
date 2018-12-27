@@ -1,0 +1,5 @@
+<view class="login">
+  <image mode="aspectFill" src="/images/ad.png" class="bg"/>
+  <image mode="widthFix" class="logo" src="/images/logo.png" />
+  <x-btn class="btn" type="primary" open-type='getUserInfo' bindgetuserinfo='getUserInfo'>点击进入</x-btn>
+</view>

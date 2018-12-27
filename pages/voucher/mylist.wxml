@@ -1,0 +1,58 @@
+<tabs class="tabs" bindchange="tabChange" current="{{currentIndex}}">
+  <tab-item wx:for="{{tabs}}" wx:key="tab-item-{{index}}" class="tab-item">
+    <view class="text {{currentIndex==index?'on':''}}">{{item.text}}</view>
+    <!-- <view class="num">{{item.num}}</view> -->
+  </tab-item>
+</tabs>
+<view class="content">
+  <swiper class="swiper" duration='300' current='{{currentIndex}}' bindchange='swiperChange'>
+    <swiper-item>
+     <scroll-view class='scrollView' scroll-y bindscrolltoupper="upper" bindscrolltolower="lower">
+        <navigator wx:for="{{list}}" wx:key="listA-{{index}}" url="./detail?id={{index}}" class="voucherList">
+          <image mode="aspectFit" src='./ico1.png'></image>
+          <view class="voucherText">
+            <view class="voucherA">¥10</view>
+            <view class="voucherB">
+              <text>新用户红包</text>
+              <text>满149使用</text>
+              <text>使用期限 2018-11-30至2018-12-1</text>
+            </view>
+            <view class="voucherC"><text>立即使用</text></view>
+          </view>
+        </navigator>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view class='scrollView' scroll-y bindscrolltoupper="upper" bindscrolltolower="lower">
+        <navigator wx:for="{{list}}" wx:key="listA-{{index}}" class="voucherList">
+          <image mode="aspectFit" src='./ico2.png'></image>
+          <view class="voucherText">
+            <view class="voucherA">¥10</view>
+            <view class="voucherB">
+              <text>新用户红包</text>
+              <text>满149使用</text>
+              <text>使用期限 2018-11-30至2018-12-1</text>
+            </view>
+            <view class="voucherC voucherH"><text>已使用</text></view>
+          </view>
+        </navigator>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view class='scrollView' scroll-y bindscrolltoupper="upper" bindscrolltolower="lower">
+        <navigator wx:for="{{list}}" wx:key="listA-{{index}}" class="voucherList">
+          <image mode="aspectFit" src='./ico2.png'></image>
+          <view class="voucherText">
+            <view class="voucherA">¥10</view>
+            <view class="voucherB">
+              <text>新用户红包</text>
+              <text>满149使用</text>
+              <text>使用期限 2018-11-30至2018-12-1</text>
+            </view>
+            <view class="voucherC voucherH"><text>已使用</text></view>
+          </view>
+        </navigator>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>

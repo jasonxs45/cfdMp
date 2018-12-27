@@ -1,0 +1,59 @@
+page{
+  background: #F5F5F5;
+}
+
+.details{
+  background: #fff;
+  padding: 30rpx 0;
+}
+.visitorText{
+  padding: 60rpx 30rpx 30rpx;
+}
+.visitorText view{
+  font-size:26rpx;
+  font-weight:500;
+  color:rgba(150,113,65,1);
+  line-height:36rpx;
+  margin-bottom: 30rpx;
+  position: relative;
+  padding-left:130rpx;
+}
+.visitorText text{
+  font-size:24rpx;
+  line-height: 34rpx;
+  color: #131314;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.visitorTs{
+  background: #FEF0E5;
+  margin: 0 30rpx;
+  padding: 40rpx 28rpx;
+  font-size:22rpx;
+  font-weight:500;
+  color:rgba(141,88,21,1);
+  line-height:34rpx;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+.visitorTs text{
+  display: block;
+  text-align: center;
+  font-weight: bold;
+}
+.visitorBut{
+  width: 690rpx;
+  height:88rpx;
+  line-height: 88rpx;
+  text-align:center;
+  background:rgba(150,113,65,1);
+  border-radius:4rpx;
+  font-size:34rpx;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  position: fixed;
+  bottom: 60rpx;
+  left: 50%;
+  margin-left: -345rpx;
+}

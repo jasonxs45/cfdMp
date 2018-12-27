@@ -1,0 +1,34 @@
+<image class="detail_img" mode="widthFix" src="{{detail.BigImg}}"></image>
+<view class="detail">
+  <view class="detail_title">
+    <view class="detail_title_t1">{{detail.Name}}</view>
+    <view class="detail_title_t2 flex">
+      <text class="desc">已有{{detail.ApplyCount}}人报名</text>
+      <text class="tag">{{detail.ApplyScore}}积分</text>
+    </view>
+  </view>
+  <view class="detail_text">
+    <text>报名时间: {{detail.ApplyStart}}-{{detail.ApplyEnd}}</text>
+    <text>活动时间: {{detail.PlayStart}}-{{detail.PlayEnd}}</text>
+  </view>
+</view>
+<view class="detail detail2">
+  <view class="detail_text_title">活动规则</view>
+  <view class="detail_html">
+    <view class="nodata" wx:if="{{!detail.Explain}}">暂无内容</view>
+    <!-- <rich-text nodes="{{detail.Explain}}"></rich-text> -->
+    <template is="wxParse" data="{{wxParseData:explain.nodes}}"/>
+  </view>
+</view>
+<view class="detail detail2">
+  <view class="detail_text_title">活动详情</view>
+  <view class="detail_html">
+    <view class="nodata" wx:if="{{!detail.Content}}">暂无内容</view>
+    <!-- <rich-text nodes="{{detail.Content}}"></rich-text> -->
+    <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+  </view>
+</view>
+<x-btn class="detaliBut" type="primary" bindtap="submit">
+  立即报名
+</x-btn>
+<import src="/libs/wxParse/wxParse.wxml"/>

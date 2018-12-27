@@ -1,0 +1,71 @@
+<block wx:if="{{answered !== null}}">
+  <block wx:if="{{answered === false}}">
+    <view class="minH">
+      <view class="detail">
+        <view class="detailTitle">{{detail.Title}}</view>
+        <view class="detailText">{{detail.Description}}</view>
+      </view>
+      <view class="problem">
+        <view class="problemTitle">
+          <text>{{currentIndex + 1}}、</text>
+          <text>{{title}}</text>
+          <text>({{typeDesc[currentType]}})</text>
+        </view>
+        <template wx:if="{{currentType}}" is="{{currentType}}" data="{{currentOptions}}" />
+      </view>
+    </view>
+    <view class="speed">
+      <progress activeColor="#967141" border-radius="6px" percent="{{percent}}" />
+      <view class="speedB flex">
+        <!-- <view class="left">
+      <view wx:if="{{currentIndex>0}}" bindtap='previous'>
+        <x-icon type="return" />上一题</view>
+    </view> -->
+        <view class="center">
+          <view>{{currentIndex+1}}/{{questions.length}}</view>
+        </view>
+        <view class="right">
+          <view wx:if="{{currentIndex+1 < questions.length}}" class="next" bindtap='next'>
+            下一题
+            <x-icon type="enter" />
+          </view>
+          <view wx:else>
+            <x-btn class="submit" type="primary" bindtap="submit">提交</x-btn>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{answered === true}}">
+    <view class="detail">
+      <view class="detailTitle">{{detail.Title}}</view>
+      <view class="detailText">{{detail.Description}}</view>
+    </view>
+    <view wx:for="{{myanswer}}" wx:key="myanswer-{{index}}" class="myanswer">
+      <view class="problemTitle">{{index + 1}}、{{item.Question}}</view>
+      <view class="answer">{{item.Result}}</view>
+    </view>
+  </block>
+</block>
+<no-data wx:else/>
+<template name="radio">
+  <radio-group class="answer" bindchange="radioChange">
+    <label data-index="{{index}}" class="label" wx:for="{{currentOptions}}" wx:key="radio-{{currentIndex}}-{{index}}">
+      <radio checked="{{item.checked}}" value="{{item.value}}" />
+      <text>{{item.value}}</text>
+    </label>
+  </radio-group>
+</template>
+<template name="checkbox">
+  <checkbox-group class="answer" bindchange="checkboxChange">
+    <label data-index="{{index}}" class="label" wx:for="{{currentOptions}}" wx:key="checkbox-{{currentIndex}}-{{index}}">
+      <checkbox checked="{{item.checked}}" value="{{item.value}}" />
+      <text>{{item.value}}</text>
+    </label>
+  </checkbox-group>
+</template>
+<template name="textarea">
+  <view class="textarea">
+    <textarea value="{{currentOptions}}" placeholder='请填写您的答案' bindinput='textareaInput' />
+  </view>
+</template>

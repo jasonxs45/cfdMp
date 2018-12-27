@@ -1,0 +1,27 @@
+<image mode="aspectFit" class="bg" src="./bg.jpg" />
+<view class="visitor">
+  <view class="visitorTitle">微信申请门禁卡的时间为早上9点至下午5点</view>
+  <view class="visitorMain">
+    <view class="visitorA">
+      <view><image mode="scaleToFill" src="./ico1.png" />选择企业/单位</view>
+      <view><text>2</text>填写信息</view>
+      <view><text>3</text>提交完成</view>
+    </view>
+    <view class="visitorTitle2">选择楼层</view>
+    <view class="visitorFw">
+      <text wx:for="{{longd}}" wx:key="longd-{{index}}" data-index='{{index}}' bindtap='longdXz' class="{{longdIndex==index?'on':''}}">{{item.zx}}-{{item.zd}}</text>
+    </view>
+    <view class="visitorFw visitorFw2">
+      <text wx:for="{{longc}}" wx:key="longc-{{index}}" data-index='{{index}}' bindtap='longcXz' class="{{longcIndex==index?'on':''}}">{{item}}</text>
+    </view>
+    <view class="visitorTitle2">选择公司</view>
+    <scroll-view scroll-y
+    style="height: 200px;"
+    bindscrolltoupper=""
+    bindscrolltolower=""
+    bindscroll="" class="visitorGs">
+      <view wx:for="{{gongs}}" wx:key="gongs{{index}}" data-index='{{index}}' bindtap='gongsXz' class="{{gongsIndex==index?'on':''}}">201 武汉矩阵互动科技有限公司</view>
+    </scroll-view>
+  </view>
+  <navigator url='./visitor2' class="visitorBut">下一步</navigator>
+</view>

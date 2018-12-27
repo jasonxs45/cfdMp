@@ -1,0 +1,21 @@
+<view class="section">
+  <swiper duration='200' indicator-dots indicator-color='rgba(255,255,255,0.2)' indicator-active-color='#fff' class="swiper">
+    <swiper-item wx:for="{{banners}}" wx:key="swiper-item-{{index}}" class="swiper-item">
+      <image mode="aspectFill" src="{{item}}" class="img" />
+    </swiper-item>
+  </swiper>
+</view>
+<view class="pad30">
+  <view class="list-wrapper">
+    <navigator wx:for="{{list}}" wx:key="cell-{{index}}" url="./detail?id={{index}}" class="cell">
+      <image mode="aspectFill" class="img" src="{{item}}" />
+      <view class="detail">
+        <view class="tit">肯德基</view>
+        <view class="label"><text>美食</text><text>日料</text></view>
+        <view class="address">商户地址：CFD财富中心商业一楼1113</view>
+        <view class="line"></view>
+        <view class="coucher"><text><text>券</text>消费满100减20元</text><text><text>券</text>圣诞全家桶8折券</text></view>
+      </view>
+    </navigator>
+  </view>
+</view>

@@ -1,0 +1,4 @@
+.xbtn.disabled{
+  color: #fff !important;
+  background: #967141 !important;
+}
