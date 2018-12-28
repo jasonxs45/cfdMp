@@ -1,4 +1,7 @@
 import { fetch, query } from 'api'
+/**==========================
+ *          轮播图
+ ==========================*/
 let _list = type => {
   let param = {
     AD_Config_list: {

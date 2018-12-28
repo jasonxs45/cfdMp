@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText": "卡券详情",
-  "backgroundColor": "#fff"
+  "navigationBarTitleText": "商家详情",
+  "usingComponents": {
+    "x-icon": "/components/x-icon/index"
+  }
 }

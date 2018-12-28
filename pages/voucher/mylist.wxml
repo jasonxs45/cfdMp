@@ -1,58 +1,44 @@
-<tabs class="tabs" bindchange="tabChange" current="{{currentIndex}}">
-  <tab-item wx:for="{{tabs}}" wx:key="tab-item-{{index}}" class="tab-item">
-    <view class="text {{currentIndex==index?'on':''}}">{{item.text}}</view>
-    <!-- <view class="num">{{item.num}}</view> -->
+<tabs class="actTop" bindchange="tabChange" current="{{currentIndex}}">
+  <tab-item wx:for="{{tabMenus}}" wx:key="tab-item-{{index}}">
+    <view class="text {{index === currentIndex ? 'on': ''}}">{{item.name}}</view>
   </tab-item>
 </tabs>
-<view class="content">
+<view class="actMain">
   <swiper class="swiper" duration='300' current='{{currentIndex}}' bindchange='swiperChange'>
-    <swiper-item>
-     <scroll-view class='scrollView' scroll-y bindscrolltoupper="upper" bindscrolltolower="lower">
-        <navigator wx:for="{{list}}" wx:key="listA-{{index}}" url="./detail?id={{index}}" class="voucherList">
-          <image mode="aspectFit" src='./ico1.png'></image>
-          <view class="voucherText">
-            <view class="voucherA">¥10</view>
-            <view class="voucherB">
-              <text>新用户红包</text>
-              <text>满149使用</text>
-              <text>使用期限 2018-11-30至2018-12-1</text>
+    <swiper-item wx:for="{{lists}}" wx:key="list+{{idx}}" wx:for-item="list" wx:for-index="idx">
+      <scroll-view enable-back-to-top scroll-y bindscrolltolower="onReachLower" class="container">
+        <block wx:if="{{list.list.length > 0}}">
+          <view wx:for="{{list.list}}" wx:key="ticket-{{index}}" class="ticket">
+            <image class="bg" src="{{list.disabled ? './ico2.png' : './ico1.png'}}" />
+            <view class="content flex">
+              <view class="price">
+                <image class="logo {{list.disabled?'gray':''}}" src="{{item.MerchantsLogo}}" />
+              </view>
+              <view class="desc">
+                <view class="name">{{item.TicketName}}</view>
+                <view class="condition">{{item.TicketCondition}}</view>
+                <view class="date">使用期限：{{item.UseStart}}到{{item.UseEnd}}</view>
+              </view>
+              <button class="btn" data-index="{{index}}" disabled='{{list.disabled}}' bindtap='showQr'>
+                <text>{{item.TicketContent}}\n\n{{list.disabled ? tabMenus[currentIndex].name: '去使用'}}</text>
+              </button>
             </view>
-            <view class="voucherC"><text>立即使用</text></view>
           </view>
-        </navigator>
-      </scroll-view>
-    </swiper-item>
-    <swiper-item>
-      <scroll-view class='scrollView' scroll-y bindscrolltoupper="upper" bindscrolltolower="lower">
-        <navigator wx:for="{{list}}" wx:key="listA-{{index}}" class="voucherList">
-          <image mode="aspectFit" src='./ico2.png'></image>
-          <view class="voucherText">
-            <view class="voucherA">¥10</view>
-            <view class="voucherB">
-              <text>新用户红包</text>
-              <text>满149使用</text>
-              <text>使用期限 2018-11-30至2018-12-1</text>
-            </view>
-            <view class="voucherC voucherH"><text>已使用</text></view>
-          </view>
-        </navigator>
-      </scroll-view>
-    </swiper-item>
-    <swiper-item>
-      <scroll-view class='scrollView' scroll-y bindscrolltoupper="upper" bindscrolltolower="lower">
-        <navigator wx:for="{{list}}" wx:key="listA-{{index}}" class="voucherList">
-          <image mode="aspectFit" src='./ico2.png'></image>
-          <view class="voucherText">
-            <view class="voucherA">¥10</view>
-            <view class="voucherB">
-              <text>新用户红包</text>
-              <text>满149使用</text>
-              <text>使用期限 2018-11-30至2018-12-1</text>
-            </view>
-            <view class="voucherC voucherH"><text>已使用</text></view>
-          </view>
-        </navigator>
+          <bottom-tip finished="{{finished[currentIndex]}}" />
+        </block>
+        <no-data wx:else />
       </scroll-view>
     </swiper-item>
   </swiper>
+</view>
+<view hidden="{{!qrShow}}" class="qr-box">
+  <view class="bg" bindtap='hideQr'></view>
+  <view class="qr-wrapper">
+    <view class="panel">
+      <view class="name">{{qrItem.TicketName}}</view>
+      <image wx:if="{{qrShow}}" class="qrImg" src="{{qrImg}}" />
+      <view class="condi">使用条件：{{qrItem.TicketCondition}}</view>
+      <view class="range">使用期限：{{qrItem.UseStart}}到{{qrItem.UseEnd}}</view>
+    </view>
+  </view>
 </view>

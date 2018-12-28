@@ -1,156 +1,178 @@
 page{
   background: #f2f2f2;
 }
-
-.tabs{
-  color: #888;
-  height: 80rpx;
-  display: flex;
+.actTop {
   position: fixed;
-  width:100%;
-  top:0;
+  top: 0;
   left: 0;
-  z-index: 10;
-  background: #fff;
-  justify-content: space-between;
-  overflow: hidden;
-}
-.tab-item{
-  flex: 1;
-  text-align: center;
-  position: relative;
-  padding-top: 20rpx;
-}
-.tab-item view{
-  display: inline-block;
-  vertical-align: top; 
-}
-.tab-item .num{
-  font-size: 20rpx;
-  color: #ffffff;
-  font-weight: 500;
-  display:initial;
-  background: #967141;
-  border-radius:100rpx;
-  padding: 0 10rpx;
-  line-height: 22rpx;
-}
-.tab-item .text{
-  font-size: 26rpx;
-  color: #999999;
-  margin-top: 10rpx;
-}
-.tab-item .text.on{
-  color: #967141;
-}
-.tabs .bar{
-  position: absolute;
-  height: 6rpx;
-  width: 50%;
-  background: #967141;
-  border-radius: 4rpx;
-  bottom: 0;
-  transform: scaleX(.7);
-  transition: left .2s ease-out; 
+  width: 100%;
+  height: 96rpx;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.03), 0px -1px 0px 0px rgba(0, 0, 0, 0.05);
 }
 
-.content{
-  padding-top: 100rpx;
+.text {
+  font-size: 28rpx;
+  font-family: PingFang-TC-Light;
+  font-weight: 300;
+  color: #666;
+  text-align: center;
+  height: 96rpx;
+  line-height: 96rpx;
+}
+
+.text.on {
+  font-weight: 700;
+  color: #333;
+}
+
+.actMain {
+  padding-top: 96rpx;
   height: 100vh;
 }
-.swiper{
+
+.swiper {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  padding-bottom: 30rpx;
 }
-swiper-item{
+
+.swiper .container {
   height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  padding: 0 30rpx;
 }
-.scrollView{
-  height: 100%;
+
+.acList {
+  display: block;
+  width: 100%;
+  height: 330rpx;
+  margin: 30rpx 0;
+  overflow: hidden;
+  border-radius: 8rpx;
+  background: #fff;
 }
-.voucherList{
+.ticket{
+  position: relative;
+  margin: 30rpx auto;
   width: 690rpx;
   height: 180rpx;
-  margin: 0 auto 20rpx;
-  position: relative;
 }
-.voucherList image{
-  position: absolute;
-  top: 0;
-  left: 0;
+.ticket .bg{
   width: 100%;
   height: 100%;
-  z-index: 1;
 }
-.voucherText{
+.ticket .content{
   position: absolute;
-  top: 0;
-  left: 0;
+  top:0;
+  left:0;
   width: 100%;
   height: 100%;
-  z-index: 5;
+  justify-content: space-between;
+  align-items: center;
 }
-.voucherA{
-  position: absolute;
-  top: 0;
-  left: 0;
+.ticket .price{
+  font-size: 40rpx;
+  color: #fff;
   width: 168rpx;
-  font-size:40rpx;
-  font-weight:800;
-  color:rgba(255,255,255,1);
-  line-height:180rpx;
   text-align: center;
 }
-.voucherB{
-  position: absolute;
-  top: 0;
-  left: 168rpx;
-  right: 132rpx;
-  bottom: 0;
-  padding: 20rpx 18rpx;
+.ticket .price .logo{
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  margin: 0 auto;
+  border:1rpx solid #fff;
 }
-.voucherB text{
+.ticket .price .logo.gray{
+  filter: grayscale(100%);
+}
+.ticket .desc{
+  flex: 1;
+  color: #fff;
+  padding:0 15rpx;
+}
+.ticket .desc .name{
+  font-size: 28rpx;
+  font-weight: 500;
+}
+.ticket .desc .condition{
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+.ticket .desc .date {
+  font-size: 20rpx;
+  margin-top: 10rpx;
+}
+.ticket .btn{
+  padding:0;
+  width: 138rpx;
+  color: #FEF0E5;
+  text-align: center;
+  background: none;
+}
+.ticket .btn text{
   display: block;
-  font-size:20rpx;
-  font-weight:400;
-  color:rgba(255,255,255,1);
-  line-height:34rpx;
+  width: 100%;
+  padding: 30rpx 10rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  line-height: 1.1;
 }
-.voucherB text:nth-child(1){
-  font-size:28rpx;
-  font-weight:500;
-  margin-bottom: 34rpx;
+.ticket .btn[disabled] {
+  background: none !important;
+  color: #FEF0E5 !important;
 }
-.voucherB text:nth-child(2){
-  font-size:24rpx;
-  font-weight:500;
-  margin-bottom: 14rpx;
+.ticket .btn::after{
+  display: none;
 }
-.voucherC{
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 132rpx;
+.qr-box{
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
   height: 100%;
-  font-size:28rpx;
-  font-weight:500;
-  color:rgba(254,240,229,1);
-  line-height:40rpx;
-  text-align: center;
+  z-index: 99;
 }
-.voucherC text{
+.qr-box .bg{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+.qr-wrapper{
+}
+.qr-wrapper .panel{
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  width: 600rpx;
+  height: 680rpx;
+  background: #fff;
+  margin-top: -340rpx;
+  margin-left: -300rpx;
+  border-radius: 8rpx;
+  padding: 30rpx;
 }
-.voucherH text{
-  width: 100%;
+.qr-wrapper .panel .qrImg{
+  width: 360rpx;
+  height: 360rpx;
+  padding: 15rpx;
+  margin: 30rpx auto;
+}
+.qr-wrapper .panel .name{
+  font-size: 36rpx;
+  color: #333;
   text-align: center;
-  color: #FFFFFF;
+  font-weight: 500;
+  margin-top: 30rpx;
+}
+.qr-wrapper .panel .condi{
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  color: #666;
+  padding: 0 20rpx;
+}
+.qr-wrapper .panel .range{
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  color: #666;
+  padding: 0 20rpx;
 }

@@ -1,45 +1,100 @@
+import { _list as _banner } from '../../common/banner'
+import { _shoplist as _list } from '../../common/shop'
 const app = getApp()
-const banners = ['https://store.storeimages.cdn-apple.com/8755/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/xs/iphone-xs-gallery-2018-1?wid=1068&hei=640&fmt=png-alpha&.v=1536171355016',
-  'https://store.storeimages.cdn-apple.com/8755/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/xs/iphone-xs-gallery-2018-3?wid=2000&hei=1536&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1535396227637',
-  'https://store.storeimages.cdn-apple.com/8755/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/xs/iphone-xs-gallery-2018-4?wid=2000&hei=1536&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1535396223232'
-]
-const list = ['https://store.storeimages.cdn-apple.com/8755/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/xs/iphone-xs-section1-holiday-201811?wid=564&hei=516&fmt=png-alpha&qlt=80&.v=1540674991315', 'https://store.storeimages.cdn-apple.com/8755/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/xs/iphone-xs-gallery-2018-1?wid=1068&hei=640&fmt=png-alpha&.v=1536171355016',
-  'https://store.storeimages.cdn-apple.com/8755/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/xs/iphone-xs-gallery-2018-3?wid=2000&hei=1536&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1535396227637',
-  'https://store.storeimages.cdn-apple.com/8755/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/xs/iphone-xs-gallery-2018-4?wid=2000&hei=1536&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1535396223232',
-  'https://store.storeimages.cdn-apple.com/8755/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/xs/iphone-xs-section1-holiday-201811?wid=564&hei=516&fmt=png-alpha&qlt=80&.v=1540674991315']
-
-// pages/voucher/index.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    banners,
-    list,
+    banners: [],
+    list: [],
+    pageIndex: 1,
+    pageSize: 6,
+    finished: false,
+    totalCount: 0
   },
-  onLoad: function (options) {
-    // 生命周期函数--监听页面加载
+  totalQuery () {
+    app.loading('加载中')
+    Promise.all([
+      _banner('商户banner'),
+      _list(this.data.pageIndex, this.data.pageSize)
+    ]).then(res => {
+      wx.stopPullDownRefresh()
+      wx.hideLoading()
+      this.setData({
+        banners: res[0].data.AD_Config_list,
+        list: res[1].data.Merchants_Main_list.map(item => {
+          item.Label = item.Label.split(',')
+          return item
+        }),
+        totalCount: res[1].data.total_count
+      })
+    }).catch(err =>{
+      wx.stopPullDownRefresh()
+      console.log(err)
+      wx.hideLoading()
+      wx.showModal({
+        title: '对不起',
+        content: '请求失败，请稍后再试！',
+        showCancel: false
+      })
+    })
   },
-  onReady: function () {
-    // 生命周期函数--监听页面初次渲染完成
+  concatList() {
+    _list(
+      this.data.pageIndex,
+      this.data.pageSize
+    ).then(res => {
+      let list = res.data.Merchants_Main_list.map(item => {
+        item.Label = item.Label.split(',')
+        return item
+      })
+      this.data.list = this.data.list.concat(list)
+      this.setData({
+        list: this.data.list
+      })
+    }).catch(err => {
+      wx.showModal({
+        title: '对不起',
+        content: JSON.stringify(err) || '网络错误，请稍后再试',
+        showCancel: false
+      })
+    })
   },
-  onShow: function () {
-    // 生命周期函数--监听页面显示
+  onLoad (options) {
+    app.memberReadyCb = () => {
+    }
+    app.fansReadyCb = () => {
+      this.totalQuery()
+    }
+    app.init()
   },
-  onHide: function () {
-    // 生命周期函数--监听页面隐藏
+  onReady () {},
+  onShow () {},
+  onHide () {},
+  onUnload () {},
+  onPullDownRefresh() {
+    this.data.finished = false
+    this.data.pageIndex = 1
+    this.data.totalCount = null
+    this.setData({
+      finished: this.data.finished,
+      list: this.data.list
+    })
+    this.totalQuery()
   },
-  onUnload: function () {
-    // 生命周期函数--监听页面卸载
+  onReachBottom() {
+    if (this.data.finished) {
+      return
+    }
+    let currentList = this.data.list
+    let currentTotalCount = this.data.totalCount
+    if (currentList.length >= currentTotalCount) {
+      this.data.finished = true
+      this.setData({
+        finished: this.data.finished
+      })
+    } else {
+      this.data.pageIndex += 1
+      this.concatList()
+    }
   },
-  onPullDownRefresh: function () {
-    // 页面相关事件处理函数--监听用户下拉动作
-  },
-  onReachBottom: function () {
-    // 页面上拉触底事件的处理函数
-  },
-  onShareAppMessage: function () {
-    // 用户点击右上角分享
-  }
+  onShareAppMessage () {}
 })

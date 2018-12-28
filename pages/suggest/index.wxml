@@ -2,8 +2,18 @@
   <view class="section">
     <view class="form-bar">
       <view class="fh">选择类别</view>
-      <view class="fb flex clearable">
-        <text wx:for="{{categories}}" wx:key="img-{{index}}" data-index='{{index}}' class="cell {{categoryIndex==index?'on':''}}" bindtap="categorySelect">{{item.name}}</text>
+      <view class="fb">
+        <view class="clearable-input">
+          <picker class="input select" range='{{categories}}' range-key='Name' value='{{categoryIndex}}' bindchange='categorySelect'>
+            <view class="text" wx:if="{{categoryIndex !== null}}">
+              {{categories[categoryIndex].Name}}
+            </view>
+            <view class="text placeholder" wx:else>请选择类别</view>
+            <view class="icon">
+              <x-icon type="caret-down" />
+            </view>
+          </picker>
+        </view>
       </view>
     </view>
   </view>
@@ -12,7 +22,7 @@
     <view class="form-bar">
       <view class="fh">描述</view>
       <view class="fb">
-        <textarea class="textarea" placeholder="请在此输入您要描述的信息"></textarea>
+        <textarea class="textarea" placeholder="请在此输入您要描述的信息" bindinput='textHandler'></textarea>
       </view>
     </view>
   </view>
@@ -20,20 +30,12 @@
   <view class="section">
     <view class="form-bar">
       <view class="fh">上传照片（限5张）</view>
-      <view class="fb imgrow flex">
-        <view wx:for="{{imgArr}}" wx:key="img-{{index}}" class="cell">
-          <image src="{{item}}" mode="aspectFill" data-index="{{index}}" bindtap='previewImg' />
-          <icon class="del" color='#f00' type="clear" data-index="{{index}}" bindtap='delImg' />
-        </view>
-        <view hidden='{{imgArr.length >= limit}}' class="cell" bindtap='chooseImg'>
-          <view class="icon">
-            <x-icon type="camera" />
-          </view>
-        </view>
+      <view class="fb img-row">
+        <img-row group="{{imgArr}}" max="{{limit}}" binddel="delHandler" binduploadOver="uploadOverHandler"></img-row>
       </view>
     </view>
   </view>
 </view>
 <view class="btns">
-  <x-btn imgBg="{{false}}" type='primary' class="btn">确定</x-btn>
+  <x-btn loading='{{submitDisabled}}' disabled='{{submitDisabled}}' type='primary' class="btn" bindtap="submit">提交</x-btn>
 </view>

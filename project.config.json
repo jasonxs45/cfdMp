@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 30,
+			"current": 32,
 			"list": [
 				{
 					"id": 0,
@@ -137,6 +137,36 @@
 					"query": "role=1&id=6"
 				},
 				{
+					"id": -1,
+					"name": "保安扫码",
+					"pathName": "pages/passcard/scan",
+					"query": "role=4&id=6"
+				},
+				{
+					"id": 18,
+					"name": "问卷调查",
+					"pathName": "pages/survey/index",
+					"query": ""
+				},
+				{
+					"id": 29,
+					"name": "调查问卷具体问题",
+					"pathName": "pages/survey/detail",
+					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "投诉建议提交",
+					"pathName": "pages/suggest/index",
+					"query": ""
+				},
+				{
+					"id": 17,
+					"name": "投诉建议列表",
+					"pathName": "pages/suggest/suggest",
+					"query": ""
+				},
+				{
 					"id": 15,
 					"name": "工程师-报修列表",
 					"pathName": "pages/repairmanager/list",
@@ -158,24 +188,6 @@
 					"id": 18,
 					"name": "前台-报修列表",
 					"pathName": "pages/repairreception/list",
-					"query": ""
-				},
-				{
-					"id": 17,
-					"name": "投诉建议",
-					"pathName": "pages/suggest/suggest",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "投诉建议表单",
-					"pathName": "pages/suggest/index",
-					"query": ""
-				},
-				{
-					"id": 18,
-					"name": "问卷调查",
-					"pathName": "pages/survey/index",
 					"query": ""
 				},
 				{
@@ -221,16 +233,16 @@
 					"query": ""
 				},
 				{
-					"id": 29,
-					"name": "调查问卷具体问题",
-					"pathName": "pages/survey/detail",
-					"query": "id=1"
+					"id": 31,
+					"name": "商家详细",
+					"pathName": "pages/voucher/detail",
+					"query": "id=6"
 				},
 				{
 					"id": -1,
-					"name": "保安扫码",
-					"pathName": "pages/passcard/scan",
-					"query": "role=4&id=6"
+					"name": "我的卡券",
+					"pathName": "pages/voucher/mylist",
+					"query": ""
 				}
 			]
 		}

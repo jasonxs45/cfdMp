@@ -1,31 +1,93 @@
-// pages/voucher/detail.js
+import { _detail, _submit } from '../../common/shop'
+import { formatDate } from '../../utils/util'
+const WxParse = require('../../libs/wxParse/wxParse.js')
+const app = getApp()
 Page({
   data: {
-    banner: 'https://store.storeimages.cdn-apple.com/8755/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/xs/iphone-xs-gallery-2018-3?wid=2000&hei=1536&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1535396227637',
-    list:[1,2]
+    id: null,
+    detail: {},
+    tickets: []
   },
-  onLoad: function (options) {
-    // 生命周期函数--监听页面加载
+  getDetail() {
+    app.loading('加载中')
+    _detail(this.data.id).then(res => {
+      wx.hideLoading()
+      let detail = res.data.Merchants_Main
+      detail.Label = detail.Label.split(',')
+      let content = detail.Content
+      WxParse.wxParse('content', 'html', content, this, 0)
+      let tickets = res.data.Merchants_Ticket_list.map(item => {
+        item.UseStart = formatDate(new Date(item.UseStart), 'yyyy-MM-dd')
+        item.UseEnd = formatDate(new Date(item.UseEnd), 'yyyy-MM-dd')
+        item.disabled = item.count <=0 ? true : false
+        return item
+      })
+      this.setData({
+        detail,
+        tickets
+      })
+    }).catch(err => {
+      console.log(err)
+      wx.hideLoading()
+      wx.showModal({
+        title: '对不起',
+        content: JSON.stringify(err) || '网络错误，请稍后再试',
+        showCancel: false
+      })
+    })
   },
-  onReady: function () {
-    // 生命周期函数--监听页面初次渲染完成
+  openMap () {
+    wx.openLocation({
+      name: this.data.detail.Name,
+      address: this.data.detail.Address,
+      latitude: Number(this.data.detail.Point_y),
+      longitude: Number(this.data.detail.Point_x)
+    })
   },
-  onShow: function () {
-    // 生命周期函数--监听页面显示
+  call (e) {
+    let phoneNumber = e.currentTarget.dataset.tel
+    wx.makePhoneCall({
+      phoneNumber
+    })
   },
-  onHide: function () {
-    // 生命周期函数--监听页面隐藏
+  submit(e) {
+    let id = e.currentTarget.dataset.id
+    app.loading('提交中')
+    _submit(app.globalData.member.ID, id).then(r => {
+      wx.hideLoading()
+      wx.showModal({
+        title: r.data.IsSuccess ? '恭喜您' : '对不起',
+        content: r.data.Msg,
+        showCancel: false,
+        success: res => {
+          if (res.confirm && r.data.IsSuccess) {
+            this.getDetail()
+          }
+        }
+      })
+    }).catch(e => {
+      console.log(e)
+      wx.hideLoading()
+      wx.showModal({
+        title: '对不起',
+        content: JSON.stringify(e) || '网络错误，请稍后再试',
+        showCancel: false
+      })
+    })
   },
-  onUnload: function () {
-    // 生命周期函数--监听页面卸载
+  onLoad(options) {
+    this.data.id = options.id
+    app.memberReadyCb = () => {
+      this.getDetail()
+    }
+    app.fansReadyCb = () => {
+      app.checkMember()
+    }
+    app.init()
   },
-  onPullDownRefresh: function () {
-    // 页面相关事件处理函数--监听用户下拉动作
-  },
-  onReachBottom: function () {
-    // 页面上拉触底事件的处理函数
-  },
-  onShareAppMessage: function () {
-    // 用户点击右上角分享
-  }
+  onReady() { },
+  onShow() { },
+  onHide() { },
+  onUnload() { },
+  onShareAppMessage() { }
 })

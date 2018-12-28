@@ -1,78 +1,110 @@
+import { _typelist, _repairsubmit as _submit } from '../../common/repair'
+const app = getApp()
 const limit = 5
 Page({
   data: {
-    categories: [
-      { name: '投诉' },
-      { name: '建议' },
-      { name: '表扬' }
-    ],
+    categories: [],
     categoryIndex: null,
     limit,
-    imgArr: [
-      '../../images/logo.png',
-      '../../images/logo.png',
-      '../../images/logo.png',
-      '../../images/logo.png',
-      '../../images/logo.png'
-    ],
+    imgArr: [],
+    desc: '',
     submitDisabled: false
   },
+  getTypelist() {
+    app.loading('加载中')
+    _typelist().then(res => {
+      wx.hideLoading()
+      let categories = res.data.Repair_Type_list
+      this.setData({
+        categories
+      })
+    }).catch(err => {
+      wx.hideLoading()
+      console.log(err)
+      wx.showModal({
+        title: '对不起',
+        content: '请求失败，请稍后再试',
+        showCancel: false
+      })
+    })
+  },
+  submit() {
+    if (this.data.categoryIndex === null) {
+      app.toast('请选择类别！')
+      return
+    }
+    if (!this.data.desc.trim()) {
+      app.toast('请填写问题描述')
+      return
+    }
+    let typeid = this.data.categories[this.data.categoryIndex].ID
+    let img = this.data.imgArr.join(',')
+    this.setData({
+      submitDisabled: true
+    })
+    _submit(typeid, app.globalData.member.ID, this.data.desc, img).then(res => {
+      this.setData({
+        submitDisabled: false
+      })
+      wx.showModal({
+        title: res.data.IsSuccess ? '提示' : '对不起',
+        content: res.data.Msg,
+        showCancel: false,
+        success: r => {
+          if (r.confirm) {
+            if (res.data.IsSuccess) {
+              wx.redirectTo({
+                url: './list'
+              })
+            }
+          }
+        }
+      })
+    }).catch(err => {
+      this.setData({
+        submitDisabled: false
+      })
+      console.log(err)
+      wx.showModal({
+        title: '对不起',
+        content: '网络错误，请稍后再试！',
+        showCancel: false
+      })
+    })
+  },
   categorySelect(e) {
-    console.log(e.currentTarget.dataset.index)
-    let value = e.currentTarget.dataset.index
+    let value = e.detail.value
     this.setData({
       categoryIndex: value
     })
   },
-  chooseImg() {
-    wx.chooseImage({
-      count: limit - this.data.imgArr.length,
-      success: r => {
-        let imgArr = this.data.imgArr.concat(r.tempFilePaths);
-        console.log(imgArr)
-        this.setData({
-          imgArr: imgArr
-        })
-      },
-      fail: e => { }
-    })
+  textHandler(e) {
+    this.data.desc = e.detail.value
   },
-  delImg(e) {
-    let index = e.currentTarget.dataset.index
-    this.data.imgArr.splice(index, 1)
+  uploadOverHandler(e) {
     this.setData({
-      imgArr: this.data.imgArr
+      imgArr: this.data.imgArr.concat(e.detail.group)
     })
   },
-  previewImg(e) {
-    let index = e.currentTarget.dataset.index
-    wx.previewImage({
-      current: this.data.imgArr[index],
-      urls: this.data.imgArr
+  delHandler(e) {
+    this.setData({
+      imgArr: e.detail.group
     })
   },
-  onLoad: function (options) {
-    // 生命周期函数--监听页面加载
+  onLoad(options) {
+    app.memberReadyCb = () => {
+      this.getTypelist()
+    }
+    app.fansReadyCb = () => {
+      app.checkMember()
+    }
+    app.init()
   },
-  onReady: function () {
-    // 生命周期函数--监听页面初次渲染完成
-  },
-  onShow: function () {
-    // 生命周期函数--监听页面显示
-  },
-  onHide: function () {
-    // 生命周期函数--监听页面隐藏
-  },
-  onUnload: function () {
-    // 生命周期函数--监听页面卸载
-  },
-  onPullDownRefresh: function () {
-    // 页面相关事件处理函数--监听用户下拉动作
-  },
-  onReachBottom: function () {
-    // 页面上拉触底事件的处理函数
-  },
-  onShareAppMessage: function () {
-    // 用户点击右上角分享
-  }
+  onReady() { },
+  onShow() { },
+  onHide() { },
+  onUnload() { },
+  onPullDownRefresh() { },
+  onReachBottom() { },
+  onShareAppMessage() { }
 })

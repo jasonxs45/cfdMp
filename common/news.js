@@ -1,4 +1,7 @@
 import { fetch, query } from 'api'
+/**==========================
+ *         新闻列表及详细
+ ==========================*/
 let _banner = typeid => {
   let param = {
     News_News_list: {

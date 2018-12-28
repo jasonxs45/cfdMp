@@ -1,184 +1,198 @@
-page{
-  background: #F2F2F2;
+@import "/libs/wxParse/wxParse.wxss";
+page {
+  background: #F5F5F5;
 }
-.info{
+.detail {
+  background: #fff;
+  margin-bottom: 10rpx;
+  padding: 30rpx;
+}
+
+.detail_img {
+  width: 100%;
   background: #fff;
   padding: 30rpx;
-  margin-bottom: 10rpx;
-}
-.banner{
-  width:100%;
-  height: 320rpx;
-  margin: 0 auto 70rpx;
-  border-radius: 10rpx;
-}
-.infoTitle{
-  font-size:34rpx;
-  font-weight:500;
-  color:rgba(51,51,51,1);
-  line-height:48rpx;
-  margin-bottom: 10rpx;
-}
-.infoLabel{
-  margin-bottom: 40rpx;
-}
-.infoLabel text{
-  background:rgba(254,240,229,1);
-  border-radius:4rpx;
-  height: 30rpx;
-  line-height: 30rpx;
-  padding: 0 16rpx;
-  font-size:20rpx;
-  font-weight:400;
-  color:rgba(150,113,65,1);
-  margin: 0 20rpx 20rpx 0;
-}
-.infoText{
-  font-size:24rpx;
-  font-weight:400;
-  color:rgba(102,102,102,1);
-  line-height:34rpx;
-  margin-bottom: 10rpx;
-}
-.volume{
-  background: #fff;
-  margin-bottom: 10rpx;
-  padding: 20rpx 0 20rpx;
 }
 
-.title{
-  font-size:28rpx;
-  font-weight:400;
-  color:#333333;
-  line-height:34rpx;
-  text-align: center;
-  margin: 20rpx 30rpx 40rpx;
-  position: relative;
-}
-.title::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  height: 2rpx;
-  width:260rpx;
-  background: #000000;
-  opacity:0.09720000000000001;
-}
-.title::before{
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 50%;
-  height: 2rpx;
-  width:260rpx;
-  background: #000000;
-  opacity:0.09720000000000001;
-}
-
-.voucherList{
-  width: 690rpx;
-  height: 180rpx;
-  margin: 0 auto 20rpx;
-  position: relative;
-}
-.voucherList image{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-.voucherText{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
-}
-.voucherA{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 168rpx;
-  font-size:40rpx;
-  font-weight:800;
-  color:rgba(255,255,255,1);
-  line-height:180rpx;
-  text-align: center;
-}
-.voucherB{
-  position: absolute;
-  top: 0;
-  left: 168rpx;
-  right: 132rpx;
-  bottom: 0;
-  padding: 20rpx 18rpx;
-}
-.voucherB text{
+.detail_img .img {
   display: block;
-  font-size:20rpx;
-  font-weight:400;
-  color:rgba(255,255,255,1);
-  line-height:34rpx;
-}
-.voucherB text:nth-child(1){
-  font-size:28rpx;
-  font-weight:500;
-  margin-bottom: 34rpx;
-}
-.voucherB text:nth-child(2){
-  font-size:24rpx;
-  font-weight:500;
-  margin-bottom: 14rpx;
-}
-.voucherC{
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 132rpx;
-  height: 100%;
-  font-size:28rpx;
-  font-weight:500;
-  color:rgba(254,240,229,1);
-  line-height:40rpx;
-  text-align: center;
-}
-.voucherC text{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-}
-.voucherH text{
   width: 100%;
-  text-align: center;
-  color: #FFFFFF;
+  border-radius: 8rpx;
 }
 
-.code{
-  background: #fff;
-  margin-bottom: 10rpx;
-  padding: 20rpx 0 20rpx;
+.detail_title {
+  margin-bottom: 28rpx;
 }
-.code image{
+.detail_title_t1{
+  font-size:34rpx;
+  line-height:48rpx;
+  font-weight:700;
+  color:#333333;
+}
+.detail_title_t2{
+  font-size: 0;
+  margin-top: 12rpx;
+  margin-left: -15rpx;
+  margin-right: -15rpx;
+}
+.detail_title_t2 .tag{
+  display: inline-block;
+  height: 30rpx;
+  background:#FEF0E5;
+  border-radius:4rpx;
+  font-size:20rpx;
+  line-height:30rpx;
+  color:#967141;
+  padding:0 16rpx;
+  margin:0 15rpx;
+}
+.p{
+  margin-top: 20rpx;
+}
+.ph{
+  width: 130rpx;
+}
+.pb{
+  flex: 1;
+}
+.pb .addtext{
+  display: inline-block;
+}
+.pb .icon{
+  display: inline-block;
+  height: auto;
+  line-height: 1;
+}
+.detail_text {
+  font-size:26rpx;
+  color:#999999;
+  line-height:30rpx;
+  padding-bottom:10rpx; 
+}
+.detail_rem{
+  padding: 44rpx 30rpx 40rpx 30rpx;
+  text-align: center;
+}
+.detail_rem image{
   display: block;
   width: 360rpx;
   height: 360rpx;
-  margin: 0 auto;
-  background: #ccc;
+  background: #cccccc;
+  margin: 0 auto 30rpx;
 }
-.detail{
-  background: #fff;
-  margin-bottom: 10rpx;
-  padding: 20rpx 0 20rpx;
+.detail_rem text{
+  font-size:24rpx;
+  color:#333333;
+  line-height:34rpx;
 }
-.content{
+.detail2{
+  padding: 44rpx 15rpx 40rpx 15rpx;
+}
+.detail_text_title{
+  display: block;
+  text-align: center;
+  font-size:28rpx;
+  font-weight:700;
+  color:#333333;
+  line-height:28rpx;
+  position: relative;
+  margin-bottom: 40rpx;
+}
+
+.detail_text_title::after{
+  content: "";
+  width: 260rpx;
+  height: 2rpx;
+  background: #000000;
+  opacity: 0.0972;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -1rpx;
+}
+
+.detail_text_title::before{
+  content: "";
+  width: 260rpx;
+  height: 2rpx;
+  background: #000000;
+  opacity: 0.0972;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -1rpx;
+}
+
+.detail_html{
   font-size:24rpx;
   font-weight:400;
-  color:rgba(51,51,51,1);
+  color:#666666;
   line-height:34rpx;
-  padding: 0 30rpx;
+}
+.ticket{
+  position: relative;
+  margin: 30rpx auto;
+  width: 690rpx;
+  height: 180rpx;
+}
+.ticket .bg{
+  width: 100%;
+  height: 100%;
+}
+.ticket .content{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.ticket .price{
+  font-size: 40rpx;
+  color: #fff;
+  width: 168rpx;
+  text-align: center;
+}
+.ticket .desc{
+  flex: 1;
+  color: #fff;
+  padding:0 15rpx;
+}
+.ticket .desc .name{
+  font-size: 28rpx;
+  font-weight: 500;
+}
+.ticket .desc .condition{
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+.ticket .desc .date {
+  font-size: 20rpx;
+  margin-top: 10rpx;
+}
+.ticket .btn{
+  padding:0;
+  width: 138rpx;
+  color: #FEF0E5;
+  text-align: center;
+  background: none;
+}
+.ticket .btn text{
+  display: block;
+  width: 100%;
+  padding: 30rpx 10rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.ticket .btn[disabled] {
+  background: none !important;
+  color: #FEF0E5 !important;
+}
+.ticket .btn::after{
+  display: none;
+}
+.nodata{
+  text-align: center;
 }

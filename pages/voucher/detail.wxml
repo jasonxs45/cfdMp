@@ -1,29 +1,59 @@
-<view class="info">
-  <image src="{{banner}}" class="banner" mode="aspectFill" />
-  <view class="infoTitle">山葵家</view>
-  <view class="infoLabel"><text>美食</text><text>美食</text></view>
-  <view class="infoText">商家地址：CFD财富中心商业一楼1120</view>
-  <view class="infoText">领取时间: 2018年11月24日——2018年12月25日</view>
+<view class="detail_img">
+  <image class="img" mode="widthFix" src="{{detail.Img}}" />
 </view>
-<view class="volume">
-  <view class="title">门店优惠</view>
-  <view wx:for="{{list}}" wx:key="listA-{{index}}" class="voucherList">
-    <image mode="aspectFit" src='./ico1.png'></image>
-    <view class="voucherText">
-      <view class="voucherA">¥10</view>
-      <view class="voucherB">
-        <text>新用户红包</text>
-        <text>满149使用</text>
-        <text>使用期限 2018-11-30至2018-12-1</text>
+<view class="detail">
+  <view class="detail_title">
+    <view class="detail_title_t1">{{detail.Name}}</view>
+    <view class="detail_title_t2">
+      <text wx:for="{{detail.Label}}" wx:key="label-{{index}}" class="tag">{{item}}</text>
+    </view>
+  </view>
+  <view class="detail_text">
+    <view class="flex p">
+      <view class="ph">商家地址：</view>
+      <view class="pb">
+        <view class="addtext" bindtap='openMap'>{{detail.Address}}
+          <x-icon class="icon" type="coordinates_fill" />
+        </view>
       </view>
-      <view class="voucherC"><text>立即领取</text></view>
+    </view>
+    <view class="flex p">
+      <view class="ph">营业时间：</view>
+      <view class="pb">{{detail.BusinessTime}}</view>
+    </view>
+    <view class="flex p">
+      <view class="ph">商家电话：</view>
+      <view class="pb"><text bindtap="call" data-tel="{{detail.Tel}}">{{detail.Tel}}</text></view>
     </view>
   </view>
 </view>
-<view class="code">
-  <image src="{{banner}}" mode="aspectFit" />
+<view class="detail detail2">
+  <view class="detail_text_title">门店优惠</view>
+  <view class="detail_html">
+    <view wx:if="{{tickets.length > 0}}">
+      <view wx:for="{{tickets}}" wx:key="ticket-{{index}}" class="ticket">
+        <image class="bg" src="{{item.disabled ? './ico2.png' : './ico1.png'}}" />
+        <view class="content flex">
+          <view class="price">{{item.Content}}</view>
+          <view class="desc">
+            <view class="name">{{item.Name}}</view>
+            <view class="condition">{{item.Condition}}</view>
+            <view class="date">使用期限：{{item.UseStart}}到{{item.UseEnd}}</view>
+          </view>
+          <button class="btn" data-id="{{item.ID}}" disabled='{{item.disabled}}' bindtap='submit'>
+            <text>{{item.disabled ? '已被\n抢完': '立即\n领取'}}</text>
+          </button>
+        </view>
+      </view>
+    </view>
+    <view wx:else class="nodata">暂无内容</view>
+  </view>
 </view>
-<view class="detail">
-  <view class="title">商家介绍</view>
-  <view class="content">青奥会，是年轻人的运动舞台，同时也是孕育新鲜事物的源泉。据悉，在本届青奥会上，青年，运动，奥运，科技，健康等各种元素交织，催生了各种智能运动神器的风靡。其中，有一种叫做悦动圈的智能手机运动APP软件，因为开展“走路赢红包”的活动而脱颖而出，受到爱好运动人士的广泛追捧。 神奇运动宝，每天发红包！ 只要在手机上下载该软件，注册用户名后即可使用，当你跑、或者快走的时候，只要到两公里时，软件便会弹出“领红包”的提示。这些“红包”都是随机的，只要行程达到两公里，每人每天就可以领一次红包。不过千万别以为靠着这款软件天天跑步就可以轻松发家致富了，因为每个红包也不过几毛钱至几块钱而已。“关键是对跑步者的一个小小激励，你想，如果你跑完步后还有一个这样的‘Surprise’在等着你，那多好玩。” 什么圈？悦动圈！ “许多人想持续运动，但却往往因工作忙、应酬多甚至偷懒等原因而无法坚持下去。”这款APP软件研发者胡茂伟说，软件正是针对那些想要运动但自制力不强的年轻人而开发的。除计步外，软件还会有每个跑友跑步的时间、累计里程等，可以清晰地看出一段时间的跑步排行榜。“这相当于给大家提供了一个类似‘虚拟运动会’的运动平台。”胡茂伟说，”我们还将进一步整合线上线下的场馆、器材、装备等资源，努力打造运动圈子的概念。</view>
+<view class="detail detail2">
+  <view class="detail_text_title">商家介绍</view>
+  <view class="detail_html">
+    <view class="nodata" wx:if="{{!detail.Content}}">暂无内容</view>
+    <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+  </view>
 </view>
+<import src="/libs/wxParse/wxParse.wxml" />

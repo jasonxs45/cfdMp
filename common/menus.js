@@ -1,4 +1,7 @@
 import { fetch, query } from 'api'
+/**==========================
+ *        入口菜单
+ ==========================*/
 let _homelist = power => {
   let param = {
     Home_Menu_list: {
