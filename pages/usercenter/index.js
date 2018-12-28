@@ -3,8 +3,8 @@ const entries = [
     { label: '申访记录', icon: './visit.png', url: '/pages/visitrecord/visitor' },
     { label: '我的放行单', icon: './release.png', url: '' },
     { label: '我的活动', icon: './activities.png', url: '/pages/myactivities/list' },
-    { label: '我的卡券', icon: './card.png', url: '/pages/onlineshops/record' },
-    { label: '我的报修', icon: './repair.png', url: '' },
+    { label: '我的卡券', icon: './card.png', url: '/pages/voucher/mylist' },
+    { label: '我的报修', icon: './repair.png', url: '/pages/repairuser/list' },
     { label: '服务建议', icon: './advise.png', url: '/pages/news/detail?id=2' },
     { label: '关于我们', icon: './about.png', url: '/pages/news/detail?id=3' }
   ]

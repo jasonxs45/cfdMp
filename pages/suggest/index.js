@@ -1,32 +1,21 @@
-import { _typelist, _repairsubmit as _submit } from '../../common/repair'
+import {_repairsubmit as _submit } from '../../common/repair'
 const app = getApp()
 const limit = 5
 Page({
   data: {
-    categories: [],
+    categories: ['投诉', '建议', '表扬'],
     categoryIndex: null,
     limit,
     imgArr: [],
     desc: '',
     submitDisabled: false
   },
-  getTypelist() {
-    app.loading('加载中')
-    _typelist().then(res => {
-      wx.hideLoading()
-      let categories = res.data.Repair_Type_list
-      this.setData({
-        categories
-      })
-    }).catch(err => {
-      wx.hideLoading()
-      console.log(err)
-      wx.showModal({
-        title: '对不起',
-        content: '请求失败，请稍后再试',
-        showCancel: false
-      })
+  cateChange (e) {
+    this.setData({
+      categoryIndex: e.detail
     })
+  },
+  getTypelist() {
   },
   submit() {
     if (this.data.categoryIndex === null) {
@@ -39,38 +28,38 @@ Page({
     }
     let typeid = this.data.categories[this.data.categoryIndex].ID
     let img = this.data.imgArr.join(',')
-    this.setData({
-      submitDisabled: true
-    })
-    _submit(typeid, app.globalData.member.ID, this.data.desc, img).then(res => {
-      this.setData({
-        submitDisabled: false
-      })
-      wx.showModal({
-        title: res.data.IsSuccess ? '提示' : '对不起',
-        content: res.data.Msg,
-        showCancel: false,
-        success: r => {
-          if (r.confirm) {
-            if (res.data.IsSuccess) {
-              wx.redirectTo({
-                url: './list'
-              })
-            }
-          }
-        }
-      })
-    }).catch(err => {
-      this.setData({
-        submitDisabled: false
-      })
-      console.log(err)
-      wx.showModal({
-        title: '对不起',
-        content: '网络错误，请稍后再试！',
-        showCancel: false
-      })
-    })
+    // this.setData({
+    //   submitDisabled: true
+    // })
+    // _submit(typeid, app.globalData.member.ID, this.data.desc, img).then(res => {
+    //   this.setData({
+    //     submitDisabled: false
+    //   })
+    //   wx.showModal({
+    //     title: res.data.IsSuccess ? '提示' : '对不起',
+    //     content: res.data.Msg,
+    //     showCancel: false,
+    //     success: r => {
+    //       if (r.confirm) {
+    //         if (res.data.IsSuccess) {
+    //           wx.redirectTo({
+    //             url: './list'
+    //           })
+    //         }
+    //       }
+    //     }
+    //   })
+    // }).catch(err => {
+    //   this.setData({
+    //     submitDisabled: false
+    //   })
+    //   console.log(err)
+    //   wx.showModal({
+    //     title: '对不起',
+    //     content: '网络错误，请稍后再试！',
+    //     showCancel: false
+    //   })
+    // })
   },
   categorySelect(e) {
     let value = e.detail.value

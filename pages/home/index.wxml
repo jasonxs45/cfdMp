@@ -28,21 +28,29 @@
 </view>
 <view class="pad30">
   <view class="title flex">
-    <view class="text">积分商城</view>
-    <navigator class="nav" url="/pages/onlineshops/index">
+    <view class="text">商家优惠</view>
+    <navigator class="nav" open-type='switchTab' url="/pages/voucher/index">
       更多
       <x-icon type="enter" />
     </navigator>
   </view>
   <view class="list-wrapper">
-    <navigator wx:for="{{goodsList}}" wx:key="cell-{{index}}" url="/pages/onlineshops/detail?id={{item.ID}}" class="cell">
-      <image mode="aspectFill" class="img" src="{{item.SmallImg}}" />
+    <navigator wx:for="{{shopList}}" wx:key="shop-{{index}}" url="/pages/voucher/detail?id={{item.ID}}" class="shop flex">
+      <image mode="aspectFill" class="img" src="{{item.Logo}}" />
       <view class="detail">
         <view class="tit">{{item.Name}}</view>
-        <view class="info">
-          <view class="cost">{{item.Score}}
-            <text>积分</text>
-          </view>
+        <view class="label">
+          <text
+            wx:for="{{item.Label}}"
+            wx:for-index="idx"
+            wx:for-item="label"
+            wx:key="label-{{index}}-{{idx}}"
+          >{{label}}</text>
+        </view>
+        <view class="address">地址：{{item.Address}}</view>
+        <view class="line"></view>
+        <view class="coucher">
+          <text class="mark">券</text> <text class="count">{{item.count}}</text> 张可领取
         </view>
       </view>
     </navigator>

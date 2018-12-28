@@ -2,39 +2,14 @@ import { fetch } from '../../common/api'
 import { _homelist } from '../../common/menus'
 import { _list as _bannerlist } from '../../common/banner'
 import { _list as _actlist } from '../../common/activity'
-const entries = [
-  {
-    icon: './visitapply.png',
-    name: '访客预约',
-    url: '/pages/visitapply/index'
-  },
-  {
-    icon: './meetting.png',
-    name: '会务预约',
-    url: '/pages/visitapply/index'
-  },
-  {
-    icon: './conference.png',
-    name: '电子放行单',
-    url: '/pages/conference/apply'
-  },
-  {
-    icon: './repair.png',
-    name: '报修投诉',
-    url: '/pages/repairuser/list'
-  },
-  {
-    icon: './onlineshop.png',
-    name: '积分商城',
-    url: '/pages/onlineshops/index'
-  }
-]
+import { _homeshoplist } from '../../common/shop'
+const entries = []
 const app = getApp()
 Page({
   data: {
     banners: [],
     actList: [],
-    goodsList: [],
+    shopList: [],
     entries: [],
     power: null
   },
@@ -55,7 +30,8 @@ Page({
     // app.loading('加载中')
     Promise.all([
       _bannerlist('首页banner'),
-      _actlist('unover', 1, 3)
+      _actlist('unover', 1, 3),
+      _homeshoplist()
     ]).then(res => {
       console.log(res)
       wx.hideLoading()
@@ -63,9 +39,15 @@ Page({
       let banners = res[0].data.AD_Config_list
       // 活动列表
       let actList = res[1].data.Activity_Activity_list
+      // 商家列表
+      let shopList = res[2].data.Merchants_Main_list.map(item => {
+        item.Label = item.Label.split(',')
+        return item
+      })
       this.setData({
         banners,
-        actList
+        actList,
+        shopList
       })
     }).catch(err => {
       console.log(err)

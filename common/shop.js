@@ -3,6 +3,25 @@ import { formatDate } from '../utils/util'
 /**==============================
  *           商家优惠券
  ==============================*/
+// 首页推荐列表
+let _homeshoplist = () => {
+  let param = {
+    Merchants_Main_list: {
+      field: "ID,Name,Logo,Address,Label,Tel,BusinessTime",
+      Online: true,
+      order: "Sort",
+      IsDelete: false,
+      Recommend: true,
+      field_count: {
+        field: "Merchants_Ticket.ID.count",
+        MerchantsID: "link#Merchants_Main.ID",
+        IsDelete: false
+      }
+    },
+    total_count: ""
+  }
+  return query(param)
+}
 //  列表
  let _shoplist = (pageIndex = 1, pageSize = 5) => {
    let param = {
@@ -81,7 +100,8 @@ let _mylist = (status, MemberID, pageIndex = 1, pageSize = 5) => {
   }
   return query(param)
 }
- export {
+export {
+  _homeshoplist,
    _shoplist,
    _detail,
    _submit,

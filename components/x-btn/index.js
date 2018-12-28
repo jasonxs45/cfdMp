@@ -1,6 +1,6 @@
 Component({
   options: {
-    addGlobalClass: true
+    addGlobalClass: true,
   },
   properties: {
     size: {
@@ -19,14 +19,15 @@ Component({
       type: Boolean,
       value: false,
       observer(newVal) {
-        if (newVal) {
-          this.data.classes.push('disabled')
-        } else {
-          this.data.classes.splice(this.data.classes.findIndex(item => item === 'disabled'), 1)
+        if (this.properties.imgBg) {
+          if (newVal === true) {
+          } else {
+            this.data.classes.splice(this.data.classes.findIndex(item => item === 'disabled'), 1)
+          }
+          this.setData({
+            classes: this.data.classes
+          })
         }
-        this.setData({
-          classes: this.data.classes
-        })
       }
     },
     loading: {
@@ -79,6 +80,7 @@ Component({
   },
   attached() {
     this.data.classes.push(this.properties.type)
+    console.log(this.data.classes)
     if (this.properties.imgBg) {
       this.data.classes.push('imgBg')
     }
@@ -88,6 +90,7 @@ Component({
     if (this.properties.loading) {
       this.data.classes.push('loading')
     }
+    console.log(this.data.classes)
     this.setData({
       classes: this.data.classes
     })

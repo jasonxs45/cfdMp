@@ -3,17 +3,11 @@
     <view class="form-bar">
       <view class="fh">选择类别</view>
       <view class="fb">
-        <view class="clearable-input">
-          <picker class="input select" range='{{categories}}' range-key='Name' value='{{categoryIndex}}' bindchange='categorySelect'>
-            <view class="text" wx:if="{{categoryIndex !== null}}">
-              {{categories[categoryIndex].Name}}
-            </view>
-            <view class="text placeholder" wx:else>请选择类别</view>
-            <view class="icon">
-              <x-icon type="caret-down" />
-            </view>
-          </picker>
-        </view>
+        <cell-radio-group current="{{categoryIndex}}" bindchange="cateChange">
+          <cell-radio bg class="cell-radio" wx:for="{{categories}}" wx:key="r-{{index}}">
+            {{item}}
+          </cell-radio>
+        </cell-radio-group>
       </view>
     </view>
   </view>
