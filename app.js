@@ -10,6 +10,7 @@ App({
   init() {
     let fans = this.globalData.fans || wx.getStorageSync('fans')
     if (!fans) {
+      console.log('not has fans')
       this.loading('加载中')
       wx.login({
         success: r => {

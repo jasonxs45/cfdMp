@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 32,
+			"current": 21,
 			"list": [
 				{
 					"id": 0,
@@ -167,16 +167,16 @@
 					"query": ""
 				},
 				{
-					"id": 15,
-					"name": "工程师-报修列表",
+					"id": 20,
+					"name": "客服报修列表",
 					"pathName": "pages/repairmanager/list",
 					"query": ""
 				},
 				{
-					"id": 16,
-					"name": "工程师-提交完成",
-					"pathName": "pages/repairmanager/complete",
-					"query": ""
+					"id": 21,
+					"name": "客服及处理人报修详情",
+					"pathName": "pages/repairmanager/detail",
+					"query": "role=1&id=4"
 				},
 				{
 					"id": -1,
@@ -242,6 +242,18 @@
 					"id": -1,
 					"name": "我的卡券",
 					"pathName": "pages/voucher/mylist",
+					"query": ""
+				},
+				{
+					"id": 33,
+					"name": "报修分配处理人",
+					"pathName": "pages/repairmanager/dispatch",
+					"query": "id=8"
+				},
+				{
+					"id": -1,
+					"name": "处理人报修列表",
+					"pathName": "pages/repairmanager/handlerslist",
 					"query": ""
 				}
 			]

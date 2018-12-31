@@ -17,8 +17,9 @@
     "pages/repairuser/submit",
     "pages/repairuser/list",
     "pages/repairuser/detail",
-    "pages/repairmanager/list",
     "pages/repairuser/rate",
+    "pages/repairmanager/list",
+    "pages/repairmanager/detail",
     "pages/passcard/submit",
     "pages/passcard/list",
     "pages/passcard/detail",
@@ -36,15 +37,15 @@
     "pages/voucher/detail",
     "pages/survey/index",
     "pages/survey/detail",
-    "pages/repairmanager/refuse",
-    "pages/repairmanager/complete",
     "pages/repairreception/list",
     "pages/repairreception/details",
     "pages/repairreception/refuse",
     "pages/news/index",
     "pages/news/detail",
     "pages/myactivities/list",
-    "pages/myactivities/detail"
+    "pages/myactivities/detail",
+    "pages/repairmanager/dispatch",
+    "pages/repairmanager/handlerslist"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
@@ -81,5 +82,8 @@
         "selectedIconPath": "/images/user2.png"
       }
     ]
+  },
+  "networkTimeout": {
+    "request": 3000
   }
 }

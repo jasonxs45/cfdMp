@@ -3,6 +3,9 @@ import { _uploadFile } from '../../common/uploadFile'
 import default_src from './default'
 const app = getApp()
 Component({
+  options: {
+    addGlobalClass: true
+  },
   properties: {
     group: Array,
     readonly: {

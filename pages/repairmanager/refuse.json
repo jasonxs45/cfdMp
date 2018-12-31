@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "拒接报修",
-  "usingComponents": {
-    "split": "/components/split/index",
-    "x-btn": "/components/x-btn/index"
-  }
-}

@@ -1,4 +1,8 @@
-.xbtn.disabled{
-  color: #fff !important;
-  background: #967141 !important;
+.x-btn.disabled{
+  /* color: #fff !important;
+  background: #967141 !important; */
+}
+.x-btn.default{
+  color: #333 !important;
+  background: #fff !important;
 }

@@ -80,17 +80,12 @@ Component({
   },
   attached() {
     this.data.classes.push(this.properties.type)
-    console.log(this.data.classes)
-    if (this.properties.imgBg) {
-      this.data.classes.push('imgBg')
-    }
     if (this.properties.disabled) {
       this.data.classes.push('disabled')
     }
     if (this.properties.loading) {
       this.data.classes.push('loading')
     }
-    console.log(this.data.classes)
     this.setData({
       classes: this.data.classes
     })
