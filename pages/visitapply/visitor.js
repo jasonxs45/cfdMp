@@ -1,78 +1,79 @@
-// pages/visitapply/visitor.js
-let gongs = [
-  '201 武汉矩阵互动科技有限公司',
-  '201 武汉矩阵互动科技有限公司',
-  '201 武汉矩阵互动科技有限公司',
-  '201 武汉矩阵互动科技有限公司',
-  '201 武汉矩阵互动科技有限公司',
-  '201 武汉矩阵互动科技有限公司',
-  '201 武汉矩阵互动科技有限公司',
-  '201 武汉矩阵互动科技有限公司',
-  '201 武汉矩阵互动科技有限公司'
-]
+import { _floorlist, _companylist } from '../../common/visit'
+const app = getApp()
 Page({
   data: {
-    gongs,
-    gongsIndex:0,
-    longd: [
-      { zx: 2, zd: 19 },
-      { zx: 20, zd: 37 },
-      { zx: 38, zd: 57 }
-    ],
-    longc:[],
-    longdIndex:0,
-    longcIndex: 0,
+    floors: [],
+    companies: [],
+    companyIndex: null,
+    floorIndex: null
   },
-  longdXz: function(e){
-    this.setData({
-      longdIndex: e.target.dataset.index,
-      longcIndex: 0
+  totalQuery () {
+    app.loading('加载中')
+    _floorlist().then(res => {
+      wx.hideLoading()
+      this.setData({
+        floors: res.data.Office_Room_distinct_ext
+      })
+    }).catch(err => {
+      console.log(err)
+      wx.hideLoading()
+      wx.showModal({
+        title: '对不起',
+        content: '请求失败，请稍后再试！',
+        showCancel: false
+      })
     })
-    this.longcFor(e.target.dataset.index)
   },
-  longcXz: function(e){
+  longcXz (e){
+    let floorIndex = e.currentTarget.dataset.index
     this.setData({
-      longcIndex: e.target.dataset.index,
+      floorIndex
+    }, () => {
+      let floor = this.data.floors[floorIndex]
+      _companylist(floor).then(res => {
+        wx.hideLoading()
+        this.setData({
+          companies: res.data.Office_Company_list
+        })
+      }).catch(err => {
+        console.log(err)
+        wx.hideLoading()
+        wx.showModal({
+          title: '对不起',
+          content: '请求失败，请稍后再试！',
+          showCancel: false
+        })
+      })
     })
   },
-  longcFor: function (index){
-    let longd = this.data.longd[index]
-    let longc = []
-    for (let i = longd.zx; i <= longd.zd; i++) {
-      longc.push(i)
+  gongsXz (e){
+    this.setData({
+      companyIndex: e.target.dataset.index
+    })
+  },
+  goNext () {
+    if (this.data.floorIndex === null) {
+      app.toast('请选择楼层')
+      return
     }
-    this.setData({
-      longc
+    if (this.data.companyIndex === null) {
+      app.toast('请选择公司')
+      return
+    }
+    let id = this.data.companies[this.data.companyIndex].ID
+    wx.navigateTo({
+      url: `./visitor2?id=${id}`
     })
   },
-  gongsXz: function(e){
-    this.setData({
-      gongsIndex: e.target.dataset.index
-    })
+  onLoad  (options) {
+    // this.longcFor(this.data.longdIndex)
+    this.totalQuery()
   },
-  onLoad: function (options) {
-    // 生命周期函数--监听页面加载
-    this.longcFor(this.data.longdIndex)
-  },
-  onReady: function () {
-    // 生命周期函数--监听页面初次渲染完成
-  },
-  onShow: function () {
-    // 生命周期函数--监听页面显示
-  },
-  onHide: function () {
-    // 生命周期函数--监听页面隐藏
-  },
-  onUnload: function () {
-    // 生命周期函数--监听页面卸载
-  },
-  onPullDownRefresh: function () {
-    // 页面相关事件处理函数--监听用户下拉动作
-  },
-  onReachBottom: function () {
-    // 页面上拉触底事件的处理函数
-  },
-  onShareAppMessage: function () {
-    // 用户点击右上角分享
-  }
+  onReady  () {},
+  onShow  () {},
+  onHide  () {},
+  onUnload  () {},
+  onPullDownRefresh  () {},
+  onReachBottom  () {},
+  onShareAppMessage  () {}
 })

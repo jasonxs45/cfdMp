@@ -2,7 +2,7 @@
   "navigationBarTitleText": "临时访客门禁",
   "backgroundColor": "#131314",
   "navigationBarBackgroundColor": "#131314",
-  "navigationBarTextStyle": "#fff",
+  "navigationBarTextStyle": "white",
   "usingComponents": {
     "x-input": "/components/x-input/index",
     "x-icon": "/components/x-icon/index",

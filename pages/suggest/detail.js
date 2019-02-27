@@ -1,81 +1,47 @@
-const limit = 5
+import { _userdetail as _detail } from '../../common/suggest'
+import { formatDate } from '../../utils/util'
+const app = getApp()
 Page({
   data: {
-    currentIndex: 0,
-    tabs: [
-      {
-        num: 123,
-        text: '未处理',
-        target: 'unhandleList'
-      },
-      {
-        num: 34,
-        text: '已处理',
-        target: 'handledList'
-      }
-    ],
-    lists: {
-      unhandleList: [1, 2, 3],
-      handledList: [1, 2, 3, 4, 5]
-    },
-    limit,
-    imgArr: [
-      '../../images/logo.png',
-      '../../images/logo.png',
-      '../../images/logo.png',
-      '../../images/logo.png',
-      '../../images/logo.png'
-    ]
+    id: null,
+    detail: null
   },
-  chooseImg() {
-    wx.chooseImage({
-      count: limit - this.data.imgArr.length,
-      success: r => {
-        let imgArr = this.data.imgArr.concat(r.tempFilePaths);
-        console.log(imgArr)
-        this.setData({
-          imgArr: imgArr
-        })
-      },
-      fail: e => { }
+  getDetail() {
+    app.loading('加载中')
+    _detail(this.data.id, app.globalData.member.ID).then(res => {
+      wx.hideLoading()
+      let detail = res.data.Suggest_Apply
+      detail.AddTime = formatDate(new Date(detail.AddTime), 'yyyy/MM/dd hh:mm')
+      detail.ReplyTime = detail.ReplyTime ? formatDate(new Date(detail.ReplyTime), 'yyyy/MM/dd hh:mm') : null
+      detail.Img = detail.Img?detail.Img.split(','):[]
+      this.setData({
+        detail
+      })
+    }).catch(err => {
+      console.log(err)
+      wx.hideLoading()
+      wx.showModal({
+        title: '对不起',
+        content: JSON.stringify(err) || '网络错误，请稍后再试',
+        showCancel: false
+      })
     })
   },
-  delImg(e) {
-    let index = e.currentTarget.dataset.index
-    this.data.imgArr.splice(index, 1)
-    this.setData({
-      imgArr: this.data.imgArr
-    })
+  onLoad(options) {
+    this.data.id = options.id
+    app.memberReadyCb = () => {
+      this.getDetail()
+    }
+    app.fansReadyCb = () => {
+      app.checkMember()
+    }
+    app.init()
   },
-  previewImg(e) {
-    let index = e.currentTarget.dataset.index
-    wx.previewImage({
-      current: this.data.imgArr[index],
-      urls: this.data.imgArr
-    })
-  },
-  onLoad: function (options) {
-    // 生命周期函数--监听页面加载
-  },
-  onReady: function () {
-    // 生命周期函数--监听页面初次渲染完成
-  },
-  onShow: function () {
-    // 生命周期函数--监听页面显示
-  },
-  onHide: function () {
-    // 生命周期函数--监听页面隐藏
-  },
-  onUnload: function () {
-    // 生命周期函数--监听页面卸载
-  },
-  onPullDownRefresh: function () {
-    // 页面相关事件处理函数--监听用户下拉动作
-  },
-  onReachBottom: function () {
-    // 页面上拉触底事件的处理函数
-  },
-  onShareAppMessage: function () {
-    // 用户点击右上角分享
-  }
+  onReady () {},
+  onShow () {},
+  onHide () {},
+  onUnload () {},
+  onPullDownRefresh () {},
+  onReachBottom () {},
+  onShareAppMessage () {}
 })

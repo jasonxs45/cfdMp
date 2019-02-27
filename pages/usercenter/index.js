@@ -1,4 +1,5 @@
 import { _updateInfo } from '../../common/usercenter'
+import { _servicelist } from '../../common/menus'
 const entries = [
   [
     { label: '申访记录', icon: './visit.png', url: '/pages/visitrecord/visitor' },
@@ -16,10 +17,23 @@ Page({
     avatar: '',
     nickname: '',
     role: '',
-    entries
+    entries,
+    powerEntries: []
   },
   totalQuery() {
     // app.loading('加载中')
+  },
+  getEntries() {
+    let uid = app.globalData.uid || wx.getStorageSync('uid')
+    _servicelist(uid).then(res => {
+      // 入口菜单
+      let powerEntries = res.data.Data.PowerMenu
+      this.setData({
+        powerEntries
+      })
+    }).catch(err => {
+      console.log(err)
+    })
   },
   onLoad(options) {
     app.memberReadyCb = () => {
@@ -38,6 +52,7 @@ Page({
   onReady() {
   },
   onShow() {
+    this.getEntries()
     _updateInfo(app.globalData.uid).then(result => {
       if (result.data.IsSuccess) {
         // 判断是否有粉丝信息，有就直接获取，没有就跳转授权页面

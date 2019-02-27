@@ -1,4 +1,4 @@
-import {_repairsubmit as _submit } from '../../common/repair'
+import { _submit } from '../../common/suggest'
 const app = getApp()
 const limit = 5
 Page({
@@ -26,40 +26,40 @@ Page({
       app.toast('请填写问题描述')
       return
     }
-    let typeid = this.data.categories[this.data.categoryIndex].ID
+    let type = this.data.categories[this.data.categoryIndex]
     let img = this.data.imgArr.join(',')
-    // this.setData({
-    //   submitDisabled: true
-    // })
-    // _submit(typeid, app.globalData.member.ID, this.data.desc, img).then(res => {
-    //   this.setData({
-    //     submitDisabled: false
-    //   })
-    //   wx.showModal({
-    //     title: res.data.IsSuccess ? '提示' : '对不起',
-    //     content: res.data.Msg,
-    //     showCancel: false,
-    //     success: r => {
-    //       if (r.confirm) {
-    //         if (res.data.IsSuccess) {
-    //           wx.redirectTo({
-    //             url: './list'
-    //           })
-    //         }
-    //       }
-    //     }
-    //   })
-    // }).catch(err => {
-    //   this.setData({
-    //     submitDisabled: false
-    //   })
-    //   console.log(err)
-    //   wx.showModal({
-    //     title: '对不起',
-    //     content: '网络错误，请稍后再试！',
-    //     showCancel: false
-    //   })
-    // })
+    this.setData({
+      submitDisabled: true
+    })
+    _submit(type, app.globalData.member.ID, this.data.desc, img).then(res => {
+      this.setData({
+        submitDisabled: false
+      })
+      wx.showModal({
+        title: res.data.IsSuccess ? '提示' : '对不起',
+        content: res.data.Msg,
+        showCancel: false,
+        success: r => {
+          if (r.confirm) {
+            if (res.data.IsSuccess) {
+              wx.redirectTo({
+                url: './list'
+              })
+            }
+          }
+        }
+      })
+    }).catch(err => {
+      this.setData({
+        submitDisabled: false
+      })
+      console.log(err)
+      wx.showModal({
+        title: '对不起',
+        content: '网络错误，请稍后再试！',
+        showCancel: false
+      })
+    })
   },
   categorySelect(e) {
     let value = e.detail.value

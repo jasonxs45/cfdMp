@@ -4,7 +4,7 @@
   "backgroundColor": "#fff",
   "backgroundColorTop": "#967141",
   "backgroundColorBottom": "#fff",
-  "navigationBarTextStyle": "#FFF",
+  "navigationBarTextStyle": "white",
   "usingComponents": {
     "x-icon": "/components/x-icon/index",
     "x-btn": "/components/x-btn/index",

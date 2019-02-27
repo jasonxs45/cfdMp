@@ -24,7 +24,7 @@
     "pages/passcard/list",
     "pages/passcard/detail",
     "pages/passcard/scan",
-    "pages/suggest/suggest",
+    "pages/suggest/list",
     "pages/suggest/detail",
     "pages/suggest/index",
     "pages/visitapply/visitor",
@@ -45,7 +45,8 @@
     "pages/myactivities/list",
     "pages/myactivities/detail",
     "pages/repairmanager/dispatch",
-    "pages/repairmanager/handlerslist"
+    "pages/repairmanager/handlerslist",
+    "pages/workbench/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
@@ -84,6 +85,6 @@
     ]
   },
   "networkTimeout": {
-    "request": 3000
+    "request": 15000
   }
 }

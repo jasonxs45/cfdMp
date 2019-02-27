@@ -69,3 +69,31 @@
   font-size: 26rpx;
   font-weight: 600;
 }
+.section{
+  padding: 0 30rpx;
+}
+.entries{
+  margin: 30rpx -15rpx 10rpx;
+  flex-wrap: wrap;
+}
+.entries .cell{
+  width: 20%;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+.entry{
+  display: inline-block;
+}
+.entry .img{
+  width:98rpx;
+  height: 96rpx;
+  margin: 0 auto;
+  padding: 25rpx;
+}
+.entry .text{
+  color: #967141;
+  font-size: 24rpx;
+  margin-top: 20rpx;
+  letter-spacing: -1rpx;
+  word-spacing: -1rpx;
+}

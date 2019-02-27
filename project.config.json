@@ -14,7 +14,7 @@
 		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.3",
+	"libVersion": "2.6.0",
 	"appid": "wx673b14d85c06819d",
 	"projectname": "cfdMp",
 	"debugOptions": {
@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 21,
+			"current": 35,
 			"list": [
 				{
 					"id": 0,
@@ -161,9 +161,9 @@
 					"query": ""
 				},
 				{
-					"id": 17,
+					"id": 19,
 					"name": "投诉建议列表",
-					"pathName": "pages/suggest/suggest",
+					"pathName": "pages/suggest/list",
 					"query": ""
 				},
 				{
@@ -255,6 +255,12 @@
 					"name": "处理人报修列表",
 					"pathName": "pages/repairmanager/handlerslist",
 					"query": ""
+				},
+				{
+					"id": 35,
+					"name": "投诉建议详情",
+					"pathName": "pages/suggest/detail",
+					"query": "id=3"
 				}
 			]
 		}

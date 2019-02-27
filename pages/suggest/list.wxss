@@ -1,0 +1,73 @@
+page{
+  background: #f2f2f2;
+}
+.list-wrapper{
+  padding: 30rpx;
+}
+.card{
+  background: #fff;
+  border-radius: 8rpx;
+  padding: 30rpx;
+  margin-top: 30rpx;
+  position: relative;
+}
+.card .tag{
+  position: absolute;
+  right:0;
+  top:0;
+  font-size: 24rpx;
+  padding: 15rpx 30rpx;
+  background: #ccc;
+  border-top-right-radius: 8rpx;
+}
+.card .mark{
+  position: absolute;
+  top:0;
+  right:0;
+  border-radius: 0 8rpx 0 0;
+  background: #ccc;
+  height: 30rpx;
+  width: 80rpx;
+  font-size: 20rpx;
+  text-align: center;
+  line-height: 30rpx;
+  color:#333;
+  font-weight: 500;
+}
+.card:first-child{
+  margin-top: 0;
+}
+.card .head{
+  justify-content: space-between;
+  align-items: center;
+}
+.card .head .tit{
+  color: #666;
+  font-size: 26rpx;
+  font-weight: 400;
+}
+.card .head .date{
+  font-size: 26rpx;
+  color: #666;
+  font-weight: 400;
+}
+.card .head .date2{
+  color:rgba(150,113,65,1);
+  background:rgba(254,240,229,0.5);
+  padding: 0 34rpx;
+  line-height: 48rpx;
+}
+.card .line{
+  margin-top: 28rpx;
+  display: block;
+}
+.card .body .desc{
+  color: #131314;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  display: block;
+  margin-top: 28rpx;
+}
+.card .foot{
+  margin-top: 30rpx;
+}

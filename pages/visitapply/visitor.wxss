@@ -74,7 +74,6 @@ page{
   margin: 0 auto 20rpx;
   font-size:28rpx;
   font-weight:bold;
-  font-family:PingFang-SC-Bold;
   color: #8D5815;
   position: relative;
   z-index: 5;
@@ -125,41 +124,46 @@ page{
   font-size: 0;
   margin: 0 0 52rpx;
 }
-.visitorFw text{
+.visitorFw .floor-row{
+  margin-left: -15rpx;
+  margin-right: -15rpx;
+}
+.visitorFw .floor{
   display: inline-block;
-  width:160rpx;
+  width: 16.66667%;
+}
+.visitorFw .floor .cell{
+  display: block;
+  width:80rpx;
   height:80rpx;
   line-height: 80rpx;
   text-align: center;
   border-radius:4rpx;
-  border:2rpx solid #999999;
+  border:1px solid #999999;
   font-size:28rpx;
   font-weight:500;
   color:#999999;
-  margin:0 34rpx;
+  margin:10rpx auto;
 }
-.visitorFw text.on{
+.visitorFw .cell.on{
   background: #967141;
   border-color: #967141;
   color: #FFFFFF;
 }
 .visitorFw2{
   text-align: left;
-  padding-left:40rpx; 
+  padding:0 30rpx;
+  max-height: 400rpx;
 }
-.visitorFw2 text{
-  width:80rpx;
-  margin:0 28rpx 20rpx 0;
-}
-.visitorGs{
-  
+.visitorGs {
+  max-height: 400rpx;
 }
 .visitorGs view{
   width:620rpx;
   height:90rpx;
   background:rgba(242,242,242,1);
   border-radius:4rpx;
-  font-size:26rpx;
+  font-size:24rpx;
   font-weight:500;
   color:rgba(19,19,20,1);
   line-height:90rpx;

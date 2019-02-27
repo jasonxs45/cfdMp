@@ -1,0 +1,33 @@
+<view class="section">
+  <image class="avatar" mode="aspectFill" src='{{avatar || "../../images/avatar.png"}}' />
+  <view class="nickname">
+    {{nickname || "昵称"}}
+  </view>
+  <view class="role">
+    <text>{{role}}</text>
+  </view>
+</view>
+<split height="10" />
+<block wx:if="{{powerEntries.length > 0}}">
+  <view class="section">
+    <view class="entries flex">
+      <view wx:for="{{powerEntries}}" wx:key="power-entry-{{index}}" class="cell">
+        <navigator class="entry" url="{{item.Url}}">
+          <image class="img" src="{{item.Img}}" />
+          <view class="text">{{item.Title}}</view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <split height="10" />
+</block>
+<view class="section">
+  <view class="entries flex">
+    <view wx:for="{{entries}}" wx:key="entry-{{index}}" class="cell">
+      <navigator class="entry" url="{{item.Url}}">
+        <image class="img" src="{{item.Img}}" />
+        <view class="text">{{item.Title}}</view>
+      </navigator>
+    </view>
+  </view>
+</view>

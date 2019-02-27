@@ -1,0 +1,61 @@
+page{
+  background: #f2f2f2;
+}
+.section, .pad30{
+  background: #fff;
+  padding: 30rpx;
+}
+.pad30 {
+  background: none;
+}
+.avatar {
+  width: 172rpx !important;
+  height: 172rpx !important;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.nickname {
+  text-align: center;
+  font-size: 28rpx;
+  color: #333;
+  margin-top: 30rpx;
+  line-height: 30rpx;
+}
+.role {
+  text-align: center;
+  margin-top: 10rpx;
+}
+.role text{
+  background: #4d4d4d;
+  font-size: 20rpx;
+  color: #fff;
+  border-radius: 12px;
+  font-weight: 500;
+  padding: 0 10rpx;
+}
+.entries{
+  margin: 30rpx -15rpx 10rpx;
+  flex-wrap: wrap;
+}
+.entries .cell{
+  width: 20%;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+.entry{
+  display: inline-block;
+}
+.entry .img{
+  width:98rpx;
+  height: 96rpx;
+  margin: 0 auto;
+}
+.entry .text{
+  color: #333;
+  font-size: 24rpx;
+  margin-top: 15rpx;
+  letter-spacing: -1rpx;
+  word-spacing: -1rpx;
+}

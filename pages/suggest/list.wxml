@@ -1,0 +1,21 @@
+<view class="list-wrapper">
+  <block wx:if="{{list.length > 0}}">
+    <navigator wx:for="{{list}}" wx:for-index="idx" wx:key="index-{{idx}}" url="./detail?id={{item.ID}}" class="card">
+      <view class="head flex">
+        <view class="date date2">{{item.Type}}</view>
+        <view class="tag">{{item.ReplyTime===null?'未回复':'已回复'}}</view>
+      </view>
+      <split class="line" height="1" />
+      <view class="body">
+        <text class="desc">{{item.Description}}</text>
+      </view>
+      <view class="head flex foot">
+        <view class="tit">
+        </view>
+        <view class="date">{{item.AddTime}}</view>
+      </view>
+    </navigator>
+    <bottom-tip finished="{{finished}}" />
+  </block>
+  <no-data wx:else />
+</view>

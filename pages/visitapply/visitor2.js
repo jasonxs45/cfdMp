@@ -1,6 +1,7 @@
 // pages/visitapply/visitor2.js
 Page({
   data: {
+    id: null,
     name:'',
     tel:'',
     idCard:'',
@@ -31,12 +32,12 @@ Page({
     let value = e.detail.value
     this.data.backinfo = value
   },
-  changyXz: function(e){
+  changyXz(e){
     this.setData({
       changyIndex: e.target.dataset.index
     })
   },
-  submit: function(){
+  submit(){
     wx.showModal({
       title: '申请成功',
       content: '恭喜您已申请成功，点击确定按钮\r\n将跳转至开锁界面',
@@ -53,28 +54,16 @@ Page({
       }
     })
   },
-  onLoad: function (options) {
-    // 生命周期函数--监听页面加载
+  onLoad (options) {
+    this.setData({
+      id: options.id
+    })
   },
-  onReady: function () {
-    // 生命周期函数--监听页面初次渲染完成
-  },
-  onShow: function () {
-    // 生命周期函数--监听页面显示
-  },
-  onHide: function () {
-    // 生命周期函数--监听页面隐藏
-  },
-  onUnload: function () {
-    // 生命周期函数--监听页面卸载
-  },
-  onPullDownRefresh: function () {
-    // 页面相关事件处理函数--监听用户下拉动作
-  },
-  onReachBottom: function () {
-    // 页面上拉触底事件的处理函数
-  },
-  onShareAppMessage: function () {
-    // 用户点击右上角分享
-  }
+  onReady () {},
+  onShow () {},
+  onHide () {},
+  onUnload () {},
+  onPullDownRefresh () {},
+  onReachBottom () {},
+  onShareAppMessage () {}
 })

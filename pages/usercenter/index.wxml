@@ -10,7 +10,20 @@
     <text>{{role}}</text>
   </view>
 </view>
-<split />
+<split height="10"/>
+<block wx:if="{{powerEntries.length > 0}}">
+  <view class="section">
+    <view class="entries flex">
+      <view wx:for="{{powerEntries}}" wx:key="power-entry-{{index}}" class="cell">
+        <navigator class="entry" url="{{item.Url}}">
+          <image class="img" src="{{item.Img}}" mode="aspectFill"/>
+          <view class="text">{{item.Title}}</view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <split height="10" />
+</block>
 <view class="list">
   <view class="group" wx:for="{{entries}}" wx:for-item="group" wx wx:key="group-{{index}}">
     <view class="test">
