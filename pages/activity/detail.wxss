@@ -130,11 +130,12 @@ page {
   bottom: 0;
   left: 0;
   width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
   font-size: 34rpx;
   font-weight: 500;
   color: #edc27b;
-}
-.detaliBut .x-btn{
   border-radius: 0;
 }
 .nodata{

@@ -46,7 +46,8 @@
     "pages/myactivities/detail",
     "pages/repairmanager/dispatch",
     "pages/repairmanager/handlerslist",
-    "pages/workbench/index"
+    "pages/workbench/index",
+    "pages/activity/scan"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

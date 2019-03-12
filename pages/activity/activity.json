@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "圈层活动",
+  "navigationBarTitleText": "活动中心",
   "backgroundColor": "#f2f2f2",
   "usingComponents": {
     "tabs": "/components/tabs/tabs",

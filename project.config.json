@@ -14,7 +14,7 @@
 		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.0",
+	"libVersion": "2.6.2",
 	"appid": "wx673b14d85c06819d",
 	"projectname": "cfdMp",
 	"debugOptions": {
@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 35,
+			"current": 37,
 			"list": [
 				{
 					"id": 0,
@@ -75,12 +75,6 @@
 					"name": "授权",
 					"pathName": "pages/login/index",
 					"query": ""
-				},
-				{
-					"id": 14,
-					"name": "活动中心",
-					"pathName": "pages/activity/activity",
-					"query": "id=1"
 				},
 				{
 					"id": 9,
@@ -261,6 +255,26 @@
 					"name": "投诉建议详情",
 					"pathName": "pages/suggest/detail",
 					"query": "id=3"
+				},
+				{
+					"id": 14,
+					"name": "活动中心",
+					"pathName": "pages/activity/activity",
+					"query": "id=1"
+				},
+				{
+					"id": 36,
+					"name": "活动详情",
+					"pathName": "pages/activity/detail",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "活动签到",
+					"pathName": "pages/activity/scan",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

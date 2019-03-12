@@ -2,24 +2,40 @@ import { fetch, query } from 'api'
 /**==========================
  *           活动
  ==========================*/
-// 活动列表
-let _list = (over, pageIndex = 1, pageSize = 5) => {
-  if (over === 'over') {
-    over = true
-  }
-  if (over === 'unover') {
-    over = false
-  }
-  let day = new Date()
-  let year = day.getFullYear()
-  let month = day.getMonth() + 1
-  let date = day.getDate()
+//  首页活动列表
+let _homelist = () => {
   let param = {
     Activity_Activity_list: {
       Online: true, //已上线
       IsDelete: false, //未删除
       field: "ID,Name,SmallImg,ApplyEnd,PlayEnd,Sort", //查询字段
-      PlayEnd: `${over ? '<=' : '>'}${year}/${month}/${date}`, //使用JS获取当前时间
+      PlayEnd: ">#time_now",
+      order: "Sort", //默认排序
+      top: 2 //首页只显示6条
+    }
+  }
+  return query(param)
+}
+// 活动列表
+let _list = (over, MemberID, pageIndex = 1, pageSize = 5) => {
+  let playend = ''
+  if (over === 'over') {
+    playend = '<#time_now'
+  }
+  if (over === 'unover') {
+    playend = '>#time_now'
+  }
+  let param = {
+    Activity_Activity_list: {
+      Online: true, //已上线
+      IsDelete: false, //未删除
+      field: "ID,Name,SmallImg,ApplyEnd,PlayEnd,Sort", //查询字段
+      field_ApplyID: {
+        field: "Activity_Apply.ID.max",
+        ActivityID: "link#Activity_Activity.ID",
+        MemberID  //参数 当前用户ID
+      },
+      PlayEnd: playend, //使用JS获取当前时间
       order: "Sort", //默认排序
       page: pageIndex, //当前页数
       count: pageSize //每页条数
@@ -33,7 +49,6 @@ let _detail = ID => {
   let param = {
     Activity_Activity: {
       ID,//活动ID
-      Online: true, //已上线
       IsDelete: false, //未删除
       //获取已报名人数 增加以下尚需经
       field_ApplyCount: {
@@ -78,15 +93,28 @@ let _mydetail = (ID, MemberID) => {
       MemberID //会员ID
     },
     Activity_Activity: {
-      ID: "from#Activity_Apply.ActivityID"
+      ID: "from#Activity_Apply.ActivityID",
+      field_ApplyCount: {
+        field: "Activity_Apply.ID.count",
+        ActivityID: "from#Activity_Apply.ActivityID"
+      }
     }
   }
   return query(param)
 }
+// 活动签到
+let _sign = (SN, UnionID) => {
+  return fetch(
+    'WebApi.ashx?Act=ApplySign',
+    { SN, UnionID }
+  )
+}
 export {
   _list,
+  _homelist,
   _detail,
   _submit,
   _mylist,
-  _mydetail
+  _mydetail,
+  _sign
 }

@@ -54,7 +54,7 @@ Page({
       wx.hideLoading()
       wx.showModal({
         title: '对不起',
-        content: JSON.stringify(err) || '网络错误，请稍后再试',
+        content: '网络错误，请稍后再试',
         showCancel: false
       })
     })

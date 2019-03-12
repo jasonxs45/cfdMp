@@ -6,7 +6,8 @@ Page({
   data: {
     id: null,
     detail: {},
-    disabled: true
+    disabled: true,
+    notstart: true
   },
   getDetail() {
     app.loading('加载中')
@@ -14,6 +15,15 @@ Page({
       wx.hideLoading()
       let detail = res.data.Activity_Activity
       let now = Date.now()
+      if (now < new Date(detail.ApplyStart).getTime()) {
+        this.setData({
+          notstart: true
+        })
+      } else {
+        this.setData({
+          notstart: false
+        })
+      }
       if (now > new Date(detail.ApplyStart).getTime() && now < new Date(detail.ApplyEnd).getTime()) {
         this.setData({
           disabled: false
@@ -23,10 +33,10 @@ Page({
           disabled: true
         })
       }
-      detail.ApplyStart = formatDate(new Date(detail.ApplyStart), 'yyyy/MM/dd hh:mm')
-      detail.ApplyEnd = formatDate(new Date(detail.ApplyEnd), 'yyyy/MM/dd hh:mm')
-      detail.PlayStart = formatDate(new Date(detail.PlayStart), 'yyyy/MM/dd hh:mm')
-      detail.PlayEnd = formatDate(new Date(detail.PlayEnd), 'yyyy/MM/dd hh:mm')
+      detail.ApplyStart = formatDate(new Date(detail.ApplyStart), 'yyyy年MM月dd日 hh:mm')
+      detail.ApplyEnd = formatDate(new Date(detail.ApplyEnd), 'yyyy年MM月dd日 hh:mm')
+      detail.PlayStart = formatDate(new Date(detail.PlayStart), 'yyyy年MM月dd日 hh:mm')
+      detail.PlayEnd = formatDate(new Date(detail.PlayEnd), 'yyyy年MM月dd日 hh:mm')
       let content = detail.Content
       WxParse.wxParse('content', 'html', content, this, 0)
       let explain = detail.Explain
@@ -54,8 +64,15 @@ Page({
             wx.hideLoading()
             wx.showModal({
               title: r.data.IsSuccess ? '恭喜您' : '对不起',
-              content: r.data.IsSuccess ? '您已报名成功，可在个人中心【我的活动】里' : r.data.Msg,
-              showCancel: false
+              content: r.data.IsSuccess ? '您已报名成功，可在个人中心【我的活动】里查看' : r.data.Msg,
+              showCancel: false,
+              success: res => {
+                if (r.data.IsSuccess && res.confirm) {
+                  wx.navigateTo({
+                    url: '/pages/myactivities/list'
+                  })
+                }
+              }
             })
           }).catch(e => {
             wx.hideLoading()
@@ -77,10 +94,11 @@ Page({
     app.fansReadyCb = () => {
       app.checkMember()
     }
-    app.init()
   },
   onReady() { },
-  onShow() { },
+  onShow() {
+    app.init()
+  },
   onHide() { },
   onUnload() { },
   onShareAppMessage() { }

@@ -1,3 +1,9 @@
+.x-btn{
+  border-radius: inherit;
+}
+.x-btn::after{
+  border:inherit;
+}
 .x-btn.disabled{
   /* color: #fff !important;
   background: #967141 !important; */
