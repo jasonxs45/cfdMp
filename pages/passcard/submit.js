@@ -1,9 +1,17 @@
-import { _usersubmit as _submit } from '../../common/passcard'
+import { _usersubmit as _submit, _detail } from '../../common/passcard'
 import { _uploadFile } from '../../common/uploadFile'
 import { rootUrl } from '../../common/config'
 const app = getApp()
+let now = new Date()
+let nowYear = now.getFullYear()
+let nowMonth = now.getMonth() + 1
+let nowDate = now.getDate()
+let nowHour = now.getHours()
+let nowMinute = '00' + now.getMinutes()
+nowMinute = nowMinute.substr(nowMinute.length - 2)
 Page({
   data: {
+    id: null,
     goodsArr: [
       {
         img: '',
@@ -11,9 +19,30 @@ Page({
         count: '',
       }
     ],
-    datetimeValue: null,
+    datetimeValue: `${nowYear}-${nowMonth}-${nowDate} ${nowHour}:${nowMinute}`,
     description: '',
     submitDisabled: false
+  },
+  // 增加重新提交的功能
+  getDetail() {
+    app.loading('加载中')
+    _detail(this.data.id).then(res => {
+      wx.hideLoading()
+      let detail = res.data.ERelease_Apply
+      detail.Goods = JSON.parse(detail.Goods)
+      this.setData({
+        detail,
+        goodsArr: detail.Goods,
+        description: detail.Remark
+      })
+    }).catch(err => {
+      wx.hideLoading()
+      wx.showModal({
+        title: '对不起',
+        content: '请求失败，请稍后再试',
+        showCancel: false
+      })
+    })
   },
   nameInput(e) {
     let value = e.detail.value
@@ -91,6 +120,7 @@ Page({
     })
   },
   submit() {
+    let id = this.data.id === null ? 0 : this.data.id
     for (let i = 0; i< this.data.goodsArr.length; i++) {
       let goods = this.data.goodsArr[i]
       if (!goods.img) {
@@ -110,14 +140,15 @@ Page({
       app.toast('请选择通行时间！')
       return
     }
-    if (!this.data.description.trim()) {
-      app.toast('备注信息不能为空！')
-      return
-    }
+    // if (!this.data.description.trim()) {
+    //   app.toast('备注信息不能为空！')
+    //   return
+    // }
     this.setData({
       submitDisabled: true
     })
     _submit(
+      id,
       app.globalData.member.ID,
       JSON.stringify(this.data.goodsArr),
       this.data.datetimeValue,
@@ -151,6 +182,9 @@ Page({
     })
   },
   onLoad(options) {
+    this.setData({
+      id: options.id !== 0 && !options.id ? null : options.id
+    })
     app.memberReadyCb = () => {
       this.setData({
         name: app.globalData.member.Name || wx.getStorageSync('member').Name,
@@ -164,7 +198,11 @@ Page({
     app.init()
   },
   onReady() { },
-  onShow() { },
+  onShow() {
+    if (this.data.id !== null) {
+      this.getDetail()
+    }
+  },
   onHide() { },
   onUnload() { },
   onShareAppMessage() { }

@@ -136,6 +136,8 @@ page {
   font-size: 34rpx;
   font-weight: 500;
   color: #edc27b;
+}
+.detaliBut .x-btn{
   border-radius: 0;
 }
 .nodata{

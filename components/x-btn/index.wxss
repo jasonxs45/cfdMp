@@ -1,5 +1,5 @@
 .x-btn{
-  border-radius: inherit;
+  /* border-radius: inherit; */
 }
 .x-btn::after{
   border:inherit;

@@ -21,9 +21,9 @@ let nowMonth = now.getMonth() + 1
 let nowDate = now.getDate()
 let nowHour = now.getHours()
 let nowMinute = '00' + now.getMinutes()
-nowMinute = nowMinute.substr(nowMinute.length -2)
+nowMinute = nowMinute.substr(nowMinute.length - 2)
 let defaultTimeValue = [
-  years.findIndex(item => item ===nowYear),
+  years.findIndex(item => item === nowYear),
   months.findIndex(item => item === nowMonth),
   dates.findIndex(item => item === nowDate),
   hours.findIndex(item => item === nowHour),
@@ -31,16 +31,19 @@ let defaultTimeValue = [
 ]
 Component({
   properties: {
-    placeholder: String
+    placeholder: String,
+    value: {
+      type: String,
+      value: `${nowYear}-${nowMonth}-${nowDate} ${nowHour}:${nowMinute}`
+    }
   },
   data: {
     currentYear: null,
     datetimeRange: [years, months, dates, hours, minutes],
-    datetimeValue: defaultTimeValue,
-    value: null
+    datetimeValue: defaultTimeValue
   },
   methods: {
-    columnChange (e) {
+    columnChange(e) {
       let column = e.detail.column
       let value = e.detail.value
       this.data.datetimeValue[column] = value
@@ -61,7 +64,7 @@ Component({
         })
       } else if (value === 1) {
         // 计算是否是闰年
-        let year = this.data.currentYear        
+        let year = this.data.currentYear
         if (year % 4 === 0) {
           this.data.datetimeRange[2] = dates.filter((item, index) => index < 29)
         } else {
@@ -87,7 +90,7 @@ Component({
         })
       }
     },
-    confirm (e) {
+    confirm(e) {
       let arr = e.detail.value
       this.data.datetimeValue = arr
       let date = '00' + dates[arr[2]]

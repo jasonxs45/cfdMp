@@ -3,6 +3,31 @@
   height: 100vh;
   display: block;
 }
+.info-box{
+  position: absolute;
+  width: 680rpx;
+  height: auto;
+  top: 30rpx;
+  left: 50%;
+  margin-left: -340rpx;
+  border-radius: 8rpx;
+  background: rgba(255,255,255, .9);
+  padding: 30rpx;
+  box-shadow:0 0 50rpx 0 rgba(0,0,0,.1);
+}
+.tit{
+  font-size: 36rpx;
+  text-align: center;
+  font-weight: 500;
+}
+.p {
+  margin: 30rpx 0;
+  justify-content: space-between;
+  font-size: 30rpx;
+}
+.ph{
+  color: #666;
+}
 .logo{
   position: absolute;
   width: 220rpx;

@@ -39,7 +39,10 @@ Page({
   onLoad (options) {
     this.data.role = options.role
   },
-  onReady () {},
+  onReady () {
+    // 自动打开
+    this.openScan()
+  },
   onShow () {},
   onHide () {},
   onUnload () {},

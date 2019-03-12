@@ -1,3 +1,5 @@
 <image class="bg" src="/images/ad.png" />
-<image mode="widthFix" class="logo" src="/images/logo.png" />
+<view wx:if='{{baseinfo}}' class='info-box'>
+</view>
+<image wx:else mode="widthFix" class="logo" src="/images/logo.png" />
 <x-btn type="primary" class="btn" bindtap="openScan">点击扫码</x-btn>
