@@ -77,12 +77,6 @@
 					"query": ""
 				},
 				{
-					"id": 9,
-					"name": "我的活动",
-					"pathName": "pages/myactivities/list",
-					"query": ""
-				},
-				{
 					"id": 6,
 					"name": "用户报修提交",
 					"pathName": "pages/repairuser/submit",
@@ -275,7 +269,13 @@
 					"pathName": "pages/activity/scan",
 					"query": "",
 					"scene": null
-				}
+				},
+        {
+          "id": 9,
+          "name": "我的活动",
+          "pathName": "pages/myactivities/list",
+          "query": ""
+        }
 			]
 		}
 	}
