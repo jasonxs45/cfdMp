@@ -139,6 +139,8 @@ page {
 }
 .detaliBut .x-btn{
   border-radius: 0;
+  height: inherit;
+  line-height: inherit;
 }
 .nodata{
   text-align: center;

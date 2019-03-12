@@ -47,7 +47,9 @@
     "pages/repairmanager/dispatch",
     "pages/repairmanager/handlerslist",
     "pages/workbench/index",
-    "pages/activity/scan"
+    "pages/activity/scan",
+    "pages/passcard/enter",
+    "pages/passcard/companylist"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
