@@ -27,7 +27,6 @@ page{
 }
 .stars .star{
   margin: 10rpx;
-  color: #EDC27B;
 }
 .btns{
   padding: 30rpx;
@@ -44,4 +43,7 @@ page{
   border-radius: 8rpx;
   line-height: 36rpx;
   margin-top: 40rpx;
+}
+.stars{
+  color: #967141;
 }

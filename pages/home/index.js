@@ -64,7 +64,6 @@ Page({
     }
     app.fansReadyCb = () => {
       this.totalQuery()
-      this.getList()
     }
     app.init()
   },

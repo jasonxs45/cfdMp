@@ -3,9 +3,6 @@ import { _uploadFile } from '../../common/uploadFile'
 import default_src from './default'
 const app = getApp()
 Component({
-  options: {
-    addGlobalClass: true
-  },
   properties: {
     group: Array,
     readonly: {
@@ -25,7 +22,7 @@ Component({
     uploadOver: true
   },
   methods: {
-    errorHandler (e) {
+    errorHandler(e) {
       let index = e.currentTarget.dataset.index
       this.properties.group[index] = default_src
       this.setData({
@@ -51,7 +48,7 @@ Component({
             _uploadFile(r.tempFilePaths[i], res => {
               let obj = JSON.parse(res.data)
               let img = rootUrl + obj.url
-              group[i]= img
+              group[i] = img
               this.data.current += 1
               this.setData({
                 current: this.data.current
@@ -67,7 +64,7 @@ Component({
             })
           }
         },
-        fail: e => {}
+        fail: e => { }
       })
     },
     delImg(e) {
@@ -76,7 +73,7 @@ Component({
       this.setData({
         group: this.properties.group
       })
-      this.triggerEvent('del', {index, group: this.properties.group})
+      this.triggerEvent('del', { index, group: this.properties.group })
     },
     previewImg(e) {
       let index = e.currentTarget.dataset.index
@@ -86,5 +83,5 @@ Component({
       })
     }
   },
-  attached () {}
+  attached() { }
 })

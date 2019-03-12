@@ -1,6 +1,12 @@
 <view class="detail-page {{ padding ? 'padding':''}}">
   <view class="card section">
     <view class="title">{{detail.CompanyName}}</view>
+    <view class='p flex'>
+      <view class='ph'>{{detail.Name}}</view>
+      <view class='pb'>
+        <tel tel='{{detail.Tel}}' />
+      </view>
+    </view>
     <view class="date">{{detail.AddTime}}</view>
     <split class="line" height="2" />
     <view class="desc">{{detail.Description}}</view>
@@ -11,6 +17,18 @@
     </view>
   </view>
   <split />
+  <block wx:if="{{detail.FinishTime && detail.EvaluateTime !== null}}">
+    <view class="section">
+      <view class="sub-tit">我的评价</view>
+      <view wx:for="{{rateItems}}" wx:key="rate-item-{{index}}" class="rate-item flex">
+        <view class="tit">{{item}}</view>
+        <star class="stars" readonly score="{{scores[index]}}" />
+        <view class="describe">{{describes[scores[index] - 1]}}</view>
+      </view>
+      <!-- <text wx:if="{{detail.EvaluateRemark}}" class="rate-texts">{{detail.EvaluateRemark}}</text> -->
+    </view>
+    <split />
+  </block>
   <block wx:if="{{steps.length > 0}}">
     <view class="section">
       <view class="sub-tit">处理进度</view>
@@ -24,7 +42,7 @@
             <view class="flex handler">
               <view class="ph name">处理人：{{item.StaffName}}</view>
               <view class="pb tel">
-                <text>{{item.StaffTel}}</text>
+                <tel tel='{{item.StaffTel}}' />
               </view>
             </view>
             <view class="desc">
@@ -39,7 +57,7 @@
     <split />
   </block>
 </view>
-<view wx:if="{{roleName === '客服' && detail.Status !== '已完成'}}" class="btns {{padding ?'padding': ''}}">
+<view wx:if="{{roleName === '客服' && (detail.Status !== '待评价' && detail.Status !== '已完成')}}" class="btns {{padding ?'padding': ''}}">
   <navigator url="./dispatch?role={{role}}&id={{id}}" class="btn">
     <x-btn type="primary" class="btn">分配处理人</x-btn>
   </navigator>

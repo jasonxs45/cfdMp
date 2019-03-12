@@ -6,5 +6,5 @@
   height: 40rpx; */
   display: inline-block;
   font-size: 48rpx;
-  color: #4d4d4d;
+  color: inherit;
 }

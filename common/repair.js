@@ -83,7 +83,6 @@ let _rate = (RepairID, Evaluate1, Evaluate2, Evaluate3, Remark) => {
     { RepairID, Evaluate1, Evaluate2, Evaluate3, Remark }
   )
 }
-
 // 客服获取报修列表
 let _managerlist = (Status, pageIndex = 1, pageSize = 5) => {
   let param = {
@@ -259,19 +258,19 @@ let _managerReply = (UnionID, RepairID, Content, ImgList) => {
     { UnionID, RepairID, Content, ImgList }
   )
 }
-  export {
-    _typelist,
-    _repairsubmit,
-    _userlist,
-    _userdetail,
-    _rate,
-    _managerlist,
-    _handlinglist,
-    _handledlist,
-    _handlers,
-    _handledetail,
-    _managerHandle,
-    _handlerRepost,
-    _handlerDone,
-    _managerReply
-  }
+export {
+  _typelist,
+  _repairsubmit,
+  _userlist,
+  _userdetail,
+  _rate,
+  _managerlist,
+  _handlinglist,
+  _handledlist,
+  _handlers,
+  _handledetail,
+  _managerHandle,
+  _handlerRepost,
+  _handlerDone,
+  _managerReply
+}

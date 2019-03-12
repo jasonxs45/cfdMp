@@ -10,7 +10,7 @@ Page({
     desc: '',
     submitDisabled: false
   },
-  getTypelist() {
+  getTypelist () {
     app.loading('加载中')
     _typelist().then(res => {
       wx.hideLoading()
@@ -28,7 +28,7 @@ Page({
       })
     })
   },
-  submit() {
+  submit () {
     if (this.data.categoryIndex === null) {
       app.toast('请选择类别！')
       return
@@ -47,8 +47,8 @@ Page({
         submitDisabled: false
       })
       wx.showModal({
-        title: res.data.IsSuccess ? '提示' : '对不起',
-        content: res.data.Msg,
+        title: res.data.IsSuccess ? '提示':'对不起',
+        content: res.data.Msg || '请求错误，请稍后再试',
         showCancel: false,
         success: r => {
           if (r.confirm) {
@@ -72,39 +72,40 @@ Page({
       })
     })
   },
-  categorySelect(e) {
+  categorySelect (e) {
     let value = e.detail.value
     this.setData({
       categoryIndex: value
     })
   },
-  textHandler(e) {
+  textHandler (e) {
     this.data.desc = e.detail.value
   },
-  uploadOverHandler(e) {
+  uploadOverHandler (e) {
     this.setData({
       imgArr: this.data.imgArr.concat(e.detail.group)
     })
   },
-  delHandler(e) {
+  delHandler (e) {
     this.setData({
       imgArr: e.detail.group
     })
   },
-  onLoad(options) {
+  onLoad (options) {
     app.memberReadyCb = () => {
       this.getTypelist()
     }
     app.fansReadyCb = () => {
       app.checkMember()
     }
+  },
+  onReady () {},
+  onShow () {
     app.init()
   },
-  onReady() { },
-  onShow() { },
-  onHide() { },
-  onUnload() { },
-  onPullDownRefresh() { },
-  onReachBottom() { },
-  onShareAppMessage() { }
+  onHide () {},
+  onUnload () {},
+  onPullDownRefresh () {},
+  onReachBottom () {},
+  onShareAppMessage () {}
 })

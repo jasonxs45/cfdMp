@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 36,
+			"current": 33,
 			"list": [
 				{
 					"id": 0,
@@ -77,30 +77,6 @@
 					"query": ""
 				},
 				{
-					"id": 6,
-					"name": "用户报修提交",
-					"pathName": "pages/repairuser/submit",
-					"query": ""
-				},
-				{
-					"id": 17,
-					"name": "用户报修列表",
-					"pathName": "pages/repairuser/list",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "用户报修详情",
-					"pathName": "pages/repairuser/detail",
-					"query": ""
-				},
-				{
-					"id": 18,
-					"name": "用户报修评价",
-					"pathName": "pages/repairuser/rate",
-					"query": ""
-				},
-				{
 					"id": -1,
 					"name": "新闻列表",
 					"pathName": "pages/news/index",
@@ -128,30 +104,6 @@
 					"id": 19,
 					"name": "投诉建议列表",
 					"pathName": "pages/suggest/list",
-					"query": ""
-				},
-				{
-					"id": 20,
-					"name": "客服报修列表",
-					"pathName": "pages/repairmanager/list",
-					"query": ""
-				},
-				{
-					"id": 21,
-					"name": "客服及处理人报修详情",
-					"pathName": "pages/repairmanager/detail",
-					"query": "role=1&id=4"
-				},
-				{
-					"id": -1,
-					"name": "拒接报修",
-					"pathName": "pages/repairmanager/refuse",
-					"query": ""
-				},
-				{
-					"id": 18,
-					"name": "前台-报修列表",
-					"pathName": "pages/repairreception/list",
 					"query": ""
 				},
 				{
@@ -206,18 +158,6 @@
 					"id": -1,
 					"name": "我的卡券",
 					"pathName": "pages/voucher/mylist",
-					"query": ""
-				},
-				{
-					"id": 33,
-					"name": "报修分配处理人",
-					"pathName": "pages/repairmanager/dispatch",
-					"query": "id=8"
-				},
-				{
-					"id": -1,
-					"name": "处理人报修列表",
-					"pathName": "pages/repairmanager/handlerslist",
 					"query": ""
 				},
 				{
@@ -282,13 +222,57 @@
 					"id": 38,
 					"name": "企业电子放行单列表",
 					"pathName": "pages/passcard/companylist",
-					"query": "role=2"
+					"query": "role=2",
+					"scene": null
 				},
 				{
 					"id": 39,
-					"name": "物品放行",
+					"name": "物品放行入口",
 					"pathName": "pages/passcard/enter",
 					"query": "role=1"
+				},
+				{
+					"id": -1,
+					"name": "报修入口",
+					"pathName": "pages/repairuser/enter",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "报修提交",
+					"pathName": "pages/repairuser/submit",
+					"query": ""
+				},
+				{
+					"id": 17,
+					"name": "用户报修列表",
+					"pathName": "pages/repairuser/list",
+					"query": ""
+				},
+				{
+					"id": 33,
+					"name": "用户报修详情",
+					"pathName": "pages/repairuser/detail",
+					"query": "id=19",
+					"scene": null
+				},
+				{
+					"id": 18,
+					"name": "用户报修评价",
+					"pathName": "pages/repairuser/rate",
+					"query": "id=5"
+				},
+				{
+					"id": 21,
+					"name": "管理员报修列表",
+					"pathName": "pages/repairmanager/list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "处理人报修列表",
+					"pathName": "pages/repairmanager/handlerslist",
+					"query": ""
 				}
 			]
 		}

@@ -3,13 +3,13 @@ import { formatDate } from '../../utils/util'
 const app = getApp()
 Component({
   data: {
-    lists: [[], [], []],
-    tabMenus: ['待受理', '待回复', '已完成'],
+    lists: [[], [], [], []],
+    tabMenus: ['待受理', '待回复', '待评价', '已完成'],
     currentIndex: 0,
-    pageIndexes: [1, 1, 1],
+    pageIndexes: [1, 1, 1, 1],
     pageSize: 4,
-    finished: [false, false, false],
-    totalCount: [null, null, null]
+    finished: [false, false, false, false],
+    totalCount: [null, null, null, null]
   },
   methods: {
     tabChange(e) {
@@ -72,7 +72,11 @@ Component({
         this.data.pageIndexes[currentIndex],
         this.data.pageSize
       ).then(res => {
-        this.data.lists[currentIndex] = this.data.lists[currentIndex].concat(res.data.Repair_Apply_list)
+        let list = res.data.Repair_Apply_list.map(ele => {
+          ele.AddTime = formatDate(new Date(ele.AddTime), 'yyyy/MM/dd hh:mm')
+          return ele
+        })
+        this.data.lists[currentIndex] = this.data.lists[currentIndex].concat(list)
         let str = `lists[${currentIndex}]`
         this.setData({
           [str]: this.data.lists[currentIndex]
@@ -103,26 +107,26 @@ Component({
       }
     },
     onLoad(options) {
-    },
-    onReady() { },
-    onShow() {
-      this.data.finished = [false, false, false]
-      this.data.pageIndexes = [1, 1, 1]
-      this.data.totalCount = [null, null, null]
       app.memberReadyCb = () => {
         this.totalQuery()
       }
       app.fansReadyCb = () => {
         app.checkMember()
       }
+    },
+    onReady() { },
+    onShow() {
+      this.data.finished = [false, false, false, false]
+      this.data.pageIndexes = [1, 1, 1, 1]
+      this.data.totalCount = [null, null, null, null]
       app.init()
     },
     onHide() { },
     onUnload() { },
     onPullDownRefresh() {
-      this.data.finished = [false, false, false]
-      this.data.pageIndexes = [1, 1, 1]
-      this.data.totalCount = [null, null, null]
+      this.data.finished = [false, false, false, false]
+      this.data.pageIndexes = [1, 1, 1, 1]
+      this.data.totalCount = [null, null, null, null]
       this.setData({
         finished: this.data.finished,
         lists: this.data.lists

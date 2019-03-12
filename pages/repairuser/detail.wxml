@@ -1,6 +1,10 @@
 <view class="detail-page {{detail.FinishTime && detail.EvaluateTime === null ?'padding': ''}}">
   <view class="card section">
     <view class="title">{{detail.CompanyName}}</view>
+    <view class='p flex'>
+      <view class='ph'>{{detail.Name}}</view>
+      <view class='pb'>{{detail.Tel}}</view>
+    </view>
     <view class="date">{{detail.AddTime}}</view>
     <split class="line" height="2" />
     <view class="desc">{{detail.Description}}</view>
@@ -11,24 +15,9 @@
     </view>
   </view>
   <split />
-  <block wx:if="{{steps.length > 0}}">
-    <view class="section">
-      <view class="sub-tit">处理进度</view>
-      <view class="steps-wrapper">
-        <view wx:for="{{steps}}" wx:key="step-{{index}}" class="step flex">
-          <view class="circle">
-            <view class="cir"></view>
-          </view>
-          <view class="content">
-            <view class="date">{{item.AddTime}}</view>
-            <view class="desc">
-              <text class="depart">【{{item.Department}}】</text>{{item.ArriveDuration}}</view>
-          </view>
-        </view>
-      </view>
-    </view>
-    <split />
-  </block>
+  <view wx:if="{{detail.FinishTime && detail.EvaluateTime === null}}" class="btns">
+    <x-btn type="primary" class="rate-btn" bindtap="goRate">我要评价</x-btn>
+  </view>
   <block wx:if="{{detail.FinishTime && detail.EvaluateTime !== null}}">
     <view class="section">
       <view class="sub-tit">我的评价</view>
@@ -41,7 +30,23 @@
     </view>
     <split />
   </block>
-</view>
-<view wx:if="{{detail.FinishTime && detail.EvaluateTime === null}}" class="btns">
-  <x-btn type="primary" class="rate-btn" bindtap="goRate">我要评价</x-btn>
+  <block wx:if="{{steps.length > 0}}">
+    <view class="section">
+      <view class="sub-tit">处理进度</view>
+      <view class="steps-wrapper">
+        <view wx:for="{{steps}}" wx:key="step-{{index}}" class="step flex">
+          <view class="circle">
+            <view class="cir"></view>
+          </view>
+          <view class="content">
+            <view class="date">{{item.AddTime}}</view>
+            <view class="desc">
+              <text class="depart">{{item.Department}}</text>{{item.ArriveDuration}}</view>
+            <view wx:if="{{item.Content}}" class="handle-reply">{{item.Content}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <split />
+  </block>
 </view>

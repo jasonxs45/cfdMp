@@ -104,7 +104,7 @@ swiper-item {
   display: inline-block;
   height: 60rpx;
   line-height: 60rpx;
-  background: #f5f5f5;
+  background: #FEF0E5;
   color: #333;
   font-size: 24rpx;
   padding: 0 30rpx;

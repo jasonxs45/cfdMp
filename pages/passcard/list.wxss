@@ -45,7 +45,7 @@ page {
   line-height: 40rpx;
   text-align: center;
   padding: 0 10rpx;
-  background: #4D4D4D;
+  background: #967141;
   border-radius: 2px;
   font-size: 20rpx;
   font-weight: 500;

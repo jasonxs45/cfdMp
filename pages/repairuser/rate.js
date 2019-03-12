@@ -8,21 +8,21 @@ Page({
     id: '',
     describes,
     desc: '',
-    rateItems: ['响应速度', '服务态度', '处理结果'],
+    rateItems: ['响应速度','服务态度','处理结果'],
     scores: [0, 0, 0],
     submitDisable: false
   },
-  textInputHandler(e) {
+  textInputHandler (e) {
     this.data.desc = e.detail.value
   },
-  rate(e) {
+  rate (e) {
     let index = e.currentTarget.dataset.index
     let str = `scores[${index}]`
     this.setData({
       [str]: e.detail
     })
   },
-  submit() {
+  submit () {
     let index = this.data.scores.findIndex(item => item === 0)
     if (index !== -1) {
       app.toast(`请对${this.data.rateItems[index]}评分`)
@@ -36,7 +36,7 @@ Page({
         submitDisable: false
       })
       wx.showModal({
-        title: res.data.IsSuccess ? '温馨提示' : '对不起',
+        title: res.data.IsSuccess?'温馨提示':'对不起',
         content: res.data.Msg,
         showCancel: false,
         success: r => {

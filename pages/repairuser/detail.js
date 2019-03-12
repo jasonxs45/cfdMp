@@ -3,7 +3,7 @@ import { formatDate } from '../../utils/util'
 const describes = [
   '非常不满意', '不满意', '一般', '满意', '非常满意'
 ]
-const app = getApp()
+const app =getApp()
 Page({
   data: {
     id: '',
@@ -13,7 +13,7 @@ Page({
     steps: [],
     describes,
   },
-  getDetail() {
+  getDetail () {
     app.loading('加载中')
     _detail(this.data.id).then(res => {
       wx.hideLoading()
@@ -35,16 +35,16 @@ Page({
       console.log(err)
     })
   },
-  goRate() {
+  goRate () {
     wx.navigateTo({
       url: `./rate?id=${this.data.id}`
     })
   },
-  onLoad(options) {
+  onLoad (options) {
     this.data.id = options.id
   },
-  onReady() { },
-  onShow() {
+  onReady () {},
+  onShow () {
     app.memberReadyCb = () => {
       this.getDetail()
     }
@@ -53,9 +53,9 @@ Page({
     }
     app.init()
   },
-  onHide() { },
-  onUnload() { },
-  onPullDownRefresh() { },
-  onReachBottom() { },
-  onShareAppMessage() { }
+  onHide () {},
+  onUnload () {},
+  onPullDownRefresh () {},
+  onReachBottom () {},
+  onShareAppMessage () {}
 })

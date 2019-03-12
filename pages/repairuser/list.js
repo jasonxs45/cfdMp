@@ -14,18 +14,22 @@ Component({
         target: 'handleList'
       },
       {
+        text: '待评价',
+        target: 'evaluateList'
+      },
+      {
         text: '已完成',
         target: 'finishList'
       }
     ],
     lists: [
-      [], [], []
+      [], [], [], []
     ],
-    pageIndexes: [1, 1, 1],
+    pageIndexes: [1, 1, 1, 1],
     pageSize: 4,
-    states: ['待受理', '已受理', '已完成'],
-    finished: [false, false, false],
-    totalCount: [null, null, null]
+    states: ['待受理', '处理中', '待评价', '已完成'],
+    finished: [false, false, false, false],
+    totalCount: [null, null, null, null]
   },
   methods: {
     tabChange(e) {
@@ -83,11 +87,17 @@ Component({
       let currentPageIndex = this.data.pageIndexes[this.data.currentIndex]
       console.log(currentPageIndex)
       _list(
+        app.globalData.member.ID,
         this.data.states[currentIndex],
         this.data.pageIndexes[currentIndex],
         this.data.pageSize
       ).then(res => {
-        this.data.lists[currentIndex] = this.data.lists[currentIndex].concat(res.data.Activity_Activity_list)
+        let list = res.data.Repair_Apply_list.map(ele => {
+          let addtime = new Date(ele.AddTime)
+          ele.AddTime = formatDate(addtime, 'yyyy/MM/dd hh:mm')
+          return ele
+        })
+        this.data.lists[currentIndex] = this.data.lists[currentIndex].concat(list)
         let str = `lists[${currentIndex}]`
         this.setData({
           [str]: this.data.lists[currentIndex]
@@ -118,9 +128,6 @@ Component({
       }
     },
     onLoad(options) {
-    },
-    onReady() { },
-    onShow() {
       app.memberReadyCb = () => {
         this.totalQuery()
       }
@@ -129,13 +136,16 @@ Component({
       }
       app.init()
     },
+    onReady() { },
+    onShow() {
+    },
     onHide() { },
     onUnload() { },
     onPullDownRefresh() {
       this.setData({
-        pageIndexes: [1, 1, 1],
-        finished: [false, false, false],
-        totalCount: [null, null, null]
+        pageIndexes: [1, 1, 1, 1],
+        finished: [false, false, false, false],
+        totalCount: [null, null, null, null]
       })
       this.totalQuery()
     },

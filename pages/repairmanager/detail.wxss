@@ -46,7 +46,7 @@ page{
   display: inline-block;
   height: 60rpx;
   line-height: 60rpx;
-  background: #f5f5f5;
+  background: #FEF0E5;
   color: #333;
   font-size: 24rpx;
   padding: 0 30rpx;
@@ -58,6 +58,28 @@ page{
   font-weight: 500;
   line-height: 34rpx;
   margin-top: 10rpx;
+}
+.rate-item{
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.rate-item .tit,
+.rate-item .describe{
+  font-size: 26rpx;
+  color: #333;
+  font-weight: 500;
+  width: 140rpx;
+}
+.rate-item .describe{
+  text-align: right;
+  width: 180rpx;
+}
+.stars{
+  color: #967141;
+}
+.stars .star{
+  margin: 10rpx;
 }
 .steps-wrapper{
   margin-top: 30rpx;
@@ -170,4 +192,11 @@ page{
 }
 .btns .btn:first-child{
   margin-top: 0;
+}
+.p{
+  justify-content: space-between;
+  align-items: center;
+  margin: 15rpx 0;
+  font-size: 28rpx;
+  color: #666;
 }

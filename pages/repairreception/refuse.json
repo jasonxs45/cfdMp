@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "重新维修",
-  "usingComponents": {
-    "split": "/components/split/index",
-    "x-btn": "/components/x-btn/index"
-  }
-}

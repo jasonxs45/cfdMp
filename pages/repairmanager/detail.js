@@ -2,15 +2,21 @@ import { _handledetail as _detail } from '../../common/repair'
 import { formatDate } from '../../utils/util'
 const app = getApp()
 const computedBehavior = require('miniprogram-computed')
+const describes = [
+  '非常不满意', '不满意', '一般', '满意', '非常满意'
+]
 Component({
   behaviors: [computedBehavior],
   data: {
     id: '',
     detail: null,
+    rateItems: ['响应速度', '服务态度', '处理结果'],
+    scores: [],
     steps: [],
     roleName: '',
     role: null,
-    state: null
+    state: null,
+    describes
   },
   computed: {
     padding () {
@@ -20,7 +26,7 @@ Component({
       } else {
         console.log(this.data.roleName, this.data.detail.Status)
         if (this.data.roleName === '客服') {
-          if (this.data.detail.Status === '待受理') {
+          if (this.data.detail.Status === '待受理' || this.data.detail.Status === '待评价') {
             bool = false
           } else {
             bool = true
@@ -32,6 +38,9 @@ Component({
           } else {
             bool = false
           }
+        }
+        if (this.data.detail.Status === '已完成') {
+          bool = false
         }
       }
       return bool
@@ -45,6 +54,7 @@ Component({
         let detail = res.data.Repair_Apply
         detail.AddTime = formatDate(new Date(detail.AddTime), 'yyyy/MM/dd hh:mm')
         detail.Img = detail.Img !== "" ? detail.Img.split(',') : []
+        let scores = [detail.Evaluate1, detail.Evaluate2, detail.Evaluate3]
         let steps = res.data.Repair_Process_list.map(item => {
           item.AddTime = formatDate(new Date(item.AddTime), 'yyyy/MM/dd hh:mm')
           item.ImgUrl = item.ImgUrl ? item.ImgUrl.split('|') : []
@@ -52,7 +62,8 @@ Component({
         })
         this.setData({
           detail,
-          steps
+          steps,
+          scores
         })
       }).catch(err => {
         wx.hideLoading()
