@@ -3,6 +3,7 @@ import { _homelist } from '../../common/menus'
 import { _list as _bannerlist } from '../../common/banner'
 import { _list as _actlist } from '../../common/activity'
 import { _homeshoplist } from '../../common/shop'
+import { _ad } from '../../common/ad'
 const entries = []
 const app = getApp()
 Page({
@@ -11,7 +12,33 @@ Page({
     actList: [],
     shopList: [],
     entries: [],
-    power: null
+    power: null,
+    ad: null,
+    adshow: false
+  },
+  getAd() {
+    app.loading('加载中')
+    _ad().then(r => {
+      wx.hideLoading()
+      console.log(r)
+      // 广告
+      let ad = null
+      let adshow = false
+      if (r.data.Data) {
+        ad = {
+          img: r.data.Data.image,
+          url: r.data.Data.url
+        }
+        adshow = true
+        this.setData({
+          ad,
+          adshow
+        })
+      }
+    }).catch(e => {
+      console.log(e)
+      wx.hideLoading()
+    })
   },
   getList() {
     let member = app.globalData.member || wx.getStorageSync('member')
@@ -59,6 +86,16 @@ Page({
       })
     })
   },
+  adLoaded() {
+    this.setData({
+      adshow: true
+    })
+  },
+  hideAd() {
+    this.setData({
+      adshow: false
+    })
+  },
   onLoad() {
     app.memberReadyCb = () => {
     }
@@ -69,6 +106,9 @@ Page({
   },
   onShow() {
     let uid = app.globalData.uid || wx.getStorageSync('uid')
-    if (uid) this.getList()
+    if (uid) {
+      this.getList()
+      this.getAd()
+    }
   }
 })

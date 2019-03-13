@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -252,13 +252,13 @@
 					"query": "",
 					"scene": null
 				},
-        {
-          "id": -1,
-          "name": "访客申请-填写备注",
-          "pathName": "pages/visitapply/visitor2",
-          "query": "id=75&cname=公司",
-          "scene": null
-        },
+				{
+					"id": -1,
+					"name": "访客申请-填写备注",
+					"pathName": "pages/visitapply/visitor2",
+					"query": "id=75&cname=公司",
+					"scene": null
+				},
 				{
 					"id": -1,
 					"name": "访客申请成功扫码",
