@@ -26,8 +26,10 @@ Page({
   },
   longcXz (e){
     let floorIndex = e.currentTarget.dataset.index
+    let companyIndex = null
     this.setData({
-      floorIndex
+      floorIndex,
+      companyIndex
     }, () => {
       let floor = this.data.floors[floorIndex]
       _companylist(floor).then(res => {
@@ -61,16 +63,23 @@ Page({
       return
     }
     let id = this.data.companies[this.data.companyIndex].ID
+    let cname = this.data.companies[this.data.companyIndex].Name
     wx.navigateTo({
-      url: `./visitor2?id=${id}`
+      url: `./visitor2?id=${id}&cname=${cname}`
     })
   },
   onLoad  (options) {
-    // this.longcFor(this.data.longdIndex)
+    app.memberReadyCb = () => {
+    }
+    app.fansReadyCb = () => {
+      app.checkMember()
+    }
     this.totalQuery()
   },
   onReady  () {},
-  onShow  () {},
+  onShow  () {
+    app.init()
+  },
   onHide  () {},
   onUnload  () {},
   onPullDownRefresh  () {},

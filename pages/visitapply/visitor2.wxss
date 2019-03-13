@@ -1,5 +1,7 @@
 @import "./visitor.wxss";
-
+.visitorMain{
+  min-height: 70vh;
+}
 .form{
   padding: 30rpx;
 }
@@ -8,12 +10,21 @@
   margin-top: 30rpx;
 }
 .fh{
+  width: 120rpx;
   font-size:24rpx;
-  font-weight:400;
   color:rgba(51,51,51,1);
   line-height:34rpx;
 }
 .fb{
+  flex: 1;
+  font-size:26rpx;
+  color:rgba(51,51,51,1);
+  line-height:34rpx;
+}
+.form-bar .fh{
+  width: auto;
+}
+.form-bar .fb{
   font-size: 30rpx;
   margin-top: 30rpx;
   width: 100%;
@@ -28,10 +39,10 @@
 }
 .textarea{
   width: 100%;
-  height: 150rpx;
+  height: 250rpx;
   color: #4d4d4d;
   background: #F5F5F5;
-  border-radius: 4rpx;
+  border-radius: 8rpx;
   padding: 15rpx;
 }
 .input{

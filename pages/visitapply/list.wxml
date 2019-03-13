@@ -1,6 +1,0 @@
-<view class="list">
-  <navigator class="listM" wx:for="{{list}}" wx:key="list-{{index}}" url='./details?id={{index}}'>
-    <view class="listTop">人名<text>2018-12-14 14：30</text></view>
-    <view class="listMain">武汉四点钟科技有限公司</view>
-  </navigator>
-</view>

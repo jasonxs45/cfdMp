@@ -1,6 +1,7 @@
 {
-  "navigationBarTitleText": "临时访客门禁",
+  "navigationBarTitleText": "我要申访",
   "backgroundColor": "#131314",
   "navigationBarBackgroundColor": "#131314",
-  "navigationBarTextStyle": "white"
+  "navigationBarTextStyle": "white",
+  "disableScroll": true
 }

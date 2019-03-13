@@ -1,30 +1,77 @@
-// pages/visitapply/visitor3.js
+import { _visitinfo, _scan } from '../../common/visit'
+const app = getApp()
 Page({
   data: {
-
+    id: null,
+    info: null
   },
-  onLoad: function (options) {
-    // 生命周期函数--监听页面加载
+  getInfo () {
+    let mid = app.globalData.member.ID || wx.getStorageSync('member').ID
+    app.loading('加载中')
+    _visitinfo(this.data.id, mid).then(res => {
+      wx.hideLoading()
+      this.setData({
+        info: res.data.Visit_Apply
+      })
+    }).catch(err => {
+      console.log(err)
+      wx.hideLoading()
+      wx.showModal({
+        title: '对不起',
+        content: '请求失败，请稍后再试',
+        showCancel: false
+      })
+    })
   },
-  onReady: function () {
-    // 生命周期函数--监听页面初次渲染完成
+  openScan() {
+    wx.scanCode({
+      onlyFromCamera: true,
+      success: res => {
+        let code = res.result
+        app.loading('处理中')
+        _scan(code).then(res => {
+          wx.hideLoading()
+          if (res.data.IsSuccess) {
+            wx.showModal({
+              title: '温馨提示',
+              content: res.data.Msg,
+              showCancel: false
+            })
+          } else {
+            wx.showModal({
+              title: '对不起',
+              content: res.data.Msg,
+              showCancel: false
+            })
+          }
+        }).catch(err => {
+          console.log(err)
+          wx.hideLoading()
+          wx.showModal({
+            title: '对不起',
+            content: '请求失败，请稍后再试',
+            showCancel: false
+          })
+        })
+      }
+    })
   },
-  onShow: function () {
-    // 生命周期函数--监听页面显示
+  onLoad (options) {
+    this.data.id = options.id
+    app.memberReadyCb = () => {
+      this.getInfo()
+    }
+    app.fansReadyCb = () => {
+      app.checkMember()
+    }
   },
-  onHide: function () {
-    // 生命周期函数--监听页面隐藏
+  onReady () {},
+  onShow () {
+    app.init()
   },
-  onUnload: function () {
-    // 生命周期函数--监听页面卸载
-  },
-  onPullDownRefresh: function () {
-    // 页面相关事件处理函数--监听用户下拉动作
-  },
-  onReachBottom: function () {
-    // 页面上拉触底事件的处理函数
-  },
-  onShareAppMessage: function () {
-    // 用户点击右上角分享
-  }
+  onHide () {},
+  onUnload () {},
+  onPullDownRefresh () {},
+  onReachBottom () {},
+  onShareAppMessage () {}
 })

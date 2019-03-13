@@ -1,23 +1,30 @@
 <image mode="aspectFit" class="bg" src="./bg.jpg" />
-<view class="visitor">
+<scroll-view scroll-y class="visitor">
   <view class="visitorTitle">微信申请门禁卡的时间为早上9点至下午5点</view>
   <view class="visitorMain">
     <view class="visitorA">
       <view><text class='on'>1</text>选择企业/单位</view>
-      <view><text class='on'>3</text>填写信息</view>
+      <view><text class='on'>2</text>填写信息</view>
       <view><image mode="scaleToFill" src="./ico1.png" />提交完成</view>
     </view>
     <view class='visitorText'>
-      <view><text>拜访企业：</text>2楼 201 武汉矩阵互动科技有限公司</view>
-      <view><text>访　　客：</text>方木</view>
-      <view><text>联系电话：</text>13012349127</view>
-      <view><text>身份证号：</text>420104189203120734</view>
-      <view><text>入　　口：</text>地下一层办公区</view>
+      <view class='p flex'>
+        <view class='ph'>拜访企业：</view>
+        <view class='pb'>{{info.CompanyName}}</view>
+      </view>
+      <view class='p flex'>
+        <view class='ph'>访　　客：</view>
+        <view class='pb'>{{info.Name}}</view>
+      </view>
+      <view class='p flex'>
+        <view class='ph'>来访事由：</view>
+        <view class='pb'>{{info.Remark}}</view>
+      </view>
     </view>
     <view class='visitorTs'>
       您的门禁卡申请已审核通过，请点击下方开锁按钮开锁。
       <text>如有异常，请拔打客服电话：13912345678</text>
     </view>
   </view>
-  <view class="visitorBut" bindtap=''>开锁</view>
-</view>
+  <view class="visitorBut" bindtap='openScan'>开锁</view>
+</scroll-view>

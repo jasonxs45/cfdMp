@@ -8,7 +8,6 @@
     "pages/modify/index",
     "pages/visitrecord/visitor",
     "pages/visitrecord/staff",
-    "pages/visitapply/index",
     "pages/activity/activity",
     "pages/activity/detail",
     "pages/repairuser/enter",
@@ -28,8 +27,6 @@
     "pages/visitapply/visitor",
     "pages/visitapply/visitor2",
     "pages/visitapply/visitor3",
-    "pages/visitapply/list",
-    "pages/visitapply/details",
     "pages/voucher/mylist",
     "pages/voucher/index",
     "pages/voucher/detail",
@@ -44,7 +41,9 @@
     "pages/workbench/index",
     "pages/activity/scan",
     "pages/passcard/enter",
-    "pages/passcard/companylist"
+    "pages/passcard/companylist",
+    "pages/visitapply/staff",
+    "pages/modifycontactor/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

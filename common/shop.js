@@ -26,7 +26,7 @@ let _homeshoplist = () => {
  let _shoplist = (pageIndex = 1, pageSize = 5) => {
    let param = {
      Merchants_Main_list: {
-       field: "ID,Name,Logo,Address,Label,Tel,BusinessTime",
+       field: "ID,Name,Logo,Address,Label,Tel,BusinessTime,Sort",
        Online: true,
        order: "Sort",
        IsDelete: false,

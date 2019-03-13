@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 33,
+			"current": 37,
 			"list": [
 				{
 					"id": 0,
@@ -107,46 +107,23 @@
 					"query": ""
 				},
 				{
+					"id": 35,
+					"name": "投诉建议详情",
+					"pathName": "pages/suggest/detail",
+					"query": "id=3"
+				},
+				{
 					"id": -1,
 					"name": "首页",
 					"pathName": "pages/home/index",
 					"query": ""
 				},
 				{
-					"id": 3,
-					"name": "访客申请页面",
-					"pathName": "pages/visitapply/index",
-					"query": ""
-				},
-				{
-					"id": 4,
-					"name": "访客记录-访客",
-					"pathName": "pages/visitrecord/visitor",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "访客记录-员工",
-					"pathName": "pages/visitrecord/staff",
-					"query": ""
-				},
-				{
-					"id": 8,
-					"name": "会务预约",
-					"pathName": "pages/conference/list",
-					"query": ""
-				},
-				{
-					"id": 3,
-					"name": "临时访客门禁-表单",
-					"pathName": "pages/visitapply/visitor",
-					"query": ""
-				},
-				{
-					"id": 4,
-					"name": "商家",
+					"id": 16,
+					"name": "商家卡券",
 					"pathName": "pages/voucher/index",
-					"query": ""
+					"query": "",
+					"scene": null
 				},
 				{
 					"id": 31,
@@ -159,12 +136,6 @@
 					"name": "我的卡券",
 					"pathName": "pages/voucher/mylist",
 					"query": ""
-				},
-				{
-					"id": 35,
-					"name": "投诉建议详情",
-					"pathName": "pages/suggest/detail",
-					"query": "id=3"
 				},
 				{
 					"id": 14,
@@ -273,6 +244,47 @@
 					"name": "处理人报修列表",
 					"pathName": "pages/repairmanager/handlerslist",
 					"query": ""
+				},
+				{
+					"id": 32,
+					"name": "访客申请-访客",
+					"pathName": "pages/visitapply/visitor",
+					"query": "",
+					"scene": null
+				},
+        {
+          "id": -1,
+          "name": "访客申请-填写备注",
+          "pathName": "pages/visitapply/visitor2",
+          "query": "id=75&cname=公司",
+          "scene": null
+        },
+				{
+					"id": -1,
+					"name": "访客申请成功扫码",
+					"pathName": "pages/visitapply/visitor3",
+					"query": "id=24",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "访客记录-访客",
+					"pathName": "pages/visitrecord/visitor",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "邀访申请-租户",
+					"pathName": "pages/visitapply/staff",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 34,
+					"name": "访客记录-租户",
+					"pathName": "pages/visitrecord/staff",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

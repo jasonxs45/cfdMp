@@ -1,25 +1,25 @@
 @import "./visitor.wxss";
-
-
+.visitorMain{
+  min-height: 60vh;
+}
 .visitorText{
   padding: 60rpx 30rpx 30rpx;
 }
-.visitorText view{
+.visitorText .p{
   font-size:26rpx;
   font-weight:500;
   color:rgba(150,113,65,1);
-  line-height:36rpx;
   margin-bottom: 30rpx;
-  position: relative;
-  padding-left:130rpx;
 }
-.visitorText text{
-  font-size:24rpx;
-  line-height: 34rpx;
+.visitorText .ph{
+  width: 140rpx;
+  line-height:36rpx;
+}
+.visitorText .pb{
+  flex: 1;
+  font-size:26rpx;
   color: #131314;
-  position: absolute;
-  top: 0;
-  left: 0;
+  line-height:36rpx;
 }
 .visitorTs{
   background: #FEF0E5;

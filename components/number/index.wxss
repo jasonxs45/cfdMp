@@ -29,7 +29,7 @@
   border-radius: 4rpx;
   transition: background-color .1s ease;
   color: #fff;
-  background: #4d4d4d;
+  background: #967141;
   font-size: 30rpx;
   line-height: 80rpx;
   text-align: center;

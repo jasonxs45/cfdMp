@@ -1,66 +1,68 @@
-// pages/visitapply/visitor2.js
+import { _visitorsubmit as _submit } from '../../common/visit'
+const app = getApp()
 Page({
   data: {
-    id: null,
-    name:'',
-    tel:'',
-    idCard:'',
-    backinfo:'',
-    changy: [
-      { name: '夏松1', tel: '15999999999', idCard: '123456789777777777' },
-      { name: '夏松2', tel: '15999999999', idCard: '123456789777777777' },
-      { name: '夏松3', tel: '15999999999', idCard: '123456789777777777' },
-      { name: '夏松4', tel: '15999999999', idCard: '123456789777777777' },
-      { name: '夏松5', tel: '15999999999', idCard: '123456789777777777' },
-      { name: '夏松6', tel: '15999999999', idCard: '123456789777777777' }
-    ],
-    changyIndex:0
-  },
-  nameInput(e) {
-    let value = e.detail
-    this.data.name = value
-  },
-  telInput(e) {
-    let value = e.detail
-    this.data.tel = value
-  },
-  codeInput(e) {
-    let value = e.detail
-    this.data.code = value
+    cid: null,
+    cname: '',
+    mid: null,
+    backinfo:''
   },
   textInput(e) {
     let value = e.detail.value
     this.data.backinfo = value
   },
-  changyXz(e){
-    this.setData({
-      changyIndex: e.target.dataset.index
-    })
-  },
   submit(){
-    wx.showModal({
-      title: '申请成功',
-      content: '恭喜您已申请成功，点击确定按钮\r\n将跳转至开锁界面',
-      showCancel: false,
-      success(res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-          wx.navigateTo({
-            url: './visitor3'
-          })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
+    if (!this.data.backinfo.trim()) {
+      app.toast('请填写来访事由')
+      return
+    }
+    app.loading('加载中')
+    _submit(
+      this.data.mid,
+      this.data.cid,
+      this.data.backinfo
+    ).then(res => {
+      console.log(res)
+      wx.hideLoading()
+      wx.showModal({
+        title: res.data.IsSuccess?'温馨提示':'对不起',
+        content: res.data.Msg,
+        showCancel: false,
+        success:r => {
+          if (r.confirm && res.data.IsSuccess) {
+            wx.navigateTo({
+              url: `./visitor3?id=${res.data.Data}`
+            })
+          }
         }
-      }
+      })
+    }).catch(err => {
+      console.log(err)
+      wx.hideLoading()
+      wx.showModal({
+        title: '对不起',
+        content: '请求错误，请稍后再试',
+        showCancel: false
+      })
     })
   },
   onLoad (options) {
+    this.data.cid = options.id
+    this.data.cname = options.cname
     this.setData({
-      id: options.id
+      cname: this.data.cname
     })
+    app.memberReadyCb = () => {
+      this.data.mid = app.globalData.member.ID
+    }
+    app.fansReadyCb = () => {
+      app.checkMember()
+    }
   },
   onReady () {},
-  onShow () {},
+  onShow () {
+    app.init()
+  },
   onHide () {},
   onUnload () {},
   onPullDownRefresh () {},

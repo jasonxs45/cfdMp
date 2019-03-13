@@ -1,5 +1,5 @@
 <image mode="aspectFit" class="bg" src="./bg.jpg" />
-<view class="visitor">
+<scroll-view scroll-y class="visitor">
   <view class="visitorTitle">微信申请门禁卡的时间为早上9点至下午5点</view>
   <view class="visitorMain">
     <view class="visitorA">
@@ -8,45 +8,17 @@
       <view><text>3</text>提交完成</view>
     </view>
     <view class="form">
-      <view class="form-bar">
-        <view class="fh">姓名</view>
-        <view class="fb flex">
-          <view class="clearable-input">
-            <x-input clear value='{{name}}' class="input" bindinput='nameInput' placeholder='请输入姓名' />
-          </view>
-        </view>
+      <view wx:if='{{cname}}' class='flex'>
+        <view class='fh'><text space='emsp'>企  业：</text></view>
+        <view class='fb'>{{cname}}</view>
       </view>
       <view class="form-bar">
-        <view class="fh">手机号</view>
-        <view class="fb flex">
-          <view class="clearable-input">
-            <x-input clear type='number' value='{{tel}}' class="input" bindinput='telInput' placeholder='请输入手机号码' />
-          </view>
-        </view>
-      </view>
-      <view class="form-bar">
-        <view class="fh">身份证</view>
-        <view class="fb flex">
-          <view class="clearable-input">
-            <x-input clear type='number' value='{{idCard}}' class="input" bindinput='codeInput' placeholder='请输入您的身份证号码' />
-          </view>
-        </view>
-      </view>
-      <view class="form-bar">
-        <view class="fh">备注</view>
+        <view class="fh">来访事由：</view>
         <view class="fb">
-          <textarea placeholder='请填写备注' class="textarea" bindinput='textInput'></textarea>
+          <textarea placeholder='请填写来访事由' class="textarea" bindinput='textInput'></textarea>
         </view>
       </view>
     </view>
-    <view class="visitorTitle2">常用信息</view>
-    <scroll-view scroll-y
-    style="height: 200px;"
-    bindscrolltoupper=""
-    bindscrolltolower=""
-    bindscroll="" class="visitorGs visitorCy">
-      <view wx:for="{{changy}}" wx:key="changy-{{index}}" data-index='{{index}}' bindtap='changyXz' class="{{changyIndex==index?'on':''}}"><text>{{item.name}}</text><text>{{item.tel}}</text><text>{{item.idCard}}</text></view>
-    </scroll-view>
   </view>
   <view class="visitorBut" bindtap='submit'>提交申请</view>
-</view>
+</scroll-view>

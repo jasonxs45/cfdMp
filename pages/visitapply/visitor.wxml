@@ -1,5 +1,5 @@
 <image class="bg" src="./bg.jpg" />
-<view class="visitor">
+<scroll-view scroll-y class="visitor">
   <view class="visitorTitle">微信申请门禁卡的时间为早上9点至下午5点</view>
   <view class="visitorMain">
     <view class="visitorA">
@@ -11,19 +11,19 @@
         <text>3</text>提交完成</view>
     </view>
     <view class="visitorTitle2">选择楼层</view>
-    <scroll-view scroll-y class="visitorFw visitorFw2">
+    <view class="visitorFw visitorFw2">
       <view class="floor-row">
         <view wx:for="{{floors}}" wx:key="longc-{{index}}" class="floor">
           <view data-index='{{index}}' bindtap='longcXz' class="cell {{floorIndex==index?'on':''}}">{{item}}</view>
         </view>
       </view>
-    </scroll-view>
+    </view>
     <block wx:if="{{companies.length}}">
       <view class="visitorTitle2">选择公司</view>
-      <scroll-view scroll-y class="visitorGs">
+      <view class="visitorGs">
         <view wx:for="{{companies}}" wx:key="company-{{index}}" data-index='{{index}}' bindtap='gongsXz' class="{{companyIndex==index?'on':''}}">{{item.RoomNumber}}-{{item.Name}}</view>
-      </scroll-view>
+      </view>
     </block>
   </view>
   <button bindtap="goNext" class="visitorBut">下一步</button>>
-</view>
+</scroll-view>
