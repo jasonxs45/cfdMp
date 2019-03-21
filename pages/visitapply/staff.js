@@ -140,14 +140,14 @@ Component({
         name: options.name || '',
         tel: options.tel || ''
       })
+    },
+    onReady() { },
+    onShow() {
       app.memberReadyCb = () => {
       }
       app.fansReadyCb = () => {
         app.checkMember()
       }
-    },
-    onReady() { },
-    onShow() {
       app.init()
     },
     onHide() { },

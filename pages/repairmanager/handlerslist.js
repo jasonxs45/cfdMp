@@ -105,19 +105,18 @@ Component({
         this.concatList()
       }
     },
-    onLoad(options) {
+    onLoad(options) {},
+    onReady() { },
+    onShow() {
+      this.data.finished = [false, false]
+      this.data.pageIndexes = [1, 1]
+      this.data.totalCount = [null, null]
       app.memberReadyCb = () => {
         this.totalQuery()
       }
       app.fansReadyCb = () => {
         app.checkMember()
       }
-    },
-    onReady() { },
-    onShow() {
-      this.data.finished = [false, false]
-      this.data.pageIndexes = [1, 1]
-      this.data.totalCount = [null, null]
       app.init()
     },
     onHide() { },

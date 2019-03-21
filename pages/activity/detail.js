@@ -88,15 +88,15 @@ Page({
   },
   onLoad(options) {
     this.data.id = options.id
+  },
+  onReady() { },
+  onShow() {
     app.memberReadyCb = () => {
       this.getDetail()
     }
     app.fansReadyCb = () => {
       app.checkMember()
     }
-  },
-  onReady() { },
-  onShow() {
     app.init()
   },
   onHide() { },

@@ -29,6 +29,9 @@ Page({
   },
   onLoad(options) {
     this.data.id = options.id
+  },
+  onReady () {},
+  onShow () {
     app.memberReadyCb = () => {
       this.getDetail()
     }
@@ -37,8 +40,6 @@ Page({
     }
     app.init()
   },
-  onReady () {},
-  onShow () {},
   onHide () {},
   onUnload () {},
   onPullDownRefresh () {},

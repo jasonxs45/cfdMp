@@ -3,5 +3,8 @@
   "backgroundColor": "#131314",
   "navigationBarBackgroundColor": "#131314",
   "navigationBarTextStyle": "white",
-  "disableScroll": true
+  "disableScroll": true,
+  "usingComponents": {
+    "tel": "/components/tel/index"
+  }
 }

@@ -107,18 +107,18 @@ Component({
       }
     },
     onLoad(options) {
-      app.memberReadyCb = () => {
-        this.totalQuery()
-      }
-      app.fansReadyCb = () => {
-        app.checkMember()
-      }
     },
     onReady() { },
     onShow() {
       this.data.finished = [false, false, false, false]
       this.data.pageIndexes = [1, 1, 1, 1]
       this.data.totalCount = [null, null, null, null]
+      app.memberReadyCb = () => {
+        this.totalQuery()
+      }
+      app.fansReadyCb = () => {
+        app.checkMember()
+      }
       app.init()
     },
     onHide() { },

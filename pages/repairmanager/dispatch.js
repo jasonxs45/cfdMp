@@ -114,6 +114,9 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.reply ? '回复':'分配',
     })
+  },
+  onReady () {},
+  onShow () {
     app.memberReadyCb = () => {
       this.getHandler()
     }
@@ -122,8 +125,6 @@ Page({
     }
     app.init()
   },
-  onReady () {},
-  onShow () {},
   onHide () {},
   onUnload () {},
   onPullDownRefresh () {},

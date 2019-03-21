@@ -32,7 +32,7 @@
   margin-bottom: 20rpx;
   text-align: center;
 }
-.visitorTs text{
+.visitorTs .text{
   display: block;
   padding-top: 42rpx;
   text-align: center;

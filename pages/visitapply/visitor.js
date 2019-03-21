@@ -69,15 +69,15 @@ Page({
     })
   },
   onLoad  (options) {
+  },
+  onReady  () {},
+  onShow  () {
     app.memberReadyCb = () => {
+      this.totalQuery()
     }
     app.fansReadyCb = () => {
       app.checkMember()
     }
-    this.totalQuery()
-  },
-  onReady  () {},
-  onShow  () {
     app.init()
   },
   onHide  () {},

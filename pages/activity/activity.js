@@ -98,7 +98,9 @@ Page({
       this.concatList()
     }
   },
-  onLoad(options) {
+  onLoad(options) {},
+  onReady() { },
+  onShow() {
     app.memberReadyCb = () => {
       this.totalQuery()
     }
@@ -107,8 +109,6 @@ Page({
     }
     app.init()
   },
-  onReady() { },
-  onShow() { },
   onHide() { },
   onUnload() { },
   onPullDownRefresh() {

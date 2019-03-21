@@ -156,6 +156,9 @@ Page({
       id: this.data.id,
       role: this.data.role
     })
+  },
+  onReady() {},
+  onShow() {
     app.memberReadyCb = () => {
       this.getDetail()
     }
@@ -164,8 +167,6 @@ Page({
     }
     app.init()
   },
-  onReady() { },
-  onShow() { },
   onHide() { },
   onUnload() { },
   onShareAppMessage() { }

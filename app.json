@@ -69,7 +69,7 @@
       },
       {
         "pagePath": "pages/voucher/index",
-        "text": "卡券",
+        "text": "商户",
         "iconPath": "/images/voucher1.png",
         "selectedIconPath": "/images/voucher2.png"
       },

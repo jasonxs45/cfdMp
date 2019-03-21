@@ -189,9 +189,14 @@ Component({
             showCancel: false,
             success: r => {
               if (r.confirm) {
-                wx.switchTab({
-                  url: '/pages/usercenter/index'
-                })
+                let pages = getCurrentPages()
+                if (pages.length > 1) {
+                  wx.navigateBack()
+                } else {
+                  wx.switchTab({
+                    url: '/pages/home/index'
+                  })
+                }
               }
             }
           })

@@ -19,9 +19,14 @@ Page({
         app.globalData.fans = fans
         wx.setStorageSync('member', member)
         app.globalData.member = member
-        wx.switchTab({
-          url: '/pages/home/index'
-        })
+        let pages = getCurrentPages()
+        if (pages.length > 1) {
+          wx.navigateBack()
+        } else {
+          wx.switchTab({
+            url: '/pages/home/index'
+          })
+        }
       } else {
         wx.showModal({
           title: '对不起',

@@ -39,7 +39,7 @@ App({
                       this.globalData.member = result.data.Data.Member
                       this.fansReadyCb && this.fansReadyCb()
                     } else {
-                      wx.redirectTo({
+                      wx.navigateTo({
                         url: '/pages/login/index'
                       })
                     }
@@ -57,7 +57,7 @@ App({
                 })
               } else {
                 console.log('login没有返回uid,跳转授权页面')
-                wx.redirectTo({
+                wx.navigateTo({
                   url: '/pages/login/index'
                 })
               }

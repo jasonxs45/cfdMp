@@ -23,7 +23,7 @@
     </view>
     <view class='visitorTs'>
       您的门禁卡申请已审核通过，请点击下方开锁按钮开锁。
-      <text>如有异常，请拔打客服电话：13912345678</text>
+      <view class='text'>如有异常，请拔打客服电话：<tel class='tel' tel='027-59236911' /></view>
     </view>
   </view>
   <view class="visitorBut" bindtap='openScan'>开锁</view>

@@ -42,16 +42,13 @@ Page({
       }
     })
   },
-  onLoad(options) {
-  },
+  onLoad(options) {},
   onReady() {
+    app.memberReadyCb = () => { }
+    app.fansReadyCb = () => { }
     this.openScan()
   },
   onShow() {
-    app.memberReadyCb = () => {
-    }
-    app.fansReadyCb = () => {
-    }
     app.init()
   },
   onHide() { },

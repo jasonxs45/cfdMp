@@ -28,7 +28,7 @@
 </view>
 <view wx:if='{{shopList.length > 0}}' class="pad30">
   <view class="title flex">
-    <view class="text">商家优惠</view>
+    <view class="text">商户列表</view>
     <navigator class="nav" open-type='switchTab' url="/pages/voucher/index">
       更多
       <x-icon type="enter" />
