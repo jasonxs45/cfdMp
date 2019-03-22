@@ -40,6 +40,11 @@ Page({
       wx.hideLoading()
     })
   },
+  goOut (e) {
+    wx.navigateToMiniProgram({
+      appId: e.currentTarget.dataset.appid
+    })
+  },
   getList() {
     let member = app.globalData.member || wx.getStorageSync('member')
     this.data.power = member && member.Type === '租户' ? 2 : 1

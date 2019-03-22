@@ -1,0 +1,11 @@
+<view wx:if="{{list.length > 0}}">
+  <navigator class="item flex" wx:for="{{list}}" wx:key="item-{{index}}" url="./index?id={{item.ID}}&tit={{item.Name}}">
+    <image class="img" src="{{item.ImageUrl}}" mode="aspectFill" />
+    <view class="text">
+      <view class="title">{{item.Name}}</view>
+      <view class="date">{{item.Introduce}}</view>
+    </view>
+  </navigator>
+  <bottom-tip finished="{{finished}}" />
+</view>
+<no-data wx:else />

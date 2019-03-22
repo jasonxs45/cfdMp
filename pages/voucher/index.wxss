@@ -27,6 +27,7 @@ page{
   margin: 30rpx 0 40rpx;
   background: #fff;
   overflow: hidden;
+  position: relative;
 }
 .nav:first-child{
   margin-top: 0;
@@ -75,6 +76,9 @@ page{
 .line{
   height:2rpx;
   background: rgba(238,238,238,1);
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 .nav .coucher{
   font-size:24rpx;

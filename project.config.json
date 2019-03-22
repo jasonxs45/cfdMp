@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 37,
+			"current": 38,
 			"list": [
 				{
 					"id": 0,
@@ -283,6 +283,13 @@
 					"id": 34,
 					"name": "访客记录-租户",
 					"pathName": "pages/visitrecord/staff",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "资讯",
+					"pathName": "pages/news/types",
 					"query": "",
 					"scene": null
 				}

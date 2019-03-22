@@ -7,7 +7,8 @@ let _homelist = power => {
     Home_Menu_list: {
       order: "Sort",
       field: "Title,Img,Url",
-      Power: power //参数 未注册和访客传1  租户传2
+      Power: power, //参数 未注册和访客传1  租户传2
+      IsShow: true
     }
   }
   return query(param)

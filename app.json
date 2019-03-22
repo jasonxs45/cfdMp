@@ -43,7 +43,8 @@
     "pages/passcard/enter",
     "pages/passcard/companylist",
     "pages/visitapply/staff",
-    "pages/modifycontactor/index"
+    "pages/modifycontactor/index",
+    "pages/news/types"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
@@ -68,8 +69,8 @@
         "selectedIconPath": "/images/activity2.png"
       },
       {
-        "pagePath": "pages/voucher/index",
-        "text": "商户",
+        "pagePath": "pages/news/types",
+        "text": "资讯",
         "iconPath": "/images/voucher1.png",
         "selectedIconPath": "/images/voucher2.png"
       },
@@ -83,5 +84,8 @@
   },
   "networkTimeout": {
     "request": 15000
-  }
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx6945d1bda68d7993"
+  ]
 }

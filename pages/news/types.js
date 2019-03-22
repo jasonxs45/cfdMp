@@ -1,4 +1,4 @@
-import { _banner, _list } from '../../common/news'
+import { _types } from '../../common/news'
 import { formatDate } from '../../utils/util'
 const app = getApp()
 Page({
@@ -13,24 +13,20 @@ Page({
   totalQuery() {
     app.loading('加载中')
     Promise.all([
-      _banner(this.data.id),
-      _list(this.data.id, this.data.pageIndex, this.data.pageSize)
+      _types()
     ]).then(res => {
       console.log(res)
       wx.hideLoading()
       wx.stopPullDownRefresh()
-      // banner
-      let banners = res[0].data.News_News_list
       // 列表
-      let list = res[1].data.News_News_list.map(item => {
+      let list = res[0].data.News_Type_list.map(item => {
         item.AddTime = formatDate(new Date(item.AddTime), 'yyyy-MM-dd hh: mm')
         return item
       })
       let finished = false
-      let totalCount = res[1].data.total_count
+      let totalCount = res[0].data.total_count
       finished = list.length >= totalCount
       this.setData({
-        banners,
         list,
         totalCount,
         finished
@@ -47,7 +43,7 @@ Page({
     })
   },
   concatList() {
-    _list(this.data.id, this.data.pageIndex, this.data.pageSize).then(res => {
+    _types().then(res => {
       console.log(res)
       let list = res.data.News_News_list.map(item => {
         item.AddTime = formatDate(new Date(item.AddTime), 'yyyy-MM-dd hh: mm')
@@ -68,10 +64,6 @@ Page({
   },
   onLoad(options) {
     this.data.id = options.id
-    let title = options.tit
-    wx.setNavigationBarTitle({
-      title
-    })
     app.memberReadyCb = () => {
     }
     app.fansReadyCb = () => {

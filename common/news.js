@@ -2,6 +2,16 @@ import { fetch, query } from 'api'
 /**==========================
  *         新闻列表及详细
  ==========================*/
+ let _types = () => {
+   let param = {
+     News_Type_list: {
+       order: "Sort",
+       IsDelete: false
+     },
+     total_count: ""
+   }
+   return query(param)
+ }
 let _banner = typeid => {
   let param = {
     News_News_list: {
@@ -39,6 +49,7 @@ let _detail = id => {
   return query(param)
 }
 export {
+  _types,
   _list,
   _banner,
   _detail

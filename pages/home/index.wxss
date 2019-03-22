@@ -73,6 +73,12 @@ page{
   margin: 30rpx 0;
   background: #fff;
   overflow: hidden;
+  position: relative;
+}
+.shop .line{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 .shop:first-child{
   margin-top: 0;
