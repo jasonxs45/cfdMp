@@ -35,7 +35,7 @@
 <view wx:if='{{shopList.length > 0}}' class="pad30">
   <view class="title flex">
     <view class="text">精选商户</view>
-    <navigator class="nav" open-type='switchTab' url="/pages/voucher/index">
+    <navigator class="nav" url="/pages/voucher/index">
       更多
       <x-icon type="enter" />
     </navigator>

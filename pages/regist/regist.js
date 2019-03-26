@@ -98,9 +98,9 @@ Component({
           // app.toast(res.data.Msg)
           app.toast('已发送，请注意查收')
           this.data.msgCode = res.data.Data
-          this.setData({
-            code: this.data.msgCode
-          })
+          // this.setData({
+          //   code: this.data.msgCode
+          // })
         } else {
           wx.showModal({
             title: '对不起',
