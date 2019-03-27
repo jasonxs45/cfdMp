@@ -14,7 +14,7 @@ Component({
     buildings: [],
     allCompanies: [],
     companies: [],
-    buildingSelectIndex: null,
+    buildingSelectIndex: 0,
     companySelectIndex: null,
     companyName: '',
     name: '',

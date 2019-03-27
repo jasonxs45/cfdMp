@@ -16,7 +16,7 @@
         <view class="fh">写字楼</view>
         <view class="fb flex">
           <view class="clearable-input">
-            <picker class="input select" range='{{buildings}}' range-key='Name' value='{{buildingSelectIndex}}' bindchange='buildingSelect'>
+            <picker class="input select" disabled range='{{buildings}}' range-key='Name' value='{{buildingSelectIndex}}' bindchange='buildingSelect'>
               <text wx:if="{{buildingSelectIndex !== null}}">
                   {{buildings[buildingSelectIndex].Name}}
                 </text>

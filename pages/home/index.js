@@ -102,14 +102,14 @@ Page({
     })
   },
   onLoad() {
+  },
+  onShow() {
     app.memberReadyCb = () => {
     }
     app.fansReadyCb = () => {
       this.totalQuery()
     }
     app.init()
-  },
-  onShow() {
     let uid = app.globalData.uid || wx.getStorageSync('uid')
     if (uid) {
       this.getList()
