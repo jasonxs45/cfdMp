@@ -35,6 +35,11 @@ page {
   font-size: 20rpx;
   color: #666;
 }
+.fh .tip{
+  font-weight: 600;
+  font-size: 100%;
+  color: #f00;
+}
 
 .fb {
   font-size: 26rpx;

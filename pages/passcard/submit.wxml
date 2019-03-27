@@ -13,7 +13,7 @@
   <split />
   <view class="section">
     <view class="form-bar">
-      <view class="fh">物品清单</view>
+      <view class="fh">物品清单<text class='tip'>（仅限小件物品放行）</text></view>
       <view class="fb">
         <view wx:for="{{goodsArr}}" wx:key="goods-{{index}}" class="goods flex">
           <view class="img-wrapper">
