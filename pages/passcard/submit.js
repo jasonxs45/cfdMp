@@ -69,6 +69,9 @@ Page({
     this.data.description = value
   },
   addLine() {
+    if (this.data.goodsArr.length >= 3) {
+      return
+    } 
     this.data.goodsArr.push({
       img: '',
       name: '',

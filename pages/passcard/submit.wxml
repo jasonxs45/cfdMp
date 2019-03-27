@@ -34,7 +34,7 @@
         </view>
       </view>
     </view>
-    <view class="add" bindtap='addLine'>
+    <view hidden='{{goodsArr.length >= 3}}' class="add" bindtap='addLine'>
       <x-icon type="plus" />{{goodsArr.length ? '继续添加':'添加物品'}}
     </view>
   </view>
