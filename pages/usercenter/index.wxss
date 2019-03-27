@@ -1,7 +1,11 @@
+page{
+  background: #f2f2f2;
+}
 .base-info {
   position: relative;
   height: 330rpx;
   padding: 30rpx;
+  background: #fff;
 }
 .avatar {
   width: 172rpx !important;
@@ -71,6 +75,9 @@
 }
 .section{
   padding: 0 30rpx;
+}
+.list{
+  background: #fff;
 }
 .entries{
   margin: 30rpx -15rpx 10rpx;

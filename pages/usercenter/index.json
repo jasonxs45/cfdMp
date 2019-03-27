@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "个人中心",
-  "backgroundColorTop": "#ffffff",
+  "backgroundColorTop": "#f2f2f2",
   "backgroundColorBottom": "#f2f2f2",
   "usingComponents": {
     "x-icon": "/components/x-icon/index",
