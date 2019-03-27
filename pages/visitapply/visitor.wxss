@@ -21,7 +21,7 @@ page{
   font-size:28rpx;
   font-weight:500;
   color:rgba(255,255,255,1);
-  line-height:40px;
+  line-height:16px;
   text-align: center;
   padding: 30rpx 0;
 }
