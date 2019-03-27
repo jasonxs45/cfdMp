@@ -27,10 +27,10 @@
     </view>
   </view>
 </view>
-<view class="detail detail2">
+<view wx:if="{{tickets.length > 0}}" class="detail detail2">
   <view class="detail_text_title">门店优惠</view>
   <view class="detail_html">
-    <view wx:if="{{tickets.length > 0}}">
+    <view >
       <view wx:for="{{tickets}}" wx:key="ticket-{{index}}" class="ticket">
         <image class="bg" src="{{item.disabled ? './ico2.png' : './ico1.png'}}" />
         <view class="content flex">
@@ -46,7 +46,7 @@
         </view>
       </view>
     </view>
-    <view wx:else class="nodata">暂无内容</view>
+    <!-- <view wx:else class="nodata">暂无内容</view> -->
   </view>
 </view>
 <view class="detail detail2">
