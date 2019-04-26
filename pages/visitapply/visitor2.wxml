@@ -1,6 +1,6 @@
 <image mode="aspectFit" class="bg" src="./bg.jpg" />
 <scroll-view scroll-y class="visitor">
-  <view class="visitorTitle"><text>微信申请门禁卡的时间为早上9点至下午5点\n（其他时间请前往1楼大堂登记）</text></view>
+  <view class="visitorTitle"><text>微信申请门禁卡的时间为8点至18点\n（其他时间请前往1楼大堂登记）</text></view>
   <view class="visitorMain">
     <view class="visitorA">
       <view><text class='on'>1</text>选择企业/单位</view>

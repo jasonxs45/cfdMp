@@ -48,6 +48,7 @@ Page({
   getList() {
     let member = app.globalData.member || wx.getStorageSync('member')
     this.data.power = member && member.Type === '租户' ? 2 : 1
+    console.log(this.data.power)
     _homelist(this.data.power).then(res => {
       // 入口菜单
       let entries = res.data.Home_Menu_list
@@ -65,7 +66,6 @@ Page({
       _actlist('unover', 1, 3),
       _homeshoplist()
     ]).then(res => {
-      console.log(res)
       wx.hideLoading()
       // banner
       let banners = res[0].data.AD_Config_list
@@ -110,9 +110,9 @@ Page({
       this.totalQuery()
     }
     app.init()
+    this.getList()
     let uid = app.globalData.uid || wx.getStorageSync('uid')
     if (uid) {
-      this.getList()
       this.getAd()
     }
   }

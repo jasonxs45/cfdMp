@@ -2,12 +2,12 @@
 <view class="detail">
   <view class="detail_title">
     <view class="detail_title_t1">{{detail.Name}}</view>
-    <view class="detail_title_t2 flex">
+    <view wx:if='{{detail.OpenApply}}' class="detail_title_t2 flex">
       <text class="desc">已有{{detail.ApplyCount}}人报名</text>
       <!-- <text class="tag">{{detail.ApplyScore}}积分</text> -->
     </view>
   </view>
-  <view class="detail_text">
+  <view wx:if='{{detail.OpenApply}}' class="detail_text">
     <text>报名开始时间: {{detail.ApplyStart}}</text>
     <text>报名截至时间: {{detail.ApplyEnd}}</text>
     <text style='border-bottom:2rpx solid rgba(0,0,0,0.0972);'></text>
@@ -31,7 +31,7 @@
     <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
   </view>
 </view>
-<x-btn class="detaliBut" disabled="{{disabled}}" type="primary" bindtap="submit">
+<x-btn wx:if='{{detail.OpenApply}}' class="detaliBut" disabled="{{disabled}}" type="primary" bindtap="submit">
   {{notstart?'未开始':disabled?'已结束':'立即报名'}}
 </x-btn>
 <import src="/libs/wxParse/wxParse.wxml"/>

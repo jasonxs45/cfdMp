@@ -6,6 +6,7 @@ Page({
     let iv = e.detail.iv
     let encryptedData = e.detail.encryptedData
     let key = app.globalData.s_key || wx.getStorageSync('s_key')
+    console.log(key)
     app.loading('请稍候')
     getUserInfoByKey({ iv, encryptedData, key }).then(r => {
       wx.hideLoading()
@@ -20,6 +21,7 @@ Page({
         wx.setStorageSync('member', member)
         app.globalData.member = member
         let pages = getCurrentPages()
+        console.log(pages)
         if (pages.length > 1) {
           wx.navigateBack()
         } else {
@@ -28,6 +30,7 @@ Page({
           })
         }
       } else {
+        console.log(r)
         wx.showModal({
           title: '对不起',
           content: r.data.Msg,

@@ -156,7 +156,7 @@ page{
   min-height: 400rpx;
 }
 .visitorGs {
-  max-height: 400rpx;
+  /* max-height: 400rpx; */
 }
 .visitorGs view{
   width:620rpx;

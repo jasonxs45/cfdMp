@@ -41,6 +41,9 @@ Component({
           this.data.buildings = res.data.Office_Building_list
           this.setData({
             buildings: this.data.buildings
+          }, () => {
+            let id = this.data.buildings[0].ID
+            this.getCompanyList(id)
           })
         }
       }).catch(err => {

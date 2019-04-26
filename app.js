@@ -20,6 +20,7 @@ App({
           ).then(res => {
             if (res.data.IsSuccess) {
               wx.setStorageSync('s_key', res.data.Data.sessionId)
+              console.log(wx.getStorageSync('s_key'))
               if (res.data.Data.unionid) {
                 // 返回信息含有uid
                 wx.setStorageSync('uid', res.data.Data.unionid)

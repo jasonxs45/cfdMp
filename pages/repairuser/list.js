@@ -14,11 +14,11 @@ Component({
         target: 'handleList'
       },
       {
-        text: '待评价',
+        text: '已完成',
         target: 'evaluateList'
       },
       {
-        text: '已完成',
+        text: '已评价',
         target: 'finishList'
       }
     ],

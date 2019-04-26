@@ -130,8 +130,8 @@ Component({
             item.type = item.Type === '单选'
               ? 'radio'
               : item.Type === '多选'
-                ? 'checkbox'
-                : 'textarea'
+              ? 'checkbox'
+              : 'textarea'
             item.Options = item.Options
                            ? item.Options.split('|').map(item => {
                              item = {
@@ -141,6 +141,7 @@ Component({
                              return item
                            })
                            : ''
+            item.Options = item.Type === '填空' ? '' : item.Options
             return item
           })
         })
@@ -156,6 +157,7 @@ Component({
     },
     getAnswer () {
       let MemberID = app.globalData.member.ID || wx.getStorageSync('member').ID
+      // let MemberID = 2
       _answers(MemberID, this.data.id).then(res => {
         wx.hideLoading()
         console.log(res)
@@ -181,6 +183,7 @@ Component({
     },
     answered () {
       let MemberID = app.globalData.member.ID || wx.getStorageSync('member').ID
+      // let MemberID = 2
       return _answered(MemberID, this.data.id)
     },
     submit () {
