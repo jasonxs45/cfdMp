@@ -19,7 +19,7 @@ page{
   border-radius: 8rpx;
 }
 .entries{
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 50rpx 0;
 }
 .entry{
@@ -29,7 +29,7 @@ page{
 .entry .img{
   width:98rpx;
   height: 96rpx;
-  padding: 10rpx;
+  /* padding: 10rpx; */
   margin: 0 auto;
 }
 .entry .text{
