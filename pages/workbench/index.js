@@ -69,5 +69,8 @@ Page({
     if (uid) {
       this.getEntries()
     }
+  },
+  onShareAppMessage() {
+    return app.shareInfo
   }
 })

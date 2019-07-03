@@ -131,6 +131,8 @@ Component({
       })
       this.totalQuery()
     },
-    onShareAppMessage() { }
+    onShareAppMessage() {
+      return app.shareInfo
+    }
   }
 })

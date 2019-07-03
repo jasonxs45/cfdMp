@@ -148,5 +148,7 @@ Page({
       })
     })
   },
-  onShareAppMessage() { }
+  onShareAppMessage() {
+    return app.shareInfo
+  }
 })

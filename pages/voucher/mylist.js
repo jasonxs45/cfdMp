@@ -166,5 +166,7 @@ Page({
     })
     this.totalQuery()
   },
-  onShareAppMessage() { }
+  onShareAppMessage() {
+    return app.shareInfo
+  }
 })

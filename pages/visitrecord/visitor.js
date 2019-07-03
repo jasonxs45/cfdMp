@@ -177,6 +177,8 @@ Component({
       this.totalQuery()
     },
     onReachBottom() { },
-    onShareAppMessage() { }
+    onShareAppMessage() {
+      return app.shareInfo
+    }
   }
 })

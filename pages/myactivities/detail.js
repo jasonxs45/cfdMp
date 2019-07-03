@@ -52,5 +52,7 @@ Page({
   onShow() { },
   onHide() { },
   onUnload() { },
-  onShareAppMessage() { }
+  onShareAppMessage() {
+    return app.shareInfo
+  }
 })

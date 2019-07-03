@@ -115,5 +115,8 @@ Page({
     if (uid) {
       this.getAd()
     }
+  },
+  onShareAppMessage() {
+    return app.shareInfo
   }
 })

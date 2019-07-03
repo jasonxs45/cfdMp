@@ -151,5 +151,7 @@ Page({
       this.concatList()
     }
   },
-  onShareAppMessage() { }
+  onShareAppMessage() {
+    return app.shareInfo
+  }
 })

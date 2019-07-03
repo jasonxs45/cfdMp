@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
   data: {},
   onLoad (options) {},
@@ -7,5 +8,7 @@ Page({
   onUnload () {},
   onPullDownRefresh () {},
   onReachBottom () {},
-  onShareAppMessage () {}
+  onShareAppMessage() {
+    return app.shareInfo
+  }
 })

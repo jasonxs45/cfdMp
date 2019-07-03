@@ -1,6 +1,11 @@
 import { fetch } from 'common/api'
 import { toast, loading } from 'utils/util'
 App({
+  shareInfo: {
+    title: 'CFD时代财富中心',
+    path: '/pages/home/index',
+    imageUrl: 'http://cfd.1juke.cn/res/Upload/AdminUpload/20190513151902.jpg'
+  },
   globalData: {
     s_key: null,
     uid: null,

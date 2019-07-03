@@ -1,4 +1,4 @@
-// pages/passcard/enter.js
+const app =getApp()
 Page({
   data: {
     role: 1
@@ -16,5 +16,7 @@ Page({
   onUnload () {},
   onPullDownRefresh () {},
   onReachBottom () {},
-  onShareAppMessage () {}
+  onShareAppMessage() {
+    return app.shareInfo
+  }
 })

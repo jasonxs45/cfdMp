@@ -101,5 +101,7 @@ Page({
   },
   onHide() { },
   onUnload() { },
-  onShareAppMessage() { }
+  onShareAppMessage() {
+    return app.shareInfo
+  }
 })
