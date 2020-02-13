@@ -1,5 +1,10 @@
-import { fetch } from 'common/api'
-import { toast, loading } from 'utils/util'
+import {
+  fetch
+} from 'common/api'
+import {
+  toast,
+  loading
+} from 'utils/util'
 App({
   shareInfo: {
     title: 'CFD时代财富中心',
@@ -12,7 +17,8 @@ App({
     fans: null,
     member: null
   },
-  init() {
+  init(opt) {
+    const atHome = opt ? opt.atHome : undefined
     let fans = this.globalData.fans || wx.getStorageSync('fans')
     if (!fans) {
       console.log('not has fans')
@@ -20,8 +26,9 @@ App({
       wx.login({
         success: r => {
           fetch(
-            'WxOpen.ashx?Act=onlogin',
-            { code: r.code }
+            'WxOpen.ashx?Act=onlogin', {
+              code: r.code
+            }
           ).then(res => {
             if (res.data.IsSuccess) {
               wx.setStorageSync('s_key', res.data.Data.sessionId)
@@ -32,8 +39,9 @@ App({
                 this.globalData.uid = res.data.Data.unionid
                 console.log('login返回了uid,直接用uid请求信息')
                 fetch(
-                  'WebApi.ashx?Act=GetUserInfo',
-                  { UnionID: this.globalData.uid }
+                  'WebApi.ashx?Act=GetUserInfo', {
+                    UnionID: this.globalData.uid
+                  }
                 ).then(result => {
                   wx.hideLoading()
                   if (result.data.IsSuccess) {
@@ -45,9 +53,11 @@ App({
                       this.globalData.member = result.data.Data.Member
                       this.fansReadyCb && this.fansReadyCb()
                     } else {
-                      wx.navigateTo({
-                        url: '/pages/login/index'
-                      })
+                      if (!atHome) {
+                        wx.redirectTo({
+                          url: '/pages/login/index'
+                        })
+                      }
                     }
                   } else {
                     wx.hideLoading()
@@ -62,10 +72,13 @@ App({
                   console.log(err)
                 })
               } else {
+                wx.hideLoading()
                 console.log('login没有返回uid,跳转授权页面')
-                wx.navigateTo({
-                  url: '/pages/login/index'
-                })
+                if (!atHome) {
+                  wx.redirectTo({
+                    url: '/pages/login/index'
+                  })
+                }
               }
             } else {
               wx.showModal({
@@ -129,6 +142,6 @@ App({
   },
   toast,
   loading,
-  onLaunch() { },
-  onShow() { }
+  onLaunch() {},
+  onShow() {}
 })

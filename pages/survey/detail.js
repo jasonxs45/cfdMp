@@ -8,7 +8,7 @@ Component({
     detail: null,
     questions: [],
     answers: [],
-    currentIndex:0,
+    currentIndex: 0,
     typeDesc: {
       radio: '单选',
       checkbox: '多选',
@@ -18,28 +18,28 @@ Component({
     myanswer: []
   },
   computed: {
-    currentType () {
+    currentType() {
       let type = ''
       if (this.data.questions.length > 0) {
         type = this.data.questions[this.data.currentIndex].type
       }
       return type
     },
-    currentOptions () {
+    currentOptions() {
       let options = ''
       if (this.data.questions.length > 0) {
         options = this.data.questions[this.data.currentIndex].Options
       }
       return options
     },
-    percent () {
+    percent() {
       return 100 * (this.data.currentIndex + 1) / this.data.questions.length
     },
-    title () {
+    title() {
       let title = ''
       if (this.data.questions.length > 0) {
         title = this.data.questions[this.data.currentIndex].Question
-      } 
+      }
       return title
     }
   },
@@ -84,7 +84,7 @@ Component({
         value: value.join('|')
       })
     },
-    textareaInput (e) {
+    textareaInput(e) {
       let value = e.detail.value
       let str = `questions[${this.data.currentIndex}].Options`
       this.setData({
@@ -130,17 +130,17 @@ Component({
             item.type = item.Type === '单选'
               ? 'radio'
               : item.Type === '多选'
-              ? 'checkbox'
-              : 'textarea'
+                ? 'checkbox'
+                : 'textarea'
             item.Options = item.Options
-                           ? item.Options.split('|').map(item => {
-                             item = {
-                               value: item,
-                               checked: false
-                             }
-                             return item
-                           })
-                           : ''
+              ? item.Options.split('|').map(item => {
+                item = {
+                  value: item,
+                  checked: false
+                }
+                return item
+              })
+              : ''
             item.Options = item.Type === '填空' ? '' : item.Options
             return item
           })
@@ -155,7 +155,7 @@ Component({
         })
       })
     },
-    getAnswer () {
+    getAnswer() {
       let MemberID = app.globalData.member.ID || wx.getStorageSync('member').ID
       // let MemberID = 2
       _answers(MemberID, this.data.id).then(res => {
@@ -181,42 +181,41 @@ Component({
         })
       })
     },
-    answered () {
+    answered() {
       let MemberID = app.globalData.member.ID || wx.getStorageSync('member').ID
       // let MemberID = 2
       return _answered(MemberID, this.data.id)
     },
-    submit () {
-      let currentVlaue = this.data.currentOptions
-      if (!currentVlaue.trim()) {
-        app.toast('请完成当前问题！')
-        return
-      }
-      let MemberID = app.globalData.member.ID || wx.getStorageSync('member').ID
-      app.loading('加载中')
-      _submit(MemberID, this.data.id, JSON.stringify(this.data.answers)).then(res => {
-        wx.hideLoading()
-        wx.showModal({
-          title: res.data.IsSuccess?'温馨提示':'对不起',
-          content: res.data.Msg,
-          showCancel: false,
-          success: r => {
-            if (r.confirm) {
-              if (res.data.IsSuccess) {
-                wx.navigateBack()
+    submit() {
+      if (!this.data.answers[this.data.currentIndex]) {
+        app.toast(`请对第${this.data.currentIndex + 1}题作答！`)
+      } else {
+        let MemberID = app.globalData.member.ID || wx.getStorageSync('member').ID
+        app.loading('加载中')
+        _submit(MemberID, this.data.id, JSON.stringify(this.data.answers)).then(res => {
+          wx.hideLoading()
+          wx.showModal({
+            title: res.data.IsSuccess ? '温馨提示' : '对不起',
+            content: res.data.Msg,
+            showCancel: false,
+            success: r => {
+              if (r.confirm) {
+                if (res.data.IsSuccess) {
+                  wx.navigateBack()
+                }
               }
             }
-          }
+          })
+        }).catch(err => {
+          console.log(err)
+          wx.hideLoading()
+          wx.showModal({
+            title: '对不起',
+            content: '请求失败，轻稍后再试！',
+            showCancel: false
+          })
         })
-      }).catch(err => {
-        console.log(err)
-        wx.hideLoading()
-        wx.showModal({
-          title: '对不起',
-          content: '请求失败，轻稍后再试！',
-          showCancel: false
-        })
-      })  
+      }
     },
     onLoad(options) {
       this.data.id = options.id

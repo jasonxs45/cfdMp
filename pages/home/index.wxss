@@ -1,8 +1,23 @@
 page{
   background: #f2f2f2;
+  overflow-x: hidden;
+}
+.bg-block{
+  position: absolute;
+  width: 100%;
+  height: 600rpx;
+  z-index: -1;
+  overflow-x: hidden;
+}
+.bg-block .color{
+  width: 100%;
+  background: #a6262b;
+  border-radius: 0 0 50% 50%;
+  transform-origin: center;
+  transform: scale(1.5)translate(0, -280rpx);
+  height: 100%;
 }
 .section, .pad30{
-  background: #fff;
   padding: 30rpx;
 }
 .pad30 {
@@ -197,7 +212,10 @@ page{
   text-align: center;
   transform: translate(-50%, -50%);
 }
-.adimg{
+.ad-wrapper .adimg image{
+  max-width: 80vw;
+  max-height: 60vh;
+  margin-bottom: 30rpx;
 }
 .rp-wrapper .adimg{
   width: 360rpx;

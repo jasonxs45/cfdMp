@@ -3,7 +3,7 @@ import { _homelist } from '../../common/menus'
 import { _list as _bannerlist } from '../../common/banner'
 import { _list as _actlist } from '../../common/activity'
 import { _homeshoplist } from '../../common/shop'
-import { _ad } from '../../common/ad'
+import { _ad, _adjson } from '../../common/ad'
 const entries = []
 const app = getApp()
 Page({
@@ -18,6 +18,14 @@ Page({
   },
   getAd() {
     app.loading('加载中')
+    // 临时广告
+    // wx.request({
+    //   url: 'https://cfd.1juke.cn/home.json',
+    //   success: r=> {
+    //     console.log(r.data)
+    //   }
+    // })
+    // 
     _ad().then(r => {
       wx.hideLoading()
       console.log(r)
@@ -107,9 +115,9 @@ Page({
     app.memberReadyCb = () => {
     }
     app.fansReadyCb = () => {
-      this.totalQuery()
     }
-    app.init()
+    app.init({ atHome: true })
+    this.totalQuery()
     this.getList()
     let uid = app.globalData.uid || wx.getStorageSync('uid')
     if (uid) {

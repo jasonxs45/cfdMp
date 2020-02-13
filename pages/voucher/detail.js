@@ -13,7 +13,7 @@ Page({
     _detail(this.data.id).then(res => {
       wx.hideLoading()
       let detail = res.data.Merchants_Main
-      detail.Label = detail.Label.split(',')
+      detail.Label = detail ? detail.Label.split(',') : []
       let content = detail.Content
       WxParse.wxParse('content', 'html', content, this, 0)
       let tickets = res.data.Merchants_Ticket_list.map(item => {
@@ -83,7 +83,8 @@ Page({
     app.fansReadyCb = () => {
       app.checkMember()
     }
-    app.init()
+    // app.init()
+    this.getDetail()
   },
   onReady() { },
   onShow() { },

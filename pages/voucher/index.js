@@ -62,9 +62,10 @@ Page({
     app.memberReadyCb = () => {
     }
     app.fansReadyCb = () => {
-      this.totalQuery()
+      // this.totalQuery()
     }
-    app.init()
+    // app.init()
+    this.totalQuery()
   },
   onReady () {},
   onShow () {},
